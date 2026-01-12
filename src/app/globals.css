@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f9fffe;
+  --foreground: #212121;
+
+  /* Brand Colors */
+  --triverge-blue: #2d4375;
+  --healing-teal: #2ea69a;
+  --deep-teal: #1f6b63;
+  --porcelain: #f9fffe;
+  --charcoal: #212121;
+}
+
+.dark {
+  --background: #0f172a;
+  /* Slate 900 equivalent for deep dark mode */
+  --foreground: #f9fffe;
+
+  --triverge-blue: #a3b8ee;
+  /* Lighter blue for better contrast in dark mode */
+  --charcoal: #f9fffe;
+  /* Text becomes light */
+  --porcelain: #1e293b;
+  /* Slate 800 for card backgrounds etc */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-triverge-blue: var(--triverge-blue);
+  --color-healing-teal: var(--healing-teal);
+  --color-deep-teal: var(--deep-teal);
+  --color-porcelain: var(--porcelain);
+  --color-charcoal: var(--charcoal);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --animate-spin-fast: spin 1s linear infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px #2ea69a, 0 0 10px #2ea69a inset;
+    border-color: rgba(46, 166, 154, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 15px #2ea69a, 0 0 5px #2ea69a inset;
+    border-color: rgba(46, 166, 154, 1);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+/* Void Grid Effect */
+.bg-grid-void {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(45, 67, 117, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 67, 117, 0.05) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  transform: perspective(500px) rotateX(20deg) scale(1.5);
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+.dark .bg-grid-void {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
