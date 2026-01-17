@@ -34,7 +34,7 @@ const cardFlip = {
         rotateX: 0,
         y: 0,
         transition: {
-            type: "spring",
+            type: "spring" as const,
             damping: 15,
             stiffness: 100,
             mass: 1.2
