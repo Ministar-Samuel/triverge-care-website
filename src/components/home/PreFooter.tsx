@@ -2,11 +2,23 @@
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
 
 export function PreFooter() {
     return (
         <section className="py-[100px] px-[20px] md:px-[40px] bg-gradient-to-b from-porcelain to-[#e0f7fa] dark:from-background dark:to-triverge-blue/20 text-center relative overflow-hidden">
-            <div className="max-w-[800px] mx-auto relative z-10">
+            <motion.div
+                className="max-w-[800px] mx-auto relative z-10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+            >
 
                 <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue dark:text-white mb-6">
                     Let’s support your family
@@ -45,7 +57,7 @@ export function PreFooter() {
                     </div>
                 </div>
 
-            </div>
+            </motion.div>
         </section>
     );
 }

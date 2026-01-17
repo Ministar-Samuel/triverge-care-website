@@ -3,6 +3,17 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const gentleScale = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" as const } }
+};
 
 export function CentreFeature() {
     return (
@@ -10,7 +21,13 @@ export function CentreFeature() {
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] lg:gap-[60px] items-center">
 
                 {/* Left Column: Content */}
-                <div className="col-span-1 lg:col-span-6 flex flex-col gap-[30px]">
+                <motion.div
+                    className="col-span-1 lg:col-span-6 flex flex-col gap-[30px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                >
 
                     {/* Eyebrow */}
                     <div className="flex items-center gap-3">
@@ -88,7 +105,7 @@ export function CentreFeature() {
 
                         {/* CTA Link */}
                         <Link
-                            href="/contact"
+                            href="/ibadan-centre"
                             className="group flex items-center gap-2 text-xl font-body italic text-healing-teal hover:text-triverge-blue dark:hover:text-white transition-colors"
                         >
                             Explore the Centre
@@ -96,10 +113,16 @@ export function CentreFeature() {
                         </Link>
                     </div>
 
-                </div>
+                </motion.div>
 
                 {/* Right Column: Visual */}
-                <div className="col-span-1 lg:col-span-6 relative h-[500px] lg:h-[600px] w-full group">
+                <motion.div
+                    className="col-span-1 lg:col-span-6 relative h-[500px] lg:h-[600px] w-full group"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={gentleScale}
+                >
                     <div className="absolute inset-0 bg-gray-200 dark:bg-slate-800 rounded-tl-[80px] rounded-br-[80px] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
                         {/* Ibadan Facility Image */}
                         <img
@@ -124,7 +147,7 @@ export function CentreFeature() {
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>

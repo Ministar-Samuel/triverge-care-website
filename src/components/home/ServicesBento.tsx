@@ -7,6 +7,22 @@ import { SERVICES_BENTO } from "@/lib/data";
 import { motion } from "framer-motion";
 import { DotPattern } from "@/components/ui/dot-pattern";
 
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
+};
+
 export function ServicesBento() {
     return (
         <section className="py-[100px] px-[20px] md:px-[40px] bg-white dark:bg-[#1f6b63] transition-colors duration-300 relative overflow-hidden">
@@ -23,21 +39,34 @@ export function ServicesBento() {
             <div className="max-w-[1440px] mx-auto">
 
                 {/* Header */}
-                <div className="text-center max-w-[800px] mx-auto mb-[60px]">
+                <motion.div
+                    className="text-center max-w-[800px] mx-auto mb-[60px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                >
                     <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-[#f9fffe] mb-4">
                         Personalised Care at Every Stage of Ageing
                     </h2>
                     <p className="text-lg md:text-xl font-body text-charcoal/80 dark:text-[#f9fffe]/80 leading-relaxed">
                         Ageing comes with different needs. Whether it's post-surgery recovery, long-term memory support, or just a little help around the house, we have a plan for you.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] mb-[60px]">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] mb-[60px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={staggerContainer}
+                >
 
                     {/* Large Cards (Span 2) */}
                     {SERVICES_BENTO.large.map((service, idx) => (
-                        <div
+                        <motion.div
+                            variants={fadeInUp}
                             key={idx}
                             className={cn(
                                 "col-span-1 md:col-span-2 p-[30px] rounded-[24px] flex flex-col justify-between min-h-[320px] group transition-all duration-300 hover:shadow-xl dark:bg-white/10 dark:backdrop-blur-sm overflow-hidden relative",
@@ -67,12 +96,13 @@ export function ServicesBento() {
                             <h3 className="text-2xl font-bold font-heading text-triverge-blue dark:text-[#f9fffe] max-w-[80%] relative z-10">
                                 {service.title}
                             </h3>
-                        </div>
+                        </motion.div>
                     ))}
 
                     {/* Medium Cards (Span 1) */}
                     {SERVICES_BENTO.medium.map((service, idx) => (
-                        <div
+                        <motion.div
+                            variants={fadeInUp}
                             key={idx}
                             className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
                         >
@@ -99,11 +129,14 @@ export function ServicesBento() {
                             <h3 className="text-lg font-bold font-heading text-triverge-blue dark:text-[#f9fffe] leading-tight relative z-10 mt-auto">
                                 {service.title}
                             </h3>
-                        </div>
+                        </motion.div>
                     ))}
 
                     {/* List Card (Full Width) */}
-                    <div className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-triverge-blue dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden">
+                    <motion.div
+                        variants={fadeInUp}
+                        className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-triverge-blue dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden"
+                    >
                         {/* Background Texture Element */}
                         <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -121,12 +154,18 @@ export function ServicesBento() {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                </div>
+                </motion.div>
 
                 {/* Bottom CTA */}
-                <div className="flex justify-center">
+                <motion.div
+                    className="flex justify-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
                     <Link
                         href="/contact"
                         className="relative px-[40px] py-[16px] bg-healing-teal text-white rounded-full text-lg font-bold font-heading shadow-lg hover:shadow-healing-teal/40 hover:scale-105 transition-all duration-300 overflow-hidden group"
@@ -138,7 +177,7 @@ export function ServicesBento() {
                         {/* Beam Animation */}
                         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
                     </Link>
-                </div>
+                </motion.div>
 
             </div>
         </section>

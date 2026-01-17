@@ -1,6 +1,17 @@
 "use client";
 
 import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
+
+const fadeInLeft = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const fadeInRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
 
 export function NewsletterSection() {
     return (
@@ -13,17 +24,29 @@ export function NewsletterSection() {
             <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-[40px] relative z-10">
 
                 {/* Text Content */}
-                <div className="lg:max-w-[600px]">
+                <motion.div
+                    className="lg:max-w-[600px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInLeft}
+                >
                     <h2 className="text-[32px] md:text-[40px] font-bold font-heading mb-4 leading-tight">
                         Health Tips for Your <span className="text-healing-teal">Loved Ones</span>
                     </h2>
                     <p className="text-lg font-body text-porcelain/80">
                         Join our community to receive expert advice on elderly care, dementia support, and family wellness directly to your inbox.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Signup Form */}
-                <div className="w-full lg:w-auto flex-1 max-w-[500px]">
+                <motion.div
+                    className="w-full lg:w-auto flex-1 max-w-[500px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInRight}
+                >
                     <form className="relative flex items-center bg-white/10 dark:bg-white rounded-full p-2 border border-white/20 focus-within:bg-white/15 dark:focus-within:bg-white focus-within:border-healing-teal/50 transition-all duration-300">
                         <div className="pl-6 text-white/50 dark:text-[#2ea69a]">
                             <Icon icon="solar:letter-bold" className="text-2xl" />
@@ -43,7 +66,7 @@ export function NewsletterSection() {
                     <p className="text-sm text-white/40 dark:text-[#1f6b63] mt-3 ml-6 font-medium">
                         We respect your privacy. Unsubscribe at any time.
                     </p>
-                </div>
+                </motion.div>
 
             </div>
         </section>

@@ -22,6 +22,10 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "Triverge Healthcare",
   description: "Your One-Stop Elderly Care Provider",
+  icons: {
+    icon: "/triverge-favicon.png",
+    apple: "/triverge-favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -45,7 +49,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-grow pt-[80px]">
+          <main className="flex-grow pt-[80px] bg-background">
             {children}
           </main>
           <Footer />

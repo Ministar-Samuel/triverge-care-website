@@ -11,9 +11,9 @@ const navLinks = [
     { name: "Home", href: "/", icon: "solar:home-smile-bold-duotone" },
     { name: "About Us", href: "/about", icon: "solar:users-group-two-rounded-bold-duotone" },
     { name: "Services", href: "/services", icon: "solar:medical-kit-bold-duotone" },
-    { name: "Doctors", href: "/team", icon: "solar:stethoscope-bold-duotone" },
-    { name: "Appointments", href: "/book", icon: "solar:calendar-bold-duotone" },
+    { name: "HCAP Training", href: "/hcap", icon: "solar:diploma-bold-duotone" },
     { name: "Blog", href: "/blog", icon: "solar:notebook-bold-duotone" },
+    { name: "Contact", href: "/contact", icon: "solar:chat-line-bold-duotone" },
 ];
 
 export function Navbar() {
@@ -33,7 +33,11 @@ export function Navbar() {
                     href="/"
                     className="flex items-center gap-2 group transform transition-transform duration-300 hover:scale-105"
                 >
-                    <Icon icon="solar:heart-pulse-bold-duotone" className="text-[32px] md:text-[40px] text-triverge-blue dark:text-healing-teal transition-colors" />
+                    <img
+                        src="/triverge-logo.png"
+                        alt="Triverge Logo"
+                        className="w-[40px] h-[40px] object-contain"
+                    />
                     <span className="hidden md:block text-xl font-bold font-heading text-triverge-blue dark:text-white tracking-tight transition-colors">
                         Triverge
                     </span>

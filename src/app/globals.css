@@ -40,6 +40,16 @@
 
   --animate-spin-fast: spin 1s linear infinite;
   --animate-spin-slow: spin 3s linear infinite;
+  --animate-beam: beam 2s linear infinite;
+}
+
+@keyframes beam {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
 }
 
 @keyframes glow-pulse {

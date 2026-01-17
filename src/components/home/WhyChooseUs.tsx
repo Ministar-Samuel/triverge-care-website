@@ -4,6 +4,28 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 import { PROMISES } from "@/lib/data";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.2
+        }
+    }
+};
+
+const itemVariant = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
+};
 
 export function WhyChooseUs() {
     const [activePromise, setActivePromise] = useState(0);
@@ -16,7 +38,12 @@ export function WhyChooseUs() {
                 <div className="col-span-1 lg:col-span-6 flex flex-col gap-[50px]">
 
                     {/* Headline Area */}
-                    <div>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={fadeInUp}
+                    >
                         <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-white leading-tight mb-4">
                             Comfort,{" "}
                             <span className="relative inline-block px-1">
@@ -32,13 +59,20 @@ export function WhyChooseUs() {
                         <p className="text-xl font-body text-charcoal/80 dark:text-white/80 italic">
                             Every older adult deserves care that respects their story, their schedule, and their preferences.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* The "Promise" List */}
-                    <ul className="flex flex-col gap-[20px]">
+                    <motion.ul
+                        className="flex flex-col gap-[20px]"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        variants={staggerContainer}
+                    >
                         {PROMISES.map((promise, idx) => (
-                            <li
+                            <motion.li
                                 key={idx}
+                                variants={itemVariant}
                                 className="group cursor-pointer"
                                 onMouseEnter={() => setActivePromise(idx)}
                             >
@@ -69,13 +103,18 @@ export function WhyChooseUs() {
                                         <Icon icon="solar:shield-check-bold" className="ml-auto text-2xl text-healing-teal animate-in fade-in zoom-in" />
                                     )}
                                 </div>
-                            </li>
+                            </motion.li>
                         ))}
-                    </ul>
+                    </motion.ul>
                 </div>
 
-                {/* Right Column: Visual Proof (Sticky) */}
-                <div className="col-span-1 lg:col-span-6 relative h-[600px] lg:h-[700px] lg:sticky lg:top-[120px] rounded-[32px] overflow-hidden shadow-2xl bg-gray-200 dark:bg-slate-800">
+                <motion.div
+                    className="col-span-1 lg:col-span-6 relative h-[600px] lg:h-[700px] lg:sticky lg:top-[120px] rounded-[32px] overflow-hidden shadow-2xl bg-gray-200 dark:bg-slate-800"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                >
                     {/* Image Swap Logic */}
                     {PROMISES.map((promise, idx) => (
                         <div
@@ -108,7 +147,7 @@ export function WhyChooseUs() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </motion.div>
 
             </div>
         </section>

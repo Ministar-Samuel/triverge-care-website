@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 
 export function Footer() {
     return (
-        <footer className="sticky bottom-0 z-0 bg-[#212121] text-porcelain dark:text-[#f9fffe] py-[80px] px-[20px] md:px-[40px] h-auto min-h-[500px] flex flex-col justify-end">
+        <footer className="relative w-full bg-[#212121] text-porcelain dark:text-[#f9fffe] py-[80px] px-[20px] md:px-[40px]">
             <div className="max-w-[1440px] mx-auto w-full">
 
                 {/* Main Grid */}
@@ -14,7 +14,11 @@ export function Footer() {
                     {/* Column 1: Brand */}
                     <div className="flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2">
-                            <Icon icon="solar:heart-pulse-bold-duotone" className="text-4xl text-white dark:text-[#2ea69a]" />
+                            <img
+                                src="/triverge-logo.png"
+                                alt="Triverge Logo"
+                                className="w-[40px] h-[40px] object-contain brightness-0 invert"
+                            />
                             <span className="text-2xl font-bold font-heading dark:text-[#f9fffe]">Triverge</span>
                         </Link>
                         <p className="text-lg font-body italic opacity-80 dark:text-[#f9fffe] dark:opacity-100">
@@ -50,7 +54,8 @@ export function Footer() {
                     <div className="flex flex-col gap-4">
                         <h4 className="text-sm font-bold uppercase tracking-widest text-white/50 mb-4">Quick Links</h4>
                         <div className="flex flex-col gap-3 font-heading group/links">
-                            <Link href="/hcap" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 dark:text-[#f9fffe]">
+                            <Link href="/hcap" className="text-lg text-healing-teal font-bold hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-healing-teal animate-pulse" />
                                 HCAP Training Programme
                             </Link>
                             <Link href="/about" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 dark:text-[#f9fffe]">

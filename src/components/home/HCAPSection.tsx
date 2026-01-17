@@ -3,6 +3,33 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { HCAP_CURRICULUM } from "@/lib/data";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
+};
+
+const itemVariant = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" as const } }
+};
+
+const gentleScale = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" as const } }
+};
 
 export function HCAPSection() {
     return (
@@ -14,42 +41,49 @@ export function HCAPSection() {
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-center relative z-10">
 
                 {/* Left: Content */}
-                <div className="col-span-1 lg:col-span-7 flex flex-col gap-[30px]">
-                    <div className="flex items-center gap-3 mb-2">
+                <motion.div
+                    className="col-span-1 lg:col-span-7 flex flex-col gap-[30px]"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={staggerContainer}
+                >
+                    <motion.div className="flex items-center gap-3 mb-2" variants={fadeInUp}>
                         <Icon icon="solar:diploma-verified-bold" className="text-3xl text-healing-teal" />
                         <span className="text-healing-teal font-heading font-bold text-sm uppercase tracking-widest">
                             Training Academy
                         </span>
-                    </div>
+                    </motion.div>
 
-                    <h2 className="text-[40px] lg:text-[56px] font-bold font-heading leading-none dark:text-[#f9fffe]">
+                    <motion.h2 variants={fadeInUp} className="text-[40px] lg:text-[56px] font-bold font-heading leading-none dark:text-[#f9fffe]">
                         Become a <span className="text-healing-teal">Certified</span><br />
                         Elderly Caregiver
-                    </h2>
+                    </motion.h2>
 
-                    <p className="text-xl font-body text-porcelain/80 dark:text-[#f9fffe]/80 max-w-[600px] leading-relaxed">
+                    <motion.p variants={fadeInUp} className="text-xl font-body text-porcelain/80 dark:text-[#f9fffe]/80 max-w-[600px] leading-relaxed">
                         Our Home Care Assistant Programme (HCAP) trains caregivers to deliver world-class support with empathy and skill.
-                    </p>
+                    </motion.p>
 
                     {/* Curriculum Tags */}
                     <div className="flex flex-wrap gap-[10px] mt-4">
                         {HCAP_CURRICULUM.map((item, idx) => (
-                            <span
+                            <motion.span
                                 key={idx}
+                                variants={itemVariant}
                                 className="px-[20px] py-[10px] rounded-full border border-white/30 text-white/90 font-medium font-heading transition-all duration-300 hover:bg-healing-teal hover:border-healing-teal hover:scale-105 cursor-default"
                             >
                                 {item}
-                            </span>
+                            </motion.span>
                         ))}
                     </div>
 
                     {/* Footer Note */}
-                    <p className="text-lg font-body italic text-white/60 mt-4 border-l-2 border-healing-teal pl-4">
+                    <motion.p variants={fadeInUp} className="text-lg font-body italic text-white/60 mt-4 border-l-2 border-healing-teal pl-4">
                         "Graduates receive placement support within our network."
-                    </p>
+                    </motion.p>
 
                     {/* Shimmer Button CTA */}
-                    <div className="mt-6">
+                    <motion.div className="mt-6" variants={fadeInUp}>
                         <Link
                             href="/hcap"
                             className="relative inline-flex items-center gap-3 px-[40px] py-[18px] bg-white text-triverge-blue dark:text-healing-teal rounded-full text-lg font-bold font-heading overflow-hidden group hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
@@ -60,11 +94,17 @@ export function HCAPSection() {
                             {/* Shimmer Effect */}
                             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1.5s] bg-gradient-to-r from-transparent via-healing-teal/20 to-transparent skew-x-12" />
                         </Link>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Right: Graphic */}
-                <div className="col-span-1 lg:col-span-5 relative">
+                <motion.div
+                    className="col-span-1 lg:col-span-5 relative"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={gentleScale}
+                >
                     <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl bg-slate-800 group">
                         {/* Training Academy Image */}
                         <img
@@ -87,7 +127,7 @@ export function HCAPSection() {
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>
