@@ -129,7 +129,6 @@ export function WhyChooseUs() {
                                 alt={promise.title}
                                 className={cn(
                                     "w-full h-full object-cover",
-                                    // @ts-ignore
                                     promise.imagePosition
                                 )}
                             />

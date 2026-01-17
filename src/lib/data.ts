@@ -45,7 +45,14 @@ export const SERVICES_BENTO = {
   ],
 };
 
-export const PROMISES = [
+export interface PromiseItem {
+  title: string;
+  icon: string;
+  image: string;
+  imagePosition?: string;
+}
+
+export const PROMISES: PromiseItem[] = [
   {
     title: "You can speak to our team anytime",
     icon: "solar:phone-calling-bold",
