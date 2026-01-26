@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -215,11 +216,14 @@ export function Hero() {
                             >
                                 {/* Render Image if available */}
                                 {SERVICE_IMAGES[SERVICES[activeService]] ? (
-                                    <img
+                                    <Image
                                         src={SERVICE_IMAGES[SERVICES[activeService]]}
                                         alt={SERVICES[activeService]}
+                                        fill
+                                        priority
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         className={cn(
-                                            "absolute inset-0 w-full h-full object-cover",
+                                            "object-cover",
                                             SERVICE_IMAGE_POSITIONS[SERVICES[activeService]] || ""
                                         )}
                                     />
