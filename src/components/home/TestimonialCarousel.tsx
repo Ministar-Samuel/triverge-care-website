@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function TestimonialCarousel() {
     return (
@@ -58,7 +59,7 @@ export function TestimonialCarousel() {
                                     <div className="relative">
                                         <Icon icon="solar:quote-up-bold" className="absolute -top-4 -left-2 text-4xl text-triverge-blue/10 dark:text-white/10" />
                                         <p className="text-lg md:text-xl font-body italic text-charcoal/80 dark:text-white/80 leading-relaxed relative z-10">
-                                            "{testimonial.content}"
+                                            &quot;{testimonial.content}&quot;
                                         </p>
                                     </div>
                                 </div>
@@ -66,7 +67,13 @@ export function TestimonialCarousel() {
                                 {/* Author */}
                                 <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
                                     <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-white shadow-md">
-                                        <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                                        <Image
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            width={60}
+                                            height={60}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                     <div>
                                         <h4 className="font-bold font-heading text-triverge-blue dark:text-white text-lg">
