@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
 
 const navLinks = [
     { name: "Home", href: "/", icon: "solar:home-smile-bold-duotone" },
@@ -33,10 +33,13 @@ export function Navbar() {
                     href="/"
                     className="flex items-center gap-2 group transform transition-transform duration-300 hover:scale-105"
                 >
-                    <img
+                    <Image
                         src="/triverge-logo.png"
                         alt="Triverge Logo"
-                        className="w-[40px] h-[40px] object-contain"
+                        width={40}
+                        height={40}
+                        priority
+                        className="object-contain"
                     />
                     <span className="hidden md:block text-xl font-bold font-heading text-triverge-blue dark:text-white tracking-tight transition-colors">
                         Triverge
