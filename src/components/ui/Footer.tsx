@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
 
 export function Footer() {
@@ -14,9 +15,11 @@ export function Footer() {
                     {/* Column 1: Brand */}
                     <div className="flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2">
-                            <img
+                            <Image
                                 src="/triverge-logo.png"
                                 alt="Triverge Logo"
+                                width={40}
+                                height={40}
                                 className="w-[40px] h-[40px] object-contain brightness-0 invert"
                             />
                             <span className="text-2xl font-bold font-heading dark:text-[#f9fffe]">Triverge</span>
