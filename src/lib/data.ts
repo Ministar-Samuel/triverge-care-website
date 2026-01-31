@@ -333,3 +333,88 @@ export const VIDEO_TESTIMONIALS = [
     quote: "Finally, peace of mind."
   }
 ];
+
+export const BLOG_CATEGORIES = [
+  "All",
+  "Health Tips",
+  "Company News",
+  "Caregiver Guide",
+  "Nutrition",
+  "Success Stories"
+];
+
+export const BLOG_POSTS = [
+  {
+    id: "featured",
+    title: "The Emotional Side of Caregiving: How to Avoid Burnout & Find Balance",
+    excerpt: "Caring for a loved one is rewarding but exhausting. Discover practical strategies to maintain your mental health while providing the best support.",
+    category: "Caregiver Guide",
+    date: "Oct 28, 2025",
+    readTime: "5 min read",
+    author: "Dr. A. Otaru",
+    image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=2070&auto=format&fit=crop",
+    featured: true
+  },
+  {
+    id: "1",
+    title: "5 Early Signs of Dementia You Should Not Ignore",
+    excerpt: "Memory loss is just one symptom. Learn to spot the subtle behavioral changes...",
+    category: "Health Tips",
+    date: "October 12, 2025",
+    readTime: "4 min read",
+    author: "Nurse Amara",
+    image: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2070&auto=format&fit=crop",
+    tags: ["Diagnosis", "Health Tips"]
+  },
+  {
+    id: "2",
+    title: "How to Prepare Your Home for Post-Hospital Recovery",
+    excerpt: "Preparing your home for recovery is crucial for a smooth transition. Follow our step-by-step guide.",
+    category: "Caregiver Guide",
+    date: "Oct 5, 2025",
+    readTime: "6 min read",
+    author: "Dr. Ngozi Okonjo",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop",
+    secondary: true
+  },
+  {
+    id: "3",
+    title: "Why Social Interaction is Vital for Seniors",
+    excerpt: "Isolation can be as damaging as illness. Here is how to keep your loved ones engaged and connected.",
+    category: "Success Stories",
+    date: "Sept 28, 2025",
+    readTime: "4 min read",
+    author: "Mrs. Folake Adebayo",
+    image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    id: "4",
+    title: "Nutritional Needs for the Elderly: A Simple Guide",
+    excerpt: "Good nutrition is the foundation of good health. Learn about the essential nutrients for seniors.",
+    category: "Nutrition",
+    date: "Sept 15, 2025",
+    readTime: "5 min read",
+    author: "Nurse Amara",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2066&auto=format&fit=crop"
+  },
+  {
+    id: "5",
+    title: "Triverge Ibadan Centre: One Year of Compassionate Care",
+    excerpt: "Celebrating our first anniversary and the lives we've touched in the Ibadan community.",
+    category: "Company News",
+    date: "Sept 1, 2025",
+    readTime: "3 min read",
+    author: "Dr. A. Otaru",
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    id: "6",
+    title: "Managing Medication Safety at Home",
+    excerpt: "Tips and tools for ensuring your loved ones take their prescriptions safely and on time.",
+    category: "Caregiver Guide",
+    date: "Aug 22, 2025",
+    readTime: "7 min read",
+    author: "Nurse Amara",
+    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?q=80&w=2070&auto=format&fit=crop"
+  }
+];

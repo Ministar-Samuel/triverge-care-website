@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -108,7 +109,8 @@ export function Hero() {
                 <div className="lg:col-span-6 flex flex-col gap-[30px] justify-center">
 
                     {/* Headline - Adjusted size and max-width to fit 2 lines */}
-                    <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold font-heading text-triverge-blue dark:text-white leading-[1.1] relative w-full lg:max-w-3xl tracking-tight transition-colors duration-300">
+                    {/* Headline - Adjusted size and max-width to fit 2 lines */}
+                    <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold font-heading text-[#2d4375] dark:text-white leading-[1.1] relative w-full lg:max-w-3xl tracking-tight transition-colors duration-300">
                         We Are Your One-Stop <br />
                         <span className="relative inline-block text-triverge-blue dark:text-healing-teal transition-colors duration-300">
                             Elderly Care
@@ -129,7 +131,7 @@ export function Hero() {
                     </h1>
 
                     {/* Description */}
-                    <p className="text-[20px] text-charcoal/70 dark:text-white/70 font-body max-w-lg leading-relaxed transition-colors duration-300">
+                    <p className="text-[20px] text-charcoal dark:text-white/70 font-body max-w-lg leading-relaxed transition-colors duration-300">
                         At Triverge Healthcare, we understand how important it is to receive dependable, high-quality support at your convenience.
                     </p>
 
@@ -144,10 +146,10 @@ export function Hero() {
                                     onMouseLeave={() => setIsPaused(false)}
                                     // Visual Refinements: Font Heading (Manrope), Force Light Porcelain + Blue Text in ALL modes
                                     className={cn(
-                                        "relative px-[24px] py-[12px] rounded-full text-[15px] font-heading font-medium transition-all duration-300 group border",
+                                        "relative px-[24px] py-[12px] rounded-full text-[15px] font-heading font-medium transition-all duration-300 group border shadow-sm",
                                         isActive
-                                            ? "text-triverge-blue bg-porcelain shadow-[0_0_20px_rgba(46,166,154,0.4)] scale-105 border-transparent"
-                                            : "bg-porcelain border-triverge-blue/20 text-triverge-blue hover:border-triverge-blue/50"
+                                            ? "text-[#2d4375] bg-porcelain shadow-triverge scale-105 border-transparent"
+                                            : "bg-porcelain border-triverge-blue/20 text-[#2d4375] hover:border-triverge-blue/50"
                                     )}
                                 >
                                     <span className="relative z-10">{service}</span>
@@ -162,13 +164,13 @@ export function Hero() {
 
                     {/* Refined Glass Card CTA */}
                     <div
-                        className="mt-[40px] p-[30px] rounded-[32px] bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)] flex flex-col sm:flex-row justify-between items-center gap-[20px] transition-colors duration-300"
+                        className="mt-[40px] p-[30px] rounded-[32px] bg-white/70 dark:bg-slate-800/40 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-triverge dark:shadow-none flex flex-col sm:flex-row justify-between items-center gap-[20px] transition-colors duration-300"
                     >
                         <div>
-                            <p className="text-[18px] font-bold font-heading text-triverge-blue dark:text-white mb-1 transition-colors">
+                            <p className="text-[18px] font-bold font-heading text-[#2d4375] dark:text-white mb-1 transition-colors">
                                 Book a free 30mins consultation
                             </p>
-                            <p className="text-[14px] text-charcoal/60 dark:text-white/60 font-body transition-colors">Expert advice for your family's needs</p>
+                            <p className="text-[14px] text-charcoal dark:text-white/60 font-body transition-colors">Expert advice for your family's needs</p>
                         </div>
 
                         <Link
@@ -182,11 +184,11 @@ export function Hero() {
                     </div>
 
                     {/* Secondary CTA */}
-                    <Link href="/services" className="flex items-center gap-[12px] text-charcoal/80 hover:text-healing-teal transition-colors group w-fit ml-2">
+                    <Link href="/services" className="flex items-center gap-[12px] text-charcoal dark:text-white/80 hover:text-healing-teal transition-colors group w-fit ml-2">
                         <div className="w-[36px] h-[36px] rounded-full bg-healing-teal/10 flex items-center justify-center group-hover:bg-healing-teal group-hover:text-white transition-colors">
-                            <Icon icon="solar:arrow-right-up-bold-duotone" className="text-lg" />
+                            <Icon icon="solar:arrow-right-up-bold-duotone" className="text-lg text-healing-teal" />
                         </div>
-                        <span className="font-body text-[18px] italic underline decoration-gray-300 group-hover:decoration-healing-teal underline-offset-4">
+                        <span className="font-body text-[18px] italic underline decoration-charcoal/30 dark:decoration-gray-300 group-hover:decoration-healing-teal underline-offset-4">
                             Explore more of our services
                         </span>
                     </Link>
@@ -215,11 +217,14 @@ export function Hero() {
                             >
                                 {/* Render Image if available */}
                                 {SERVICE_IMAGES[SERVICES[activeService]] ? (
-                                    <img
+                                    <Image
                                         src={SERVICE_IMAGES[SERVICES[activeService]]}
                                         alt={SERVICES[activeService]}
+                                        fill
+                                        priority
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         className={cn(
-                                            "absolute inset-0 w-full h-full object-cover",
+                                            "object-cover",
                                             SERVICE_IMAGE_POSITIONS[SERVICES[activeService]] || ""
                                         )}
                                     />

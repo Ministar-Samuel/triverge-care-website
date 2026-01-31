@@ -47,11 +47,11 @@ export function ServicesBento() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeInUp}
                 >
-                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-[#f9fffe] mb-4">
+                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] dark:text-[#f9fffe] mb-4">
                         Personalised Care at Every Stage of Ageing
                     </h2>
-                    <p className="text-lg md:text-xl font-body text-charcoal/80 dark:text-[#f9fffe]/80 leading-relaxed">
-                        Ageing comes with different needs. Whether it&apos;s post-surgery recovery, long-term memory support, or just a little help around the house, we have a plan for you.
+                    <p className="text-lg md:text-xl font-body text-charcoal dark:text-[#f9fffe]/80 leading-relaxed">
+                        Ageing comes with different needs. Whether it's post-surgery recovery, long-term memory support, or just a little help around the house, we have a plan for you.
                     </p>
                 </motion.div>
 
@@ -70,7 +70,7 @@ export function ServicesBento() {
                             variants={fadeInUp}
                             key={idx}
                             className={cn(
-                                "col-span-1 md:col-span-2 p-[30px] rounded-[24px] flex flex-col justify-between min-h-[320px] group transition-all duration-300 hover:shadow-xl dark:bg-white/10 dark:backdrop-blur-sm overflow-hidden relative",
+                                "col-span-1 md:col-span-2 p-[30px] rounded-[24px] flex flex-col justify-between min-h-[320px] group transition-all duration-300 hover:shadow-xl shadow-triverge dark:shadow-none dark:bg-white/10 dark:backdrop-blur-sm overflow-hidden relative",
                                 service.bg || "bg-[#f9f9f9] dark:bg-white/10"
                             )}
                         >
@@ -106,7 +106,7 @@ export function ServicesBento() {
                         <motion.div
                             variants={fadeInUp}
                             key={idx}
-                            className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
+                            className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-triverge-blue/10 dark:border-white/10 shadow-triverge dark:shadow-none hover:shadow-lg hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
                         >
                             {/* 3D Icon or Standard Icon */}
                             {service.icon3d ? (
@@ -129,7 +129,7 @@ export function ServicesBento() {
                                 </div>
                             )}
 
-                            <h3 className="text-lg font-bold font-heading text-triverge-blue dark:text-[#f9fffe] leading-tight relative z-10 mt-auto">
+                            <h3 className="text-lg font-bold font-heading text-[#2d4375] dark:text-[#f9fffe] leading-tight relative z-10 mt-auto">
                                 {service.title}
                             </h3>
                         </motion.div>
@@ -138,7 +138,7 @@ export function ServicesBento() {
                     {/* List Card (Full Width) */}
                     <motion.div
                         variants={fadeInUp}
-                        className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-triverge-blue dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden"
+                        className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-[#2d4375] dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden"
                     >
                         {/* Background Texture Element */}
                         <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
