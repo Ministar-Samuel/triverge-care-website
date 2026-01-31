@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { SERVICES_BENTO } from "@/lib/data";
 import { motion } from "framer-motion";
@@ -74,16 +75,17 @@ export function ServicesBento() {
                             )}
                         >
                             {/* 3D Icon or Standard Icon */}
-                            {/* @ts-ignore */}
                             {service.icon3d ? (
                                 <motion.div
                                     className="w-full flex justify-end -mt-10 -mr-10"
                                     animate={{ y: [0, -10, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                 >
-                                    <img
+                                    <Image
                                         src={service.icon3d}
                                         alt={service.title}
+                                        width={220}
+                                        height={220}
                                         className="w-[220px] h-[220px] object-contain drop-shadow-2xl opacity-90 group-hover:scale-110 transition-transform duration-500"
                                     />
                                 </motion.div>
@@ -107,16 +109,17 @@ export function ServicesBento() {
                             className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-triverge-blue/10 dark:border-white/10 shadow-triverge dark:shadow-none hover:shadow-lg hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
                         >
                             {/* 3D Icon or Standard Icon */}
-                            {/* @ts-ignore */}
                             {service.icon3d ? (
                                 <motion.div
                                     className="self-end -mr-4 -mt-4"
                                     animate={{ y: [0, -5, 0] }}
                                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
                                 >
-                                    <img
+                                    <Image
                                         src={service.icon3d}
                                         alt={service.title}
+                                        width={120}
+                                        height={120}
                                         className="w-[120px] h-[120px] object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
                                     />
                                 </motion.div>
