@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -20,12 +21,13 @@ export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const pathname = usePathname();
 
     // Avoid hydration mismatch
     useEffect(() => setMounted(true), []);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] bg-porcelain/90 dark:bg-slate-900/90 backdrop-blur-[10px] border-b border-triverge-blue/10 dark:border-white/10 transition-colors duration-300">
+        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] bg-white/70 dark:bg-slate-900/90 backdrop-blur-md border-b border-triverge-blue/10 dark:border-white/10 shadow-sm dark:shadow-none transition-colors duration-300">
             <div className="flex justify-between items-center w-full h-full px-[20px] md:px-[40px] max-w-[1440px] mx-auto">
 
                 {/* Left: Logo */}
@@ -38,24 +40,35 @@ export function Navbar() {
                         alt="Triverge Logo"
                         className="w-[40px] h-[40px] object-contain"
                     />
-                    <span className="hidden md:block text-xl font-bold font-heading text-triverge-blue dark:text-white tracking-tight transition-colors">
-                        Triverge
+                    <span className="hidden md:block text-xl font-bold font-heading text-[#2d4375] dark:text-white tracking-tight transition-colors">
+                        Triverge <span className="font-extralight opacity-60">| Healthcare</span>
                     </span>
                 </Link>
 
                 {/* Center: Desktop Menu */}
                 <ul className="hidden lg:flex items-center gap-[30px]">
-                    {navLinks.map((link) => (
-                        <li key={link.href}>
-                            <Link
-                                href={link.href}
-                                className="relative text-[16px] font-medium font-heading text-charcoal dark:text-white/90 hover:text-triverge-blue dark:hover:text-healing-teal transition-colors group"
-                            >
-                                {link.name}
-                                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-triverge-blue dark:bg-healing-teal transition-all duration-300 group-hover:w-full" />
-                            </Link>
-                        </li>
-                    ))}
+                    {navLinks.map((link) => {
+                        const isActive = pathname === link.href;
+                        return (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    className={cn(
+                                        "relative text-[16px] font-medium font-heading transition-colors group",
+                                        isActive
+                                            ? "text-triverge-blue dark:text-healing-teal"
+                                            : "text-charcoal dark:text-white/90 hover:text-triverge-blue dark:hover:text-healing-teal"
+                                    )}
+                                >
+                                    {link.name}
+                                    <span className={cn(
+                                        "absolute left-0 -bottom-1 h-[2px] bg-triverge-blue dark:bg-healing-teal transition-all duration-300",
+                                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                                    )} />
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
 
                 {/* Right: Actions */}
@@ -118,17 +131,31 @@ export function Navbar() {
                         className="absolute top-[80px] left-0 right-0 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-white/10 shadow-xl overflow-hidden lg:hidden"
                     >
                         <div className="flex flex-col p-[20px] gap-[10px]">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-charcoal dark:text-white font-medium"
-                                >
-                                    <Icon icon={link.icon} className="text-xl text-triverge-blue dark:text-healing-teal" />
-                                    {link.name}
-                                </Link>
-                            ))}
+                            {navLinks.map((link) => {
+                                const isActive = pathname === link.href;
+                                return (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={cn(
+                                            "flex items-center gap-3 p-3 rounded-lg transition-colors font-medium",
+                                            isActive
+                                                ? "bg-healing-teal/10 text-triverge-blue dark:text-healing-teal"
+                                                : "hover:bg-gray-50 dark:hover:bg-white/5 text-charcoal dark:text-white"
+                                        )}
+                                    >
+                                        <Icon
+                                            icon={link.icon}
+                                            className={cn(
+                                                "text-xl",
+                                                isActive ? "text-healing-teal" : "text-triverge-blue dark:text-healing-teal"
+                                            )}
+                                        />
+                                        {link.name}
+                                    </Link>
+                                );
+                            })}
                             <div className="mt-2 pt-2 border-t border-gray-100 dark:border-white/10">
                                 <Link
                                     href="/contact"

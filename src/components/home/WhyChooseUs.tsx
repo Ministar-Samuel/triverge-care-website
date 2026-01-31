@@ -44,7 +44,7 @@ export function WhyChooseUs() {
                         viewport={{ once: true, margin: "-100px" }}
                         variants={fadeInUp}
                     >
-                        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-white leading-tight mb-4">
+                        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] dark:text-white leading-tight mb-4">
                             Comfort,{" "}
                             <span className="relative inline-block px-1">
                                 Dimensions of
@@ -56,7 +56,7 @@ export function WhyChooseUs() {
                             <br />
                             and expertise.
                         </h2>
-                        <p className="text-xl font-body text-charcoal/80 dark:text-white/80 italic">
+                        <p className="text-xl font-body text-charcoal dark:text-white/80 italic">
                             Every older adult deserves care that respects their story, their schedule, and their preferences.
                         </p>
                     </motion.div>
@@ -79,8 +79,8 @@ export function WhyChooseUs() {
                                 <div className={cn(
                                     "flex items-center gap-4 p-4 rounded-xl transition-all duration-300",
                                     activePromise === idx
-                                        ? "bg-white dark:bg-white/10 shadow-lg scale-102 pl-6 border-l-4 border-healing-teal"
-                                        : "hover:bg-gray-50 dark:hover:bg-white/5 opacity-60 hover:opacity-100"
+                                        ? "bg-white dark:bg-white/10 shadow-triverge dark:shadow-lg scale-102 pl-6 border-l-4 border-healing-teal"
+                                        : "hover:bg-gray-50 dark:hover:bg-white/5 opacity-70 hover:opacity-100"
                                 )}>
                                     {/* Icon */}
                                     <div className={cn(
@@ -93,7 +93,7 @@ export function WhyChooseUs() {
                                     {/* Text */}
                                     <span className={cn(
                                         "text-lg md:text-xl font-medium font-heading transition-colors duration-300",
-                                        activePromise === idx ? "text-triverge-blue dark:text-white font-bold" : "text-charcoal dark:text-white"
+                                        activePromise === idx ? "text-[#2d4375] dark:text-white font-bold" : "text-charcoal dark:text-white"
                                     )}>
                                         {promise.title}
                                     </span>
@@ -139,7 +139,7 @@ export function WhyChooseUs() {
                             <div className="absolute bottom-10 left-10 right-10 z-20 translate-y-4 opacity-0 transition-all duration-500 delay-300" style={{ transform: activePromise === idx ? 'translateY(0)' : 'translateY(20px)', opacity: activePromise === idx ? 1 : 0 }}>
                                 <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-white/20 shadow-lg inline-flex items-center gap-3">
                                     <Icon icon={promise.icon} className="text-2xl text-healing-teal" />
-                                    <span className="font-heading font-bold text-triverge-blue dark:text-white text-sm">
+                                    <span className="font-heading font-bold text-[#2d4375] dark:text-white text-sm">
                                         {promise.title}
                                     </span>
                                 </div>

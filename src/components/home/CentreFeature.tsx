@@ -38,7 +38,7 @@ export function CentreFeature() {
                     </div>
 
                     {/* Headline */}
-                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-white leading-tight">
+                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] dark:text-white leading-tight">
                         A{" "}
                         <span className="relative">
                             Dedicated
@@ -60,7 +60,7 @@ export function CentreFeature() {
                     </h2>
 
                     {/* Body Text */}
-                    <div className="space-y-4 text-lg leading-relaxed font-body text-charcoal/80 dark:text-white/80">
+                    <div className="space-y-4 text-lg leading-relaxed font-body text-charcoal dark:text-white/80">
                         <p>
                             The Triverge Geriatric Centre is a safe, comfortable space where seniors receive medical support, rehabilitation, and day-to-day assistance in a warm, community setting.
                         </p>
@@ -70,7 +70,7 @@ export function CentreFeature() {
                     </div>
 
                     {/* Location Card */}
-                    <div className="group p-[20px] rounded-[16px] bg-triverge-blue/5 dark:bg-white/5 hover:bg-triverge-blue/10 dark:hover:bg-white/10 transition-colors duration-300 cursor-pointer border border-transparent hover:border-triverge-blue/10 dark:hover:border-white/10">
+                    <div className="group p-[20px] rounded-[16px] bg-white dark:bg-white/5 hover:bg-triverge-blue/5 dark:hover:bg-white/10 shadow-triverge dark:shadow-none transition-all duration-300 cursor-pointer border border-triverge-blue/10 dark:border-transparent hover:border-triverge-blue/20 dark:hover:border-white/10">
                         <div className="flex items-start gap-[15px]">
                             <div className="p-2 bg-white dark:bg-white/10 rounded-full shadow-sm group-hover:scale-110 transition-transform duration-300">
                                 <Icon icon="solar:map-point-bold" className="text-2xl text-healing-teal group-hover:animate-bounce" />
@@ -79,7 +79,7 @@ export function CentreFeature() {
                                 <span className="block text-sm font-bold font-heading text-triverge-blue dark:text-white mb-1 uppercase tracking-wide opacity-70">
                                     Location
                                 </span>
-                                <p className="text-lg font-bold font-heading text-triverge-blue dark:text-white">
+                                <p className="text-lg font-bold font-heading text-[#2d4375] dark:text-white">
                                     15, Oyeniwe Street, Amuda, Bashorun, Ibadan.
                                 </p>
                             </div>
@@ -94,10 +94,10 @@ export function CentreFeature() {
                                 Book a visit
                             </span>
                             <div className="flex flex-col gap-1">
-                                <a href="tel:+2347053390270" className="text-lg font-semibold font-heading text-triverge-blue dark:text-white hover:text-healing-teal transition-colors hover:underline decoration-healing-teal underline-offset-4">
+                                <a href="tel:+2347053390270" className="text-lg font-semibold font-heading text-[#2d4375] dark:text-white hover:text-healing-teal transition-colors hover:underline decoration-healing-teal underline-offset-4">
                                     +234 705 3390 270
                                 </a>
-                                <a href="tel:+2347053390269" className="text-lg font-semibold font-heading text-triverge-blue dark:text-white hover:text-healing-teal transition-colors hover:underline decoration-healing-teal underline-offset-4">
+                                <a href="tel:+2347053390269" className="text-lg font-semibold font-heading text-[#2d4375] dark:text-white hover:text-healing-teal transition-colors hover:underline decoration-healing-teal underline-offset-4">
                                     +234 705 3390 269
                                 </a>
                             </div>
@@ -134,7 +134,7 @@ export function CentreFeature() {
                     </div>
 
                     {/* Floating Badge */}
-                    <div className="absolute bottom-[40px] -left-[20px] lg:-left-[40px] bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-white/20 p-[20px] rounded-[24px] shadow-xl flex items-center gap-[15px] animate-bounce-slow z-10">
+                    <div className="absolute bottom-[40px] -left-[20px] lg:-left-[40px] bg-white dark:bg-slate-900/90 backdrop-blur-md border border-triverge-blue/10 dark:border-white/20 p-[20px] rounded-[24px] shadow-[0_4px_20px_rgba(45,67,117,0.12)] dark:shadow-xl flex items-center gap-[15px] animate-bounce-slow z-10">
                         <div className="w-[50px] h-[50px] rounded-full bg-healing-teal flex items-center justify-center text-white shadow-lg">
                             <Icon icon="solar:clock-circle-bold" className="text-2xl" />
                         </div>
