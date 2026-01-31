@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function TestimonialCarousel() {
     return (
@@ -44,7 +45,7 @@ export function TestimonialCarousel() {
                         {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
                             <div
                                 key={idx}
-                                className="min-w-[300px] md:min-w-[400px] bg-white dark:bg-white/5 p-[40px] rounded-[32px] shadow-sm border border-gray-100 dark:border-white/10 flex flex-col justify-between hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+                                className="min-w-[280px] md:min-w-[340px] bg-white/70 dark:bg-white/5 backdrop-blur-md p-[30px] rounded-[24px] shadow-triverge dark:shadow-none border border-triverge-blue/10 dark:border-white/10 flex flex-col justify-between hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
                             >
                                 <div>
                                     {/* Stars */}
@@ -57,7 +58,7 @@ export function TestimonialCarousel() {
                                     {/* Quote Content */}
                                     <div className="relative">
                                         <Icon icon="solar:quote-up-bold" className="absolute -top-4 -left-2 text-4xl text-triverge-blue/10 dark:text-white/10" />
-                                        <p className="text-lg md:text-xl font-body italic text-charcoal/80 dark:text-white/80 leading-relaxed relative z-10">
+                                        <p className="text-lg md:text-xl font-body italic text-charcoal dark:text-white/80 leading-relaxed relative z-10">
                                             "{testimonial.content}"
                                         </p>
                                     </div>
@@ -66,13 +67,19 @@ export function TestimonialCarousel() {
                                 {/* Author */}
                                 <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
                                     <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-white shadow-md">
-                                        <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                                        <Image
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            width={60}
+                                            height={60}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold font-heading text-triverge-blue dark:text-white text-lg">
+                                        <h4 className="font-bold font-heading text-[#2d4375] dark:text-white text-lg">
                                             {testimonial.name}
                                         </h4>
-                                        <p className="text-sm font-body text-charcoal/60 dark:text-white/60">
+                                        <p className="text-sm font-body text-charcoal/80 dark:text-white/60">
                                             {testimonial.role}
                                         </p>
                                     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
 
 export function Footer() {
@@ -14,9 +15,11 @@ export function Footer() {
                     {/* Column 1: Brand */}
                     <div className="flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2">
-                            <img
+                            <Image
                                 src="/triverge-logo.png"
                                 alt="Triverge Logo"
+                                width={40}
+                                height={40}
                                 className="w-[40px] h-[40px] object-contain brightness-0 invert"
                             />
                             <span className="text-2xl font-bold font-heading dark:text-[#f9fffe]">Triverge</span>
@@ -25,9 +28,13 @@ export function Footer() {
                             Comfort. Dignity. Expertise.
                         </p>
                         <div className="flex gap-4 mt-4">
-                            {["solar:facebook-bold", "solar:instagram-bold", "solar:link-circle-bold"].map((icon, i) => (
-                                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-healing-teal transition-colors">
-                                    <Icon icon={icon} className="text-xl dark:text-[#2ea69a]" />
+                            {[
+                                { icon: "solar:facebook-bold", href: "#" },
+                                { icon: "solar:instagram-bold", href: "#" },
+                                { icon: "ri:twitter-x-fill", href: "#" }
+                            ].map((social, i) => (
+                                <a key={i} href={social.href} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-healing-teal transition-colors group">
+                                    <Icon icon={social.icon} className="text-xl group-hover:text-white transition-colors" />
                                 </a>
                             ))}
                         </div>
