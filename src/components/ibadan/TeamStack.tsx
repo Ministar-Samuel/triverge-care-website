@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
 const TEAM = [
     { name: "Dr. A. O. Adeyemi", role: "Medical Director", image: "/images/trained-caregivers-complex.jpg" }, // Reuse existing images for avatars
@@ -70,7 +71,13 @@ export function TeamStack() {
                                     transition: { duration: 0.3 }
                                 }}
                             >
-                                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                <Image
+                                    src={member.image}
+                                    alt={member.name}
+                                    fill
+                                    sizes="280px"
+                                    className="object-cover"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-triverge-blue/80 to-transparent flex flex-col justify-end p-6">
                                     <p className="text-white font-heading font-bold text-lg">{member.name}</p>
                                     <p className="text-white/80 text-sm">{member.role}</p>

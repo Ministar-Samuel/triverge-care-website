@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { SERVICES_BENTO } from "@/lib/data";
 import { motion } from "framer-motion";
@@ -46,10 +47,10 @@ export function ServicesBento() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeInUp}
                 >
-                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-triverge-blue dark:text-[#f9fffe] mb-4">
+                    <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] dark:text-[#f9fffe] mb-4">
                         Personalised Care at Every Stage of Ageing
                     </h2>
-                    <p className="text-lg md:text-xl font-body text-charcoal/80 dark:text-[#f9fffe]/80 leading-relaxed">
+                    <p className="text-lg md:text-xl font-body text-charcoal dark:text-[#f9fffe]/80 leading-relaxed">
                         Ageing comes with different needs. Whether it's post-surgery recovery, long-term memory support, or just a little help around the house, we have a plan for you.
                     </p>
                 </motion.div>
@@ -69,21 +70,22 @@ export function ServicesBento() {
                             variants={fadeInUp}
                             key={idx}
                             className={cn(
-                                "col-span-1 md:col-span-2 p-[30px] rounded-[24px] flex flex-col justify-between min-h-[320px] group transition-all duration-300 hover:shadow-xl dark:bg-white/10 dark:backdrop-blur-sm overflow-hidden relative",
+                                "col-span-1 md:col-span-2 p-[30px] rounded-[24px] flex flex-col justify-between min-h-[320px] group transition-all duration-300 hover:shadow-xl shadow-triverge dark:shadow-none dark:bg-white/10 dark:backdrop-blur-sm overflow-hidden relative",
                                 service.bg || "bg-[#f9f9f9] dark:bg-white/10"
                             )}
                         >
                             {/* 3D Icon or Standard Icon */}
-                            {/* @ts-ignore */}
                             {service.icon3d ? (
                                 <motion.div
                                     className="w-full flex justify-end -mt-10 -mr-10"
                                     animate={{ y: [0, -10, 0] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                 >
-                                    <img
+                                    <Image
                                         src={service.icon3d}
                                         alt={service.title}
+                                        width={220}
+                                        height={220}
                                         className="w-[220px] h-[220px] object-contain drop-shadow-2xl opacity-90 group-hover:scale-110 transition-transform duration-500"
                                     />
                                 </motion.div>
@@ -104,19 +106,20 @@ export function ServicesBento() {
                         <motion.div
                             variants={fadeInUp}
                             key={idx}
-                            className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-gray-100 dark:border-white/10 hover:shadow-xl hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
+                            className="col-span-1 p-[24px] rounded-[24px] bg-white dark:bg-white/10 dark:backdrop-blur-sm border border-triverge-blue/10 dark:border-white/10 shadow-triverge dark:shadow-none hover:shadow-lg hover:border-healing-teal/30 transition-all duration-300 flex flex-col justify-between min-h-[240px] group overflow-hidden relative"
                         >
                             {/* 3D Icon or Standard Icon */}
-                            {/* @ts-ignore */}
                             {service.icon3d ? (
                                 <motion.div
                                     className="self-end -mr-4 -mt-4"
                                     animate={{ y: [0, -5, 0] }}
                                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
                                 >
-                                    <img
+                                    <Image
                                         src={service.icon3d}
                                         alt={service.title}
+                                        width={120}
+                                        height={120}
                                         className="w-[120px] h-[120px] object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
                                     />
                                 </motion.div>
@@ -126,7 +129,7 @@ export function ServicesBento() {
                                 </div>
                             )}
 
-                            <h3 className="text-lg font-bold font-heading text-triverge-blue dark:text-[#f9fffe] leading-tight relative z-10 mt-auto">
+                            <h3 className="text-lg font-bold font-heading text-[#2d4375] dark:text-[#f9fffe] leading-tight relative z-10 mt-auto">
                                 {service.title}
                             </h3>
                         </motion.div>
@@ -135,7 +138,7 @@ export function ServicesBento() {
                     {/* List Card (Full Width) */}
                     <motion.div
                         variants={fadeInUp}
-                        className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-triverge-blue dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden"
+                        className="col-span-1 md:col-span-2 lg:col-span-4 p-[40px] rounded-[24px] bg-[#2d4375] dark:bg-white/10 dark:backdrop-blur-sm dark:border dark:border-white/20 text-white flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden"
                     >
                         {/* Background Texture Element */}
                         <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
