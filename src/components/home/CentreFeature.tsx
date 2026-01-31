@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -125,10 +126,12 @@ export function CentreFeature() {
                 >
                     <div className="absolute inset-0 bg-gray-200 dark:bg-slate-800 rounded-tl-[80px] rounded-br-[80px] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
                         {/* Ibadan Facility Image */}
-                        <img
+                        <Image
                             src="/images/ibadan-facility.jpg"
                             alt="Triverge Geriatric Centre - Ibadan Facility"
-                            className="w-full h-full object-cover"
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-triverge-blue/50 to-transparent opacity-60" />
                     </div>
