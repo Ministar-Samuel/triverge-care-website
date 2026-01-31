@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { VIDEO_TESTIMONIALS } from "@/lib/data";
 
+const DISPLAY_TESTIMONIALS = [...VIDEO_TESTIMONIALS, ...VIDEO_TESTIMONIALS, ...VIDEO_TESTIMONIALS];
+
 export function VideoTestimonials() {
     const [selectedVideo, setSelectedVideo] = useState<typeof VIDEO_TESTIMONIALS[0] | null>(null);
 
@@ -33,7 +35,7 @@ export function VideoTestimonials() {
                         },
                     }}
                 >
-                    {[...VIDEO_TESTIMONIALS, ...VIDEO_TESTIMONIALS, ...VIDEO_TESTIMONIALS].map((video, idx) => (
+                    {DISPLAY_TESTIMONIALS.map((video, idx) => (
                         <motion.div
                             key={`${video.id}-${idx}`}
                             className="relative w-[300px] md:w-[400px] aspect-video rounded-[24px] overflow-hidden cursor-pointer group border border-white/10"
