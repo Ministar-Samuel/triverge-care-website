@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getServiceBySlug } from "@/lib/data";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
@@ -29,10 +30,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {/* Hero Section */}
             <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
                 <div className="absolute inset-0 bg-black/40 z-10" />
-                <img
+                <Image
                     src={service.heroImage}
                     alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover"
                 />
                 <div className="absolute inset-0 z-20 flex items-center pb-[80px]">
                     <div className="max-w-[1200px] mx-auto px-[20px] md:px-[40px] w-full">
