@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { PROMISES } from "@/lib/data";
 import { motion } from "framer-motion";
@@ -124,11 +125,13 @@ export function WhyChooseUs() {
                                 activePromise === idx ? "opacity-100 z-10" : "opacity-0 z-0"
                             )}
                         >
-                            <img
+                            <Image
                                 src={promise.image}
                                 alt={promise.title}
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                                 className={cn(
-                                    "w-full h-full object-cover",
+                                    "object-cover",
                                     promise.imagePosition
                                 )}
                             />
