@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import { motion } from "framer-motion";
 
+const DISPLAY_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+
 export function TestimonialCarousel() {
     return (
         <section className="py-[100px] px-[20px] md:px-[40px] bg-porcelain dark:bg-background transition-colors duration-300 overflow-hidden">
@@ -41,7 +43,7 @@ export function TestimonialCarousel() {
                         }}
                     >
                         {/* Duplicate list for seamless loop */}
-                        {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, idx) => (
+                        {DISPLAY_TESTIMONIALS.map((testimonial, idx) => (
                             <div
                                 key={idx}
                                 className="min-w-[280px] md:min-w-[340px] bg-white/70 dark:bg-white/5 backdrop-blur-md p-[30px] rounded-[24px] shadow-triverge dark:shadow-none border border-triverge-blue/10 dark:border-white/10 flex flex-col justify-between hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
