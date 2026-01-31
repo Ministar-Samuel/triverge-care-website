@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@iconify/react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
@@ -170,7 +171,7 @@ export function Hero() {
                             <p className="text-[18px] font-bold font-heading text-[#2d4375] dark:text-white mb-1 transition-colors">
                                 Book a free 30mins consultation
                             </p>
-                            <p className="text-[14px] text-charcoal dark:text-white/60 font-body transition-colors">Expert advice for your family's needs</p>
+                            <p className="text-[14px] text-charcoal dark:text-white/60 font-body transition-colors">Expert advice for your family&apos;s needs</p>
                         </div>
 
                         <Link
