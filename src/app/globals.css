@@ -10,6 +10,9 @@
   --deep-teal: #1f6b63;
   --porcelain: #f9fffe;
   --charcoal: #212121;
+
+  /* Shadows */
+  --shadow-triverge: 0 4px 20px rgba(45, 67, 117, 0.08);
 }
 
 .dark {
@@ -41,12 +44,15 @@
   --animate-spin-fast: spin 1s linear infinite;
   --animate-spin-slow: spin 3s linear infinite;
   --animate-beam: beam 2s linear infinite;
+
+  --shadow-triverge: var(--shadow-triverge);
 }
 
 @keyframes beam {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(200%);
   }
@@ -88,7 +94,9 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
+html,
 body {
+  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);

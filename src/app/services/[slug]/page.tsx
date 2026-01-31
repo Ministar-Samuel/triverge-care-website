@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getServiceBySlug } from "@/lib/data";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
@@ -35,6 +36,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     alt={service.title}
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover"
                 />
                 <div className="absolute inset-0 z-20 flex items-center pb-[80px]">
