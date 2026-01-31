@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function TestimonialCarousel() {
     return (
@@ -66,7 +67,13 @@ export function TestimonialCarousel() {
                                 {/* Author */}
                                 <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-100 dark:border-white/10">
                                     <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-white shadow-md">
-                                        <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                                        <Image
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            width={60}
+                                            height={60}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                     <div>
                                         <h4 className="font-bold font-heading text-[#2d4375] dark:text-white text-lg">
