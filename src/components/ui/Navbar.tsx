@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
     { name: "Home", href: "/", icon: "solar:home-smile-bold-duotone" },
