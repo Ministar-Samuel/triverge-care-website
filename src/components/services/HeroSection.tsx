@@ -55,9 +55,17 @@ export function HeroSection() {
                                 </svg>
                             </span> Services
                         </h1>
-                        <p className="text-xl md:text-2xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed max-w-[700px]">
+                        <p className="text-xl md:text-2xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed max-w-[700px] mb-8">
                             We provide medical and daily living support for seniors at home or in our centre. Care is personalised to each person’s needs.
                         </p>
+
+                        <a
+                            href="/book"
+                            className="inline-flex items-center gap-2 px-[32px] py-[14px] bg-triverge-blue dark:bg-healing-teal text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal dark:hover:bg-triverge-blue transition-all duration-300 transform hover:scale-105"
+                        >
+                            Book Consultation
+                            <Icon icon="solar:calendar-add-bold" className="text-xl" />
+                        </a>
                     </motion.div>
 
                     <motion.div

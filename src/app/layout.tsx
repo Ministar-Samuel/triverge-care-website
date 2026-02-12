@@ -3,8 +3,7 @@ import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/ui/Navbar";
-import { Footer } from "@/components/ui/Footer";
+import { NavigationShell } from "@/components/layout/NavigationShell";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -48,11 +47,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-grow pt-[80px] bg-background">
+          <NavigationShell>
             {children}
-          </main>
-          <Footer />
+          </NavigationShell>
         </ThemeProvider>
       </body>
     </html>

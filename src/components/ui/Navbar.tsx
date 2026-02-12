@@ -109,7 +109,7 @@ export function Navbar() {
 
                     {/* CTA Button */}
                     <Link
-                        href="/contact"
+                        href="/book"
                         className="hidden md:block px-[30px] py-[10px] text-[14px] font-bold font-heading text-porcelain bg-triverge-blue dark:bg-healing-teal rounded-full shadow-lg hover:shadow-xl hover:bg-healing-teal dark:hover:bg-triverge-blue hover:scale-105 transition-all duration-300 dark:text-white"
                     >
                         Book Consultation
@@ -162,7 +162,7 @@ export function Navbar() {
                             })}
                             <div className="mt-2 pt-2 border-t border-gray-100 dark:border-white/10">
                                 <Link
-                                    href="/contact"
+                                    href="/book"
                                     onClick={() => setIsOpen(false)}
                                     className="flex items-center justify-center w-full p-3 font-bold text-white bg-triverge-blue rounded-xl"
                                 >

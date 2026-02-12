@@ -174,7 +174,7 @@ export function Hero() {
                         </div>
 
                         <Link
-                            href="/contact"
+                            href="/book"
                             className="px-[40px] py-[16px] bg-triverge-blue dark:bg-healing-teal text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal dark:hover:bg-triverge-blue dark:text-white transform hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center flex items-center justify-center gap-2 group"
                         >
                             Book Now

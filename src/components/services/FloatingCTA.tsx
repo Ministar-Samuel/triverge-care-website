@@ -35,7 +35,7 @@ export function FloatingCTA() {
                 </span>
 
                 <Link
-                    href="/contact"
+                    href="/book"
                     className="flex items-center gap-2 px-[24px] py-[12px] bg-healing-teal text-white rounded-full font-bold font-heading hover:bg-healing-teal/90 transition-colors shadow-lg hover:shadow-healing-teal/30 ml-auto sm:ml-0"
                 >
                     Book a Consultation
