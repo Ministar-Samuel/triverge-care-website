@@ -37,7 +37,7 @@ export function TeamSection() {
                 </div>
 
                 {/* Team Horizontal Scroll (Marquee style or just overflow) */}
-                <div className="flex gap-8 overflow-x-auto pb-8 snap-x hide-scrollbar mb-[100px]">
+                <div className="flex flex-wrap gap-8 justify-center pb-8 mb-[100px]">
                     {TEAM_MEMBERS.map((member, idx) => (
                         <motion.div
                             key={idx}
