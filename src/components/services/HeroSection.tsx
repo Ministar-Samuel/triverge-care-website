@@ -28,7 +28,7 @@ const staggerContainer = {
 
 export function HeroSection() {
     return (
-        <header className="pt-[160px] pb-[80px] px-[20px] md:px-[40px] bg-[#f9fffe] dark:bg-background relative overflow-hidden transition-colors duration-300">
+        <header className="pt-[160px] pb-[80px] px-[20px] md:px-[40px] bg-[#f9fffe] relative overflow-hidden transition-colors duration-300">
             <div className="max-w-[1200px] mx-auto flex flex-col gap-[60px]">
 
                 {/* Headline & Image Block */}
@@ -38,7 +38,7 @@ export function HeroSection() {
                         animate="visible"
                         variants={fadeInUp}
                     >
-                        <h1 className="text-[48px] md:text-[64px] font-bold font-heading text-triverge-blue dark:text-white mb-6 leading-tight">
+                        <h1 className="text-[48px] md:text-[64px] font-bold font-heading text-triverge-blue mb-6 leading-tight">
                             Our <span className="relative inline-block">
                                 Elder Care
                                 {/* Animated Underline */}
@@ -55,13 +55,13 @@ export function HeroSection() {
                                 </svg>
                             </span> Services
                         </h1>
-                        <p className="text-xl md:text-2xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed max-w-[700px] mb-8">
+                        <p className="text-xl md:text-2xl font-body text-charcoal/80 leading-relaxed max-w-[700px] mb-8">
                             We provide medical and daily living support for seniors at home or in our centre. Care is personalised to each person’s needs.
                         </p>
 
                         <a
                             href="/book"
-                            className="inline-flex items-center gap-2 px-[32px] py-[14px] bg-triverge-blue dark:bg-healing-teal text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal dark:hover:bg-triverge-blue transition-all duration-300 transform hover:scale-105"
+                            className="inline-flex items-center gap-2 px-[32px] py-[14px] bg-triverge-blue text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal transition-all duration-300 transform hover:scale-105"
                         >
                             Book Consultation
                             <Icon icon="solar:calendar-add-bold" className="text-xl" />
@@ -74,7 +74,7 @@ export function HeroSection() {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="relative"
                     >
-                        <div className="relative rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(45,67,117,0.3)] dark:shadow-[0_20px_50px_rgba(46,166,154,0.15)] border-8 border-white dark:border-white/5">
+                        <div className="relative rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(45,67,117,0.3)],166,154,0.15)] border-8 border-white">
                             <img
                                 src="/elder_care_services_hero.png"
                                 alt="Elder Care Services"
@@ -94,7 +94,7 @@ export function HeroSection() {
                     variants={staggerContainer}
                 >
                     <div className="col-span-full mb-4">
-                        <span className="text-sm font-bold uppercase tracking-widest text-charcoal/50 dark:text-white/50">
+                        <span className="text-sm font-bold uppercase tracking-widest text-charcoal/50">
                             You can choose:
                         </span>
                     </div>
@@ -103,13 +103,13 @@ export function HeroSection() {
                         <motion.div
                             key={idx}
                             variants={fadeInUp}
-                            className="group p-[30px] bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[24px] flex flex-col items-center justify-center gap-4 text-center hover:bg-triverge-blue hover:border-triverge-blue dark:hover:bg-healing-teal dark:hover:border-healing-teal transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-default"
+                            className="group p-[30px] bg-white border border-gray-200 rounded-[24px] flex flex-col items-center justify-center gap-4 text-center hover:bg-triverge-blue hover:border-triverge-blue transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-default"
                         >
                             <Icon
                                 icon={item.icon}
-                                className="text-4xl text-healing-teal dark:text-healing-teal group-hover:text-white transition-colors duration-300"
+                                className="text-4xl text-healing-teal group-hover:text-white transition-colors duration-300"
                             />
-                            <span className="font-heading font-bold text-lg text-charcoal dark:text-white group-hover:text-white transition-colors duration-300">
+                            <span className="font-heading font-bold text-lg text-charcoal group-hover:text-white transition-colors duration-300">
                                 {item.title}
                             </span>
                         </motion.div>

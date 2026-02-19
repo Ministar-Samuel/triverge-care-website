@@ -11,39 +11,35 @@ export async function GET(request: Request) {
 
     const supabase = await createClient();
 
-    // 1. Fetch Bookings for this date
-    const { data: bookings, error: bookingsError } = await supabase
-        .from('bookings')
-        .select('start_time')
-        .eq('booking_date', date)
-        .neq('status', 'cancelled'); // Don't count cancelled bookings
+    // Build date range for the selected day (start of day to end of day in UTC)
+    const startOfDay = `${date}T00:00:00.000Z`;
+    const endOfDay = `${date}T23:59:59.999Z`;
 
-    if (bookingsError) {
-        return NextResponse.json({ error: bookingsError.message }, { status: 500 });
+    // Fetch appointments for this date (exclude cancelled)
+    const { data: appointments, error: appointmentsError } = await supabase
+        .from('appointments')
+        .select('scheduled_time, client_name, service_type, status')
+        .gte('scheduled_time', startOfDay)
+        .lte('scheduled_time', endOfDay)
+        .neq('status', 'cancelled');
+
+    if (appointmentsError) {
+        return NextResponse.json({ error: appointmentsError.message }, { status: 500 });
     }
 
-    // 2. Fetch Overrides (Blocked full days or specific slots)
-    const { data: overrides, error: overridesError } = await supabase
-        .from('availability_overrides')
-        .select('*')
-        .eq('date', date)
-        .eq('is_available', false);
-
-    if (overridesError) {
-        return NextResponse.json({ error: overridesError.message }, { status: 500 });
-    }
-
-    // Process blocked slots
-    const bookedTimes = bookings?.map((b: { start_time: string }) => b.start_time.slice(0, 5)) || []; // "09:00:00" -> "09:00"
-
-    // If there's a full day override, block everything
-    const isFullDayBlocked = overrides?.some((o: { start_time: string | null, end_time: string | null }) => !o.start_time && !o.end_time);
+    // Extract booked time slots from scheduled_time (e.g. "2026-02-19T09:00:00Z" -> "09:00")
+    const bookedTimes = appointments?.map((a: { scheduled_time: string }) => {
+        const dt = new Date(a.scheduled_time);
+        const hours = dt.getUTCHours().toString().padStart(2, '0');
+        const minutes = dt.getUTCMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }) || [];
 
     // Return structured availability
     return NextResponse.json({
         date,
         bookedSlots: bookedTimes,
-        isFullDayBlocked: !!isFullDayBlocked,
-        overrides: overrides || []
+        appointments: appointments || [],
+        isFullDayBlocked: false,
     });
 }

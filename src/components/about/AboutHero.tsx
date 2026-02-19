@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function AboutHero() {
     return (
-        <header className="pt-[120px] pb-[100px] px-[20px] md:px-[40px] bg-porcelain dark:bg-slate-900 transition-colors duration-300">
+        <header className="pt-[120px] pb-[100px] px-[20px] md:px-[40px] bg-porcelain transition-colors duration-300">
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
 
                 {/* Left Column: Narrative */}
@@ -18,18 +18,18 @@ export function AboutHero() {
                         Who We Are
                     </span>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-triverge-blue dark:text-white leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-triverge-blue leading-tight">
                         Dedicated to improving the quality of life for older adults.
                     </h1>
 
-                    <div className="text-xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed font-light">
+                    <div className="text-xl font-body text-charcoal/80 leading-relaxed font-light">
                         <p className="mb-6">
                             Triverge Healthcare is dedicated to providing compassionate, professional support for seniors. We provide clinical care, rehabilitation, and companionship, all focused on comfort, dignity, and expertise.
                         </p>
                     </div>
 
                     <div className="border-l-4 border-healing-teal pl-6 py-2">
-                        <p className="text-2xl font-body italic text-triverge-blue dark:text-healing-teal leading-relaxed">
+                        <p className="text-2xl font-body italic text-triverge-blue leading-relaxed">
                             "We believe that ageing should be supported, not endured. Our goal is to make families feel reassured and seniors feel respected."
                         </p>
                     </div>

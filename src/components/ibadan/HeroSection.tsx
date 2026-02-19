@@ -36,7 +36,7 @@ export function HeroSection() {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
     return (
-        <header ref={containerRef} className="pt-[140px] pb-[80px] px-[20px] md:px-[40px] bg-porcelain dark:bg-background relative overflow-hidden min-h-[90vh] flex items-center">
+        <header ref={containerRef} className="pt-[140px] pb-[80px] px-[20px] md:px-[40px] bg-porcelain relative overflow-hidden min-h-[90vh] flex items-center">
 
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-center relative z-10 w-full">
 
@@ -57,7 +57,7 @@ export function HeroSection() {
 
                     {/* Headline */}
                     <div className="relative">
-                        <motion.h1 variants={fadeInUp} className="text-[48px] md:text-[64px] lg:text-[72px] font-bold font-heading text-triverge-blue dark:text-white leading-[1.1] tracking-tight">
+                        <motion.h1 variants={fadeInUp} className="text-[48px] md:text-[64px] lg:text-[72px] font-bold font-heading text-triverge-blue leading-[1.1] tracking-tight">
                             A Safe, Warm <br />
                             <span className="relative inline-block text-healing-teal">
                                 Space
@@ -77,13 +77,13 @@ export function HeroSection() {
                     </div>
 
                     {/* Body Text */}
-                    <motion.p variants={fadeInUp} className="text-xl md:text-2xl font-body text-charcoal/80 dark:text-white/80 max-w-[500px] leading-relaxed">
+                    <motion.p variants={fadeInUp} className="text-xl md:text-2xl font-body text-charcoal/80 max-w-[500px] leading-relaxed">
                         The Triverge Geriatric Centre is designed to be more than a facility—it’s a sanctuary where care feels like home.
                     </motion.p>
 
                     {/* Buttons */}
                     <motion.div variants={fadeInUp} className="btn-group flex gap-4 mt-6">
-                        <button className="px-[32px] py-[16px] bg-triverge-blue dark:bg-white dark:text-triverge-blue text-white rounded-full font-bold hover:scale-105 transition-transform">
+                        <button className="px-[32px] py-[16px] bg-triverge-blue text-white rounded-full font-bold hover:scale-105 transition-transform">
                             Book a Visit
                         </button>
                     </motion.div>
@@ -93,7 +93,7 @@ export function HeroSection() {
                 {/* Right Column: The Window */}
                 <div className="col-span-1 lg:col-span-6 relative h-[500px] lg:h-[650px] w-full perspective-1000">
                     <motion.div
-                        className="relative w-full h-full rounded-t-[200px] rounded-b-[20px] overflow-hidden shadow-2xl bg-gray-200 dark:bg-slate-800"
+                        className="relative w-full h-full rounded-t-[200px] rounded-b-[20px] overflow-hidden shadow-2xl bg-gray-200"
                         initial="hidden"
                         animate="visible"
                         variants={imageReveal}
@@ -109,11 +109,11 @@ export function HeroSection() {
                         <div className="absolute inset-0 bg-triverge-blue/10 mix-blend-multiply" />
 
                         {/* Floating Badge */}
-                        <div className="absolute bottom-10 left-10 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-2xl shadow-xl flex items-center gap-3">
+                        <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-xl flex items-center gap-3">
                             <Icon icon="solar:shield-check-bold" className="text-3xl text-healing-teal" />
                             <div>
-                                <p className="text-xs text-charcoal/60 dark:text-white/60 font-bold uppercase">Safety Rated</p>
-                                <p className="font-heading font-bold text-triverge-blue dark:text-white">100% Secure</p>
+                                <p className="text-xs text-charcoal/60 font-bold uppercase">Safety Rated</p>
+                                <p className="font-heading font-bold text-triverge-blue">100% Secure</p>
                             </div>
                         </div>
 

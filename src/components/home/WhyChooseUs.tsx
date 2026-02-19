@@ -32,7 +32,7 @@ export function WhyChooseUs() {
     const [activePromise, setActivePromise] = useState(0);
 
     return (
-        <section className="py-[100px] px-[20px] md:px-[40px] bg-porcelain dark:bg-background transition-colors duration-300">
+        <section className="py-[100px] px-[20px] md:px-[40px] bg-porcelain transition-colors duration-300">
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] lg:gap-[80px] items-start">
 
                 {/* Left Column: Headline & Accordion */}
@@ -45,7 +45,7 @@ export function WhyChooseUs() {
                         viewport={{ once: true, margin: "-100px" }}
                         variants={fadeInUp}
                     >
-                        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] dark:text-white leading-tight mb-4">
+                        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] leading-tight mb-4">
                             Comfort,{" "}
                             <span className="relative inline-block px-1">
                                 Dimensions of
@@ -57,7 +57,7 @@ export function WhyChooseUs() {
                             <br />
                             and expertise.
                         </h2>
-                        <p className="text-xl font-body text-charcoal dark:text-white/80 italic">
+                        <p className="text-xl font-body text-charcoal italic">
                             Every older adult deserves care that respects their story, their schedule, and their preferences.
                         </p>
                     </motion.div>
@@ -80,13 +80,13 @@ export function WhyChooseUs() {
                                 <div className={cn(
                                     "flex items-center gap-4 p-4 rounded-xl transition-all duration-300",
                                     activePromise === idx
-                                        ? "bg-white dark:bg-white/10 shadow-triverge dark:shadow-lg scale-102 pl-6 border-l-4 border-healing-teal"
-                                        : "hover:bg-gray-50 dark:hover:bg-white/5 opacity-70 hover:opacity-100"
+                                        ? "bg-white shadow-triverge scale-102 pl-6 border-l-4 border-healing-teal"
+                                        : "hover:bg-gray-50 opacity-70 hover:opacity-100"
                                 )}>
                                     {/* Icon */}
                                     <div className={cn(
                                         "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300",
-                                        activePromise === idx ? "bg-healing-teal text-white" : "bg-triverge-blue/10 dark:bg-white/10 text-triverge-blue dark:text-white"
+                                        activePromise === idx ? "bg-healing-teal text-white" : "bg-triverge-blue/10 text-triverge-blue"
                                     )}>
                                         <Icon icon={promise.icon} className="text-xl" />
                                     </div>
@@ -94,7 +94,7 @@ export function WhyChooseUs() {
                                     {/* Text */}
                                     <span className={cn(
                                         "text-lg md:text-xl font-medium font-heading transition-colors duration-300",
-                                        activePromise === idx ? "text-[#2d4375] dark:text-white font-bold" : "text-charcoal dark:text-white"
+                                        activePromise === idx ? "text-[#2d4375] font-bold" : "text-charcoal"
                                     )}>
                                         {promise.title}
                                     </span>
@@ -110,7 +110,7 @@ export function WhyChooseUs() {
                 </div>
 
                 <motion.div
-                    className="col-span-1 lg:col-span-6 relative h-[600px] lg:h-[700px] lg:sticky lg:top-[120px] rounded-[32px] overflow-hidden shadow-2xl bg-gray-200 dark:bg-slate-800"
+                    className="col-span-1 lg:col-span-6 relative h-[600px] lg:h-[700px] lg:sticky lg:top-[120px] rounded-[32px] overflow-hidden shadow-2xl bg-gray-200"
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
@@ -140,9 +140,9 @@ export function WhyChooseUs() {
 
                             {/* Optional: Caption at bottom */}
                             <div className="absolute bottom-10 left-10 right-10 z-20 translate-y-4 opacity-0 transition-all duration-500 delay-300" style={{ transform: activePromise === idx ? 'translateY(0)' : 'translateY(20px)', opacity: activePromise === idx ? 1 : 0 }}>
-                                <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-white/20 shadow-lg inline-flex items-center gap-3">
+                                <div className="bg-white/90 backdrop-blur p-4 rounded-xl border border-white/20 shadow-lg inline-flex items-center gap-3">
                                     <Icon icon={promise.icon} className="text-2xl text-healing-teal" />
-                                    <span className="font-heading font-bold text-[#2d4375] dark:text-white text-sm">
+                                    <span className="font-heading font-bold text-[#2d4375] text-sm">
                                         {promise.title}
                                     </span>
                                 </div>

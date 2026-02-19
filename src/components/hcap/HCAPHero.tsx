@@ -19,7 +19,7 @@ const fadeUp = {
 
 export function HCAPHero() {
     return (
-        <header className="relative pt-[120px] pb-[100px] px-[20px] md:px-[40px] bg-triverge-blue dark:bg-slate-900 overflow-hidden">
+        <header className="relative pt-[120px] pb-[100px] px-[20px] md:px-[40px] bg-triverge-blue overflow-hidden">
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
 
                 {/* Left Column */}

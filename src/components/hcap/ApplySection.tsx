@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export function ApplySection() {
     return (
-        <section className="py-[120px] px-[20px] md:px-[40px] bg-gradient-to-b from-[#f9fffe] to-[#e0f7fa] dark:from-background dark:to-background relative overflow-hidden">
+        <section className="py-[120px] px-[20px] md:px-[40px] bg-gradient-to-b from-[#f9fffe] to-[#e0f7fa] relative overflow-hidden">
 
             {/* Background Hand Graphic */}
             <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
-                <Icon icon="solar:hand-shake-bold" className="text-[400px] text-triverge-blue dark:text-white" />
+                <Icon icon="solar:hand-shake-bold" className="text-[400px] text-triverge-blue" />
             </div>
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -20,11 +20,11 @@ export function ApplySection() {
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-heading text-triverge-blue dark:text-white mb-8">
+                    <h2 className="text-4xl md:text-5xl font-bold font-heading text-triverge-blue mb-8">
                         Who can apply
                     </h2>
 
-                    <p className="text-2xl md:text-3xl font-body italic text-[#212121] dark:text-white/90 leading-relaxed mb-[60px]">
+                    <p className="text-2xl md:text-3xl font-body italic text-[#212121] leading-relaxed mb-[60px]">
                         "Anyone passionate about care. No medical background required — we train you from the ground up."
                     </p>
 

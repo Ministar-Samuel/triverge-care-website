@@ -36,10 +36,10 @@ const item = {
 
 export function ValuesSection() {
     return (
-        <section className="py-[100px] px-[20px] md:px-[40px] bg-white dark:bg-background">
+        <section className="py-[100px] px-[20px] md:px-[40px] bg-white">
             <div className="max-w-[1200px] mx-auto">
                 <div className="text-center mb-[60px]">
-                    <h2 className="text-3xl font-bold font-heading text-triverge-blue dark:text-white">Our Core Values</h2>
+                    <h2 className="text-3xl font-bold font-heading text-triverge-blue">Our Core Values</h2>
                 </div>
 
                 <motion.div
@@ -54,15 +54,15 @@ export function ValuesSection() {
                             key={idx}
                             variants={item}
                             whileHover={{ y: -10 }}
-                            className="group p-[40px] rounded-[24px] bg-white/50 dark:bg-white/5 border border-gray-100 dark:border-white/10 backdrop-blur-sm shadow-sm hover:shadow-xl hover:shadow-healing-teal/10 transition-all duration-300"
+                            className="group p-[40px] rounded-[24px] bg-white/50 border border-gray-100 backdrop-blur-sm shadow-sm hover:shadow-xl hover:shadow-healing-teal/10 transition-all duration-300"
                         >
                             <div className="w-[80px] h-[80px] rounded-full bg-healing-teal/10 flex items-center justify-center mb-6 group-hover:bg-healing-teal transition-colors duration-300">
                                 <Icon icon={value.icon} className="text-4xl text-healing-teal group-hover:text-white transition-colors duration-300" />
                             </div>
-                            <h3 className="text-2xl font-bold font-heading text-triverge-blue dark:text-white mb-4">
+                            <h3 className="text-2xl font-bold font-heading text-triverge-blue mb-4">
                                 {value.title}
                             </h3>
-                            <p className="text-lg font-body text-charcoal/80 dark:text-white/80 leading-relaxed">
+                            <p className="text-lg font-body text-charcoal/80 leading-relaxed">
                                 {value.desc}
                             </p>
                         </motion.div>

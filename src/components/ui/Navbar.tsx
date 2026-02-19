@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -20,15 +19,10 @@ const navLinks = [
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
 
-    // Avoid hydration mismatch
-    useEffect(() => setMounted(true), []);
-
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] bg-white/70 dark:bg-slate-900/90 backdrop-blur-md border-b border-triverge-blue/10 dark:border-white/10 shadow-sm dark:shadow-none transition-colors duration-300">
+        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] bg-white/70 backdrop-blur-md border-b border-triverge-blue/10 shadow-sm transition-colors duration-300">
             <div className="flex justify-between items-center w-full h-full px-[20px] md:px-[40px] max-w-[1440px] mx-auto">
 
                 {/* Left: Logo */}
@@ -44,7 +38,7 @@ export function Navbar() {
                         priority
                         className="object-contain"
                     />
-                    <span className="hidden md:block text-xl font-bold font-heading text-[#2d4375] dark:text-white tracking-tight transition-colors">
+                    <span className="hidden md:block text-xl font-bold font-heading text-[#2d4375] tracking-tight transition-colors">
                         Triverge <span className="font-extralight opacity-60">| Healthcare</span>
                     </span>
                 </Link>
@@ -60,13 +54,13 @@ export function Navbar() {
                                     className={cn(
                                         "relative text-[16px] font-medium font-heading transition-colors group",
                                         isActive
-                                            ? "text-triverge-blue dark:text-healing-teal"
-                                            : "text-charcoal dark:text-white/90 hover:text-triverge-blue dark:hover:text-healing-teal"
+                                            ? "text-triverge-blue"
+                                            : "text-charcoal hover:text-triverge-blue"
                                     )}
                                 >
                                     {link.name}
                                     <span className={cn(
-                                        "absolute left-0 -bottom-1 h-[2px] bg-triverge-blue dark:bg-healing-teal transition-all duration-300",
+                                        "absolute left-0 -bottom-1 h-[2px] bg-triverge-blue transition-all duration-300",
                                         isActive ? "w-full" : "w-0 group-hover:w-full"
                                     )} />
                                 </Link>
@@ -78,39 +72,15 @@ export function Navbar() {
                 {/* Right: Actions */}
                 <div className="flex items-center gap-[15px]">
 
-                    {/* Theme Toggle */}
-                    {mounted && (
-                        <button
-                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                            className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-charcoal dark:text-white"
-                            aria-label="Toggle Theme"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                <motion.div
-                                    key={theme}
-                                    initial={{ y: -20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: 20, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Icon
-                                        icon={theme === "dark" ? "solar:moon-bold-duotone" : "solar:sun-bold-duotone"}
-                                        className="text-xl"
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-                        </button>
-                    )}
-
                     {/* Search Icon */}
-                    <button className="p-2 text-charcoal dark:text-white hover:text-triverge-blue dark:hover:text-healing-teal transition-colors rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+                    <button className="p-2 text-charcoal hover:text-triverge-blue transition-colors rounded-full hover:bg-black/5">
                         <Icon icon="solar:magnifer-linear" className="text-xl" />
                     </button>
 
                     {/* CTA Button */}
                     <Link
                         href="/book"
-                        className="hidden md:block px-[30px] py-[10px] text-[14px] font-bold font-heading text-porcelain bg-triverge-blue dark:bg-healing-teal rounded-full shadow-lg hover:shadow-xl hover:bg-healing-teal dark:hover:bg-triverge-blue hover:scale-105 transition-all duration-300 dark:text-white"
+                        className="hidden md:block px-[30px] py-[10px] text-[14px] font-bold font-heading text-porcelain bg-triverge-blue rounded-full shadow-lg hover:shadow-xl hover:bg-healing-teal hover:scale-105 transition-all duration-300"
                     >
                         Book Consultation
                     </Link>
@@ -132,7 +102,7 @@ export function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="absolute top-[80px] left-0 right-0 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-white/10 shadow-xl overflow-hidden lg:hidden"
+                        className="absolute top-[80px] left-0 right-0 bg-white border-b border-gray-100 shadow-xl overflow-hidden lg:hidden"
                     >
                         <div className="flex flex-col p-[20px] gap-[10px]">
                             {navLinks.map((link) => {
@@ -145,22 +115,22 @@ export function Navbar() {
                                         className={cn(
                                             "flex items-center gap-3 p-3 rounded-lg transition-colors font-medium",
                                             isActive
-                                                ? "bg-healing-teal/10 text-triverge-blue dark:text-healing-teal"
-                                                : "hover:bg-gray-50 dark:hover:bg-white/5 text-charcoal dark:text-white"
+                                                ? "bg-healing-teal/10 text-triverge-blue"
+                                                : "hover:bg-gray-50 text-charcoal"
                                         )}
                                     >
                                         <Icon
                                             icon={link.icon}
                                             className={cn(
                                                 "text-xl",
-                                                isActive ? "text-healing-teal" : "text-triverge-blue dark:text-healing-teal"
+                                                isActive ? "text-healing-teal" : "text-triverge-blue"
                                             )}
                                         />
                                         {link.name}
                                     </Link>
                                 );
                             })}
-                            <div className="mt-2 pt-2 border-t border-gray-100 dark:border-white/10">
+                            <div className="mt-2 pt-2 border-t border-gray-100">
                                 <Link
                                     href="/book"
                                     onClick={() => setIsOpen(false)}

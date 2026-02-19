@@ -55,12 +55,12 @@ export function HCAPSection() {
                         </span>
                     </motion.div>
 
-                    <motion.h2 variants={fadeInUp} className="text-[40px] lg:text-[56px] font-bold font-heading leading-none dark:text-[#f9fffe]">
+                    <motion.h2 variants={fadeInUp} className="text-[40px] lg:text-[56px] font-bold font-heading leading-none">
                         Become a <span className="text-healing-teal">Certified</span><br />
                         Elderly Caregiver
                     </motion.h2>
 
-                    <motion.p variants={fadeInUp} className="text-xl font-body text-porcelain/80 dark:text-[#f9fffe]/80 max-w-[600px] leading-relaxed">
+                    <motion.p variants={fadeInUp} className="text-xl font-body text-porcelain/80 max-w-[600px] leading-relaxed">
                         Our Home Care Assistant Programme (HCAP) trains caregivers to deliver world-class support with empathy and skill.
                     </motion.p>
 
@@ -86,10 +86,10 @@ export function HCAPSection() {
                     <motion.div className="mt-6" variants={fadeInUp}>
                         <Link
                             href="/hcap"
-                            className="relative inline-flex items-center gap-3 px-[40px] py-[18px] bg-white text-triverge-blue dark:text-healing-teal rounded-full text-lg font-bold font-heading overflow-hidden group hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                            className="relative inline-flex items-center gap-3 px-[40px] py-[18px] bg-white text-triverge-blue rounded-full text-lg font-bold font-heading overflow-hidden group hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                         >
                             Start Training
-                            <Icon icon="solar:round-arrow-right-bold" className="text-2xl group-hover:translate-x-1 transition-transform dark:text-healing-teal" />
+                            <Icon icon="solar:round-arrow-right-bold" className="text-2xl group-hover:translate-x-1 transition-transform" />
 
                             {/* Shimmer Effect */}
                             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1.5s] bg-gradient-to-r from-transparent via-healing-teal/20 to-transparent skew-x-12" />

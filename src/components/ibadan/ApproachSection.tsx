@@ -36,7 +36,7 @@ const cardVariant = {
 
 export function ApproachSection() {
     return (
-        <section className="py-[120px] px-[20px] md:px-[40px] bg-white dark:bg-background transition-colors duration-300">
+        <section className="py-[120px] px-[20px] md:px-[40px] bg-white transition-colors duration-300">
             <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[60px]">
 
                 {/* Left Column: Sticky Philosophy */}
@@ -48,11 +48,11 @@ export function ApproachSection() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue dark:text-white leading-none mb-6">
+                            <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue leading-none mb-6">
                                 Whole-person <br />
                                 <span className="text-healing-teal">elderly care.</span>
                             </h2>
-                            <p className="text-xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed">
+                            <p className="text-xl font-body text-charcoal/80 leading-relaxed">
                                 Older adults need more than just medication—they need purpose, connection, and comfort. We’ve built every inch of our Ibadan centre to support these pillars of well-being.
                             </p>
                         </motion.div>
@@ -72,15 +72,15 @@ export function ApproachSection() {
                             <motion.div
                                 key={idx}
                                 variants={cardVariant}
-                                className="group p-[30px] rounded-[24px] bg-[#f9f9f9] dark:bg-white/5 border border-transparent hover:border-healing-teal/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                className="group p-[30px] rounded-[24px] bg-[#f9f9f9] border border-transparent hover:border-healing-teal/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                             >
-                                <div className="w-[50px] h-[50px] rounded-full bg-white dark:bg-white/10 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                <div className="w-[50px] h-[50px] rounded-full bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
                                     <Icon icon={item.icon} className="text-2xl text-healing-teal" />
                                 </div>
-                                <h3 className="text-xl font-bold font-heading text-triverge-blue dark:text-white mb-2">
+                                <h3 className="text-xl font-bold font-heading text-triverge-blue mb-2">
                                     {item.title}
                                 </h3>
-                                <p className="text-charcoal/70 dark:text-white/70 font-body">
+                                <p className="text-charcoal/70 font-body">
                                     {item.desc}
                                 </p>
                             </motion.div>

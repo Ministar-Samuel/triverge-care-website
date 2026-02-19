@@ -23,18 +23,18 @@ export function DailyTimeline() {
     });
 
     return (
-        <section ref={containerRef} className="py-[120px] px-[20px] md:px-[40px] bg-porcelain dark:bg-background">
+        <section ref={containerRef} className="py-[120px] px-[20px] md:px-[40px] bg-porcelain">
             <div className="max-w-[1000px] mx-auto relative">
 
                 <div className="text-center mb-[80px]">
-                    <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue dark:text-white mb-4">
+                    <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue mb-4">
                         A typical day at <br />
                         <span className="text-healing-teal">The Centre</span>
                     </h2>
                 </div>
 
                 {/* The Central Line */}
-                <div className="absolute left-[20px] md:left-1/2 top-[180px] bottom-0 w-[2px] bg-gray-200 dark:bg-white/10 -translate-x-1/2" />
+                <div className="absolute left-[20px] md:left-1/2 top-[180px] bottom-0 w-[2px] bg-gray-200 -translate-x-1/2" />
 
                 {/* The "Drawing" Line */}
                 <motion.div
@@ -88,14 +88,14 @@ function TimelineNode({ step, isEven }: { step: any, isEven: boolean }) {
 
             {/* Content Card */}
             <div className="w-full md:w-[45%]">
-                <div className="p-[24px] bg-white dark:bg-white/5 rounded-[20px] shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+                <div className="p-[24px] bg-white rounded-[20px] shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
                     <span className="md:hidden text-sm font-bold text-healing-teal block mb-1">
                         {step.time}
                     </span>
-                    <h3 className="text-xl font-bold font-heading text-triverge-blue dark:text-white mb-2">
+                    <h3 className="text-xl font-bold font-heading text-triverge-blue mb-2">
                         {step.title}
                     </h3>
-                    <p className="text-charcoal/70 dark:text-white/70">
+                    <p className="text-charcoal/70">
                         {step.desc}
                     </p>
                 </div>

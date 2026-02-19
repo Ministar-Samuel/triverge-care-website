@@ -13,10 +13,10 @@ const STEPS = [
 
 export function TrainingJourney() {
     return (
-        <section className="py-[100px] px-[20px] md:px-[40px] bg-white dark:bg-[#0f1219]">
+        <section className="py-[100px] px-[20px] md:px-[40px] bg-white">
             <div className="max-w-[1440px] mx-auto">
                 <div className="text-center mb-[80px]">
-                    <h2 className="text-3xl md:text-4xl font-bold font-heading text-triverge-blue dark:text-white">
+                    <h2 className="text-3xl md:text-4xl font-bold font-heading text-triverge-blue">
                         How training works
                     </h2>
                 </div>
@@ -24,7 +24,7 @@ export function TrainingJourney() {
                 {/* Timeline Container */}
                 <div className="relative">
                     {/* Background Line */}
-                    <div className="absolute top-[80px] md:top-[20px] left-[20px] md:left-0 bottom-[20px] md:bottom-auto md:right-0 w-[4px] md:w-full md:h-[4px] bg-gray-200 dark:bg-white/10 rounded-full" />
+                    <div className="absolute top-[80px] md:top-[20px] left-[20px] md:left-0 bottom-[20px] md:bottom-auto md:right-0 w-[4px] md:w-full md:h-[4px] bg-gray-200 rounded-full" />
 
                     {/* Active Line (Animated on scroll) */}
                     <motion.div
@@ -51,8 +51,8 @@ export function TrainingJourney() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="bg-white dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 shadow-sm w-full md:text-center md:min-h-[100px] flex items-center md:justify-center">
-                                    <h3 className={`font-heading font-medium leading-tight ${step.isFinal ? "text-triverge-blue dark:text-yellow-400 font-bold" : "text-charcoal dark:text-white"}`}>
+                                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm w-full md:text-center md:min-h-[100px] flex items-center md:justify-center">
+                                    <h3 className={`font-heading font-medium leading-tight ${step.isFinal ? "text-triverge-blue font-bold" : "text-charcoal"}`}>
                                         {step.title}
                                     </h3>
                                 </div>

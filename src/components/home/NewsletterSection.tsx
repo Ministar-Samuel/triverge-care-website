@@ -47,14 +47,14 @@ export function NewsletterSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeInRight}
                 >
-                    <form className="relative flex items-center bg-white/10 dark:bg-white rounded-full p-2 border border-white/20 focus-within:bg-white/15 dark:focus-within:bg-white focus-within:border-healing-teal/50 transition-all duration-300">
-                        <div className="pl-6 text-white/50 dark:text-[#2ea69a]">
+                    <form className="relative flex items-center bg-white/10 rounded-full p-2 border border-white/20 focus-within:bg-white/15 focus-within:border-healing-teal/50 transition-all duration-300">
+                        <div className="pl-6 text-white/50">
                             <Icon icon="solar:letter-bold" className="text-2xl" />
                         </div>
                         <input
                             type="email"
                             placeholder="Enter your email address"
-                            className="flex-1 bg-transparent border-none text-white dark:text-[#212121] placeholder:text-white/50 dark:placeholder:text-[#212121]/50 px-4 py-3 focus:outline-none text-lg"
+                            className="flex-1 bg-transparent border-none text-white placeholder:text-white/50 px-4 py-3 focus:outline-none text-lg"
                         />
                         <button
                             className="bg-healing-teal hover:bg-healing-teal/90 text-white font-bold font-heading px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"
@@ -63,7 +63,7 @@ export function NewsletterSection() {
                             <Icon icon="solar:plain-3-bold" className="text-xl" />
                         </button>
                     </form>
-                    <p className="text-sm text-white/40 dark:text-[#1f6b63] mt-3 ml-6 font-medium">
+                    <p className="text-sm text-white/40 mt-3 ml-6 font-medium">
                         We respect your privacy. Unsubscribe at any time.
                     </p>
                 </motion.div>

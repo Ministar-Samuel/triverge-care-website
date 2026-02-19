@@ -41,11 +41,11 @@ const cardVariant = {
 
 export function ServiceDirectory() {
     return (
-        <section className="py-[100px] px-[20px] md:px-[40px] bg-white dark:bg-background transition-colors duration-300">
+        <section className="py-[100px] px-[20px] md:px-[40px] bg-white transition-colors duration-300">
             <div className="max-w-[1280px] mx-auto">
 
                 <div className="text-center mb-[60px]">
-                    <h2 className="text-2xl font-bold font-heading text-triverge-blue dark:text-white">
+                    <h2 className="text-2xl font-bold font-heading text-triverge-blue">
                         Below are the services we offer.
                     </h2>
                 </div>
@@ -62,8 +62,8 @@ export function ServiceDirectory() {
                             key={idx}
                             variants={cardVariant}
                             className={cn(
-                                "group p-[30px] rounded-[24px] bg-[#f9f9f9] dark:bg-white/5 border border-transparent hover:bg-white dark:hover:bg-white/10 hover:border-healing-teal transition-all duration-300 relative overflow-hidden",
-                                service.isFullWidth ? "col-span-1 md:col-span-2 lg:col-span-3 bg-triverge-blue dark:bg-triverge-blue hover:bg-triverge-blue hover:border-transparent text-white" : "hover:shadow-xl"
+                                "group p-[30px] rounded-[24px] bg-[#f9f9f9] border border-transparent hover:bg-white hover:border-healing-teal transition-all duration-300 relative overflow-hidden",
+                                service.isFullWidth ? "col-span-1 md:col-span-2 lg:col-span-3 bg-triverge-blue hover:bg-triverge-blue hover:border-transparent text-white" : "hover:shadow-xl"
                             )}
                         >
                             {/* Beam Animation for All Services */}
@@ -82,14 +82,14 @@ export function ServiceDirectory() {
 
                                     <h3 className={cn(
                                         "text-xl font-bold font-heading",
-                                        service.isFullWidth ? "text-white" : "text-triverge-blue dark:text-white"
+                                        service.isFullWidth ? "text-white" : "text-triverge-blue"
                                     )}>
                                         {service.title}
                                     </h3>
 
                                     <p className={cn(
                                         "font-body text-md leading-relaxed",
-                                        service.isFullWidth ? "text-white/80 max-w-[600px]" : "text-[#212121] dark:text-white/80"
+                                        service.isFullWidth ? "text-white/80 max-w-[600px]" : "text-[#212121]"
                                     )}>
                                         {service.desc}
                                     </p>

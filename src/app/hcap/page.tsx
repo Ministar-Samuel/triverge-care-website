@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function HCAPPage() {
     return (
-        <main className="min-h-screen bg-porcelain dark:bg-background overflow-x-hidden">
+        <main className="min-h-screen bg-porcelain overflow-x-hidden">
             <HCAPHero />
             <CurriculumGrid />
             <TrainingJourney />

@@ -25,7 +25,7 @@ export function MissionSection() {
     const text = "To deliver dependable, compassionate elderly care through trained caregivers, clinical excellence, and a supportive community environment.";
 
     return (
-        <section className="py-[100px] px-[20px] md:px-[40px] bg-triverge-blue dark:bg-slate-900 border-t border-white/10">
+        <section className="py-[100px] px-[20px] md:px-[40px] bg-triverge-blue border-t border-white/10">
             <div className="max-w-[1000px] mx-auto text-center text-white">
                 <span className="block text-healing-teal font-heading font-bold uppercase tracking-widest text-sm mb-8">
                     Our Mission

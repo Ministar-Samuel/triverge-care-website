@@ -13,7 +13,7 @@ const TEAM = [
 
 export function TeamStack() {
     return (
-        <section className="py-[120px] px-[20px] md:px-[40px] bg-white dark:bg-background overflow-hidden">
+        <section className="py-[120px] px-[20px] md:px-[40px] bg-white overflow-hidden">
             <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-[60px]">
 
                 {/* Left: Text */}
@@ -27,13 +27,13 @@ export function TeamStack() {
                         <span className="text-healing-teal font-heading font-bold text-sm uppercase tracking-widest mb-2 block">
                             Our Care Team
                         </span>
-                        <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue dark:text-white mb-6">
+                        <h2 className="text-[40px] md:text-[56px] font-bold font-heading text-triverge-blue mb-6">
                             Humans, not <br /> just <span className="text-healing-teal">Healthcare.</span>
                         </h2>
-                        <p className="text-xl font-body text-charcoal/80 dark:text-white/80 leading-relaxed mb-6">
+                        <p className="text-xl font-body text-charcoal/80 leading-relaxed mb-6">
                             Our team includes geriatric specialists, registered nurses, and compassionate caregivers who treat every resident like their own parents.
                         </p>
-                        <button className="flex items-center gap-2 text-triverge-blue dark:text-white font-bold font-heading group">
+                        <button className="flex items-center gap-2 text-triverge-blue font-bold font-heading group">
                             Meet the full team
                             <Icon icon="solar:arrow-right-bold" className="group-hover:translate-x-1 transition-transform text-healing-teal" />
                         </button>
@@ -51,7 +51,7 @@ export function TeamStack() {
                         {TEAM.map((member, idx) => (
                             <motion.div
                                 key={idx}
-                                className="absolute top-0 left-0 w-full h-full rounded-[24px] overflow-hidden shadow-2xl border-[6px] border-white dark:border-slate-800"
+                                className="absolute top-0 left-0 w-full h-full rounded-[24px] overflow-hidden shadow-2xl border-[6px] border-white"
                                 custom={idx}
                                 variants={{
                                     hidden: { rotate: 0, x: 0, y: 0, scale: 1 - idx * 0.05 },

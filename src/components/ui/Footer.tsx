@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 
 export function Footer() {
     return (
-        <footer className="relative w-full bg-[#212121] text-porcelain dark:text-[#f9fffe] py-[80px] px-[20px] md:px-[40px]">
+        <footer className="relative w-full bg-[#212121] text-porcelain py-[80px] px-[20px] md:px-[40px]">
             <div className="max-w-[1440px] mx-auto w-full">
 
                 {/* Main Grid */}
@@ -22,9 +22,9 @@ export function Footer() {
                                 height={40}
                                 className="w-[40px] h-[40px] object-contain brightness-0 invert"
                             />
-                            <span className="text-2xl font-bold font-heading dark:text-[#f9fffe]">Triverge</span>
+                            <span className="text-2xl font-bold font-heading">Triverge</span>
                         </Link>
-                        <p className="text-lg font-body italic opacity-80 dark:text-[#f9fffe] dark:opacity-100">
+                        <p className="text-lg font-body italic opacity-80">
                             Comfort. Dignity. Expertise.
                         </p>
                         <div className="flex gap-4 mt-4">
@@ -45,13 +45,13 @@ export function Footer() {
                         <div>
                             <h4 className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">Phone</h4>
                             <div className="flex flex-col gap-2 font-heading font-medium">
-                                <a href="tel:+2347053390270" className="hover:text-healing-teal transition-colors dark:text-[#f9fffe]">+234 705 3390 270</a>
-                                <a href="tel:+2347053390269" className="hover:text-healing-teal transition-colors dark:text-[#f9fffe]">+234 705 3390 269</a>
+                                <a href="tel:+2347053390270" className="hover:text-healing-teal transition-colors">+234 705 3390 270</a>
+                                <a href="tel:+2347053390269" className="hover:text-healing-teal transition-colors">+234 705 3390 269</a>
                             </div>
                         </div>
                         <div>
                             <h4 className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">Geriatric Centre</h4>
-                            <p className="font-body opacity-80 leading-relaxed dark:text-[#f9fffe] dark:opacity-100">
+                            <p className="font-body opacity-80 leading-relaxed">
                                 15, Oyeniwe Street,<br />Amuda, Bashorun,<br />Ibadan.
                             </p>
                         </div>
@@ -65,13 +65,13 @@ export function Footer() {
                                 <span className="w-2 h-2 rounded-full bg-healing-teal animate-pulse" />
                                 HCAP Training Programme
                             </Link>
-                            <Link href="/about" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 dark:text-[#f9fffe]">
+                            <Link href="/about" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100">
                                 About Us
                             </Link>
-                            <Link href="/services" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 dark:text-[#f9fffe]">
+                            <Link href="/services" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100">
                                 Our Services
                             </Link>
-                            <Link href="/blog" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100 dark:text-[#f9fffe]">
+                            <Link href="/blog" className="text-lg hover:text-healing-teal hover:translate-x-2 transition-all duration-300 group-hover/links:opacity-50 hover:!opacity-100">
                                 Blog
                             </Link>
                         </div>
@@ -98,8 +98,8 @@ export function Footer() {
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
                     <p>© 2026 Triverge Healthcare. All rights reserved.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
-                        <Link href="#" className="hover:text-white transition-colors dark:text-[#f9fffe]">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors dark:text-[#f9fffe]">Terms of Service</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
                     </div>
                 </div>
 

@@ -28,9 +28,9 @@ export function FloatingCTA() {
             animate={{ y: isVisible ? "0%" : "100%" }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
         >
-            <div className="pointer-events-auto max-w-[800px] mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-triverge-blue/10 dark:border-white/10 rounded-full shadow-2xl p-[10px] pl-[30px] flex items-center justify-between">
+            <div className="pointer-events-auto max-w-[800px] mx-auto bg-white/90 backdrop-blur-md border border-triverge-blue/10 rounded-full shadow-2xl p-[10px] pl-[30px] flex items-center justify-between">
 
-                <span className="font-heading font-medium text-triverge-blue dark:text-white hidden sm:block">
+                <span className="font-heading font-medium text-triverge-blue hidden sm:block">
                     Not sure which service is right?
                 </span>
 

@@ -101,7 +101,7 @@ export function Hero() {
     return (
         <header className="relative w-full pt-[120px] pb-[80px] px-[20px] md:px-[40px] max-w-[1440px] mx-auto min-h-screen flex items-center overflow-hidden">
             {/* Visual Enhancements: Detail Grid (Void Effect) */}
-            <div className="absolute inset-0 z-0 bg-grid-void opacity-40 dark:opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 z-0 bg-grid-void opacity-40 pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] w-full relative z-10">
 
@@ -110,9 +110,9 @@ export function Hero() {
 
                     {/* Headline - Adjusted size and max-width to fit 2 lines */}
                     {/* Headline - Adjusted size and max-width to fit 2 lines */}
-                    <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold font-heading text-[#2d4375] dark:text-white leading-[1.1] relative w-full lg:max-w-3xl tracking-tight transition-colors duration-300">
+                    <h1 className="text-[36px] md:text-[50px] lg:text-[60px] font-bold font-heading text-[#2d4375] leading-[1.1] relative w-full lg:max-w-3xl tracking-tight transition-colors duration-300">
                         We Are Your One-Stop <br />
-                        <span className="relative inline-block text-triverge-blue dark:text-healing-teal transition-colors duration-300">
+                        <span className="relative inline-block text-triverge-blue transition-colors duration-300">
                             Elderly Care
                             {/* Refined Doodle: Underline style */}
                             <svg className="absolute -bottom-2 left-0 w-full h-[20px] text-healing-teal" viewBox="0 0 200 20" preserveAspectRatio="none">
@@ -131,7 +131,7 @@ export function Hero() {
                     </h1>
 
                     {/* Description */}
-                    <p className="text-[20px] text-charcoal dark:text-white/70 font-body max-w-lg leading-relaxed transition-colors duration-300">
+                    <p className="text-[20px] text-charcoal font-body max-w-lg leading-relaxed transition-colors duration-300">
                         At Triverge Healthcare, we understand how important it is to receive dependable, high-quality support at your convenience.
                     </p>
 
@@ -164,18 +164,18 @@ export function Hero() {
 
                     {/* Refined Glass Card CTA */}
                     <div
-                        className="mt-[40px] p-[30px] rounded-[32px] bg-white/70 dark:bg-slate-800/40 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-triverge dark:shadow-none flex flex-col sm:flex-row justify-between items-center gap-[20px] transition-colors duration-300"
+                        className="mt-[40px] p-[30px] rounded-[32px] bg-white/70 backdrop-blur-xl border border-white/60 shadow-triverge flex flex-col sm:flex-row justify-between items-center gap-[20px] transition-colors duration-300"
                     >
                         <div>
-                            <p className="text-[18px] font-bold font-heading text-[#2d4375] dark:text-white mb-1 transition-colors">
+                            <p className="text-[18px] font-bold font-heading text-[#2d4375] mb-1 transition-colors">
                                 Book a free 30mins consultation
                             </p>
-                            <p className="text-[14px] text-charcoal dark:text-white/60 font-body transition-colors">Expert advice for your family&apos;s needs</p>
+                            <p className="text-[14px] text-charcoal font-body transition-colors">Expert advice for your family&apos;s needs</p>
                         </div>
 
                         <Link
                             href="/book"
-                            className="px-[40px] py-[16px] bg-triverge-blue dark:bg-healing-teal text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal dark:hover:bg-triverge-blue dark:text-white transform hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center flex items-center justify-center gap-2 group"
+                            className="px-[40px] py-[16px] bg-triverge-blue text-white rounded-full text-[16px] font-bold font-heading shadow-lg hover:shadow-healing-teal/30 hover:bg-healing-teal transform hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center flex items-center justify-center gap-2 group"
                         >
                             Book Now
                             {/* Small "Noodle" highlight on hover */}
@@ -184,11 +184,11 @@ export function Hero() {
                     </div>
 
                     {/* Secondary CTA */}
-                    <Link href="/services" className="flex items-center gap-[12px] text-charcoal dark:text-white/80 hover:text-healing-teal transition-colors group w-fit ml-2">
+                    <Link href="/services" className="flex items-center gap-[12px] text-charcoal hover:text-healing-teal transition-colors group w-fit ml-2">
                         <div className="w-[36px] h-[36px] rounded-full bg-healing-teal/10 flex items-center justify-center group-hover:bg-healing-teal group-hover:text-white transition-colors">
                             <Icon icon="solar:arrow-right-up-bold-duotone" className="text-lg text-healing-teal" />
                         </div>
-                        <span className="font-body text-[18px] italic underline decoration-charcoal/30 dark:decoration-gray-300 group-hover:decoration-healing-teal underline-offset-4">
+                        <span className="font-body text-[18px] italic underline decoration-charcoal/30 group-hover:decoration-healing-teal underline-offset-4">
                             Explore more of our services
                         </span>
                     </Link>

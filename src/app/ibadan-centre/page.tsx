@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function IbadanCentrePage() {
     return (
-        <main className="min-h-screen bg-porcelain dark:bg-background">
+        <main className="min-h-screen bg-porcelain">
             <HeroSection />
             <ApproachSection />
             <ServicesMarquee />

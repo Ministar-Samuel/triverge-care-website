@@ -35,9 +35,9 @@ export function BookingWizard() {
     };
 
     return (
-        <div className="bg-white dark:bg-card-bg rounded-[32px] shadow-2xl p-6 md:p-10 border border-gray-100 dark:border-white/5 relative overflow-hidden font-body">
+        <div className="bg-white rounded-[32px] shadow-2xl p-6 md:p-10 border border-gray-100 relative overflow-hidden font-body">
             {/* Progress Bar */}
-            <div className="absolute top-0 left-0 w-full h-2 bg-gray-100 dark:bg-white/5">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gray-100">
                 <motion.div
                     className="h-full bg-healing-teal"
                     initial={{ width: "25%" }}
@@ -46,13 +46,13 @@ export function BookingWizard() {
             </div>
 
             <div className="mt-6 mb-8 text-center">
-                <h2 className="text-2xl md:text-3xl font-bold font-heading text-triverge-blue dark:text-white mb-2">
+                <h2 className="text-2xl md:text-3xl font-bold font-heading text-triverge-blue mb-2">
                     {step === 1 && "Select a Service"}
                     {step === 2 && "Choose Date & Time"}
                     {step === 3 && "Your Details"}
                     {step === 4 && "Booking Confirmed!"}
                 </h2>
-                <p className="text-charcoal/60 dark:text-white/60">
+                <p className="text-charcoal/60">
                     Step {step} of 4
                 </p>
             </div>
@@ -70,11 +70,11 @@ export function BookingWizard() {
                             <button
                                 key={s.id}
                                 onClick={() => { updateData("service", s.id); nextStep(); }}
-                                className={`p-6 rounded-2xl border-2 text-left transition-all hover:scale-[1.02] group ${bookingData.service === s.id ? "border-healing-teal bg-healing-teal/5" : "border-gray-100 dark:border-white/10 hover:border-healing-teal/50"}`}
+                                className={`p-6 rounded-2xl border-2 text-left transition-all hover:scale-[1.02] group ${bookingData.service === s.id ? "border-healing-teal bg-healing-teal/5" : "border-gray-100 hover:border-healing-teal/50"}`}
                             >
                                 <Icon icon={s.icon} className="text-4xl text-healing-teal mb-3 group-hover:scale-110 transition-transform" />
-                                <h3 className="font-bold font-heading text-lg text-triverge-blue dark:text-white">{s.title}</h3>
-                                <p className="text-sm text-charcoal/60 dark:text-white/60 mt-1">{s.desc}</p>
+                                <h3 className="font-bold font-heading text-lg text-triverge-blue">{s.title}</h3>
+                                <p className="text-sm text-charcoal/60 mt-1">{s.desc}</p>
                             </button>
                         ))}
                     </motion.div>
@@ -88,7 +88,7 @@ export function BookingWizard() {
                         exit={{ opacity: 0, x: -20 }}
                         className="flex flex-col md:flex-row gap-8"
                     >
-                        <div className="flex-1 bg-gray-50 dark:bg-white/5 rounded-2xl p-4 flex justify-center">
+                        <div className="flex-1 bg-gray-50 rounded-2xl p-4 flex justify-center">
                             <style>{`
                                 .rdp { --rdp-cell-size: 40px; --rdp-accent-color: #2ea69a; }
                                 .rdp-day_selected:not([disabled]) { background-color: var(--rdp-accent-color); color: white; font-weight: bold; border-radius: 50%; }
@@ -102,20 +102,20 @@ export function BookingWizard() {
                             />
                         </div>
                         <div className="flex-1">
-                            <h4 className="font-bold text-lg mb-4 text-triverge-blue dark:text-white">Available Slots</h4>
+                            <h4 className="font-bold text-lg mb-4 text-triverge-blue">Available Slots</h4>
                             <div className="grid grid-cols-2 gap-3">
                                 {TIME_SLOTS.map(t => (
                                     <button
                                         key={t}
                                         onClick={() => updateData("time", t)}
-                                        className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${bookingData.time === t ? "bg-triverge-blue text-white border-triverge-blue" : "border-gray-200 dark:border-white/10 text-charcoal dark:text-white hover:border-triverge-blue hover:text-triverge-blue"}`}
+                                        className={`py-3 px-4 rounded-xl text-sm font-bold border transition-all ${bookingData.time === t ? "bg-triverge-blue text-white border-triverge-blue" : "border-gray-200 text-charcoal hover:border-triverge-blue hover:text-triverge-blue"}`}
                                     >
                                         {t}
                                     </button>
                                 ))}
                             </div>
                             <div className="mt-6 flex justify-between">
-                                <button onClick={prevStep} className="px-6 py-2 text-charcoal/60 dark:text-white/60 hover:text-charcoal dark:hover:text-white transition-colors">Back</button>
+                                <button onClick={prevStep} className="px-6 py-2 text-charcoal/60 hover:text-charcoal transition-colors">Back</button>
                                 <button
                                     onClick={nextStep}
                                     disabled={!bookingData.date || !bookingData.time}
@@ -137,29 +137,29 @@ export function BookingWizard() {
                         className="max-w-[500px] mx-auto flex flex-col gap-4"
                     >
                         <div>
-                            <label className="block text-sm font-bold text-charcoal/70 dark:text-white/70 mb-2">Full Name</label>
+                            <label className="block text-sm font-bold text-charcoal/70 mb-2">Full Name</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal dark:text-white placeholder:text-gray-400"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal placeholder:text-gray-400"
                                 placeholder="Your Name"
                                 value={bookingData.name}
                                 onChange={(e) => updateData("name", e.target.value)}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-charcoal/70 dark:text-white/70 mb-2">Phone Number</label>
+                            <label className="block text-sm font-bold text-charcoal/70 mb-2">Phone Number</label>
                             <input
                                 type="tel"
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal dark:text-white placeholder:text-gray-400"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal placeholder:text-gray-400"
                                 placeholder="+234..."
                                 value={bookingData.phone}
                                 onChange={(e) => updateData("phone", e.target.value)}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-charcoal/70 dark:text-white/70 mb-2">Additional Notes (Optional)</label>
+                            <label className="block text-sm font-bold text-charcoal/70 mb-2">Additional Notes (Optional)</label>
                             <textarea
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal dark:text-white placeholder:text-gray-400 min-h-[100px]"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal placeholder:text-gray-400 min-h-[100px]"
                                 placeholder="Any specific requirements?"
                                 value={bookingData.notes}
                                 onChange={(e) => updateData("notes", e.target.value)}
@@ -167,7 +167,7 @@ export function BookingWizard() {
                         </div>
 
                         <div className="mt-6 flex justify-between items-center">
-                            <button onClick={prevStep} className="px-6 py-2 text-charcoal/60 dark:text-white/60 hover:text-charcoal dark:hover:text-white transition-colors">Back</button>
+                            <button onClick={prevStep} className="px-6 py-2 text-charcoal/60 hover:text-charcoal transition-colors">Back</button>
                             <button
                                 onClick={nextStep}
                                 disabled={!bookingData.name || !bookingData.phone}
@@ -186,16 +186,16 @@ export function BookingWizard() {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center py-10"
                     >
-                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                             <Icon icon="solar:check-circle-bold" className="text-4xl" />
                         </div>
-                        <h3 className="text-2xl font-bold font-heading text-triverge-blue dark:text-white mb-4">You're All Set!</h3>
-                        <p className="text-charcoal/70 dark:text-white/70 max-w-[400px] mx-auto mb-8">
+                        <h3 className="text-2xl font-bold font-heading text-triverge-blue mb-4">You're All Set!</h3>
+                        <p className="text-charcoal/70 max-w-[400px] mx-auto mb-8">
                             We have received your booking request for <strong>{bookingData.time}</strong> on <strong>{bookingData.date ? format(bookingData.date, "MMMM do") : ""}</strong>. A confirmation SMS will be sent to shortly.
                         </p>
                         <button
                             onClick={() => window.location.href = "/"}
-                            className="px-8 py-3 bg-gray-100 dark:bg-white/10 text-charcoal dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
+                            className="px-8 py-3 bg-gray-100 text-charcoal rounded-xl font-bold hover:bg-gray-200 transition-colors"
                         >
                             Return Home
                         </button>
