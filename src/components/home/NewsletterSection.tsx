@@ -57,9 +57,9 @@ export function NewsletterSection() {
                             className="flex-1 bg-transparent border-none text-white placeholder:text-white/50 px-4 py-3 focus:outline-none text-lg"
                         />
                         <button
-                            className="bg-healing-teal hover:bg-healing-teal/90 text-white font-bold font-heading px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"
+                            className="bg-healing-teal hover:bg-healing-teal/90 text-white font-bold font-heading rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-shrink-0 w-[44px] h-[44px] md:w-auto md:h-auto md:px-8 md:py-3"
                         >
-                            Subscribe
+                            <span className="hidden md:inline">Subscribe</span>
                             <Icon icon="solar:plain-3-bold" className="text-xl" />
                         </button>
                     </form>
