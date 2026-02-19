@@ -3,12 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
-import { motion } from "framer-motion";
 import Image from "next/image";
-
-// Triple the list for seamless infinite scroll
-const ROW_1 = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
-const ROW_2 = [...TESTIMONIALS.slice().reverse(), ...TESTIMONIALS.slice().reverse(), ...TESTIMONIALS.slice().reverse()];
 
 export function TestimonialCarousel() {
     const [hoveredRow, setHoveredRow] = useState<number | null>(null);
@@ -30,10 +25,31 @@ export function TestimonialCarousel() {
                     </h2>
                 </div>
 
+                {/* Keyframes for seamless infinite scroll */}
+                <style>{`
+                    @keyframes marquee-left {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    @keyframes marquee-right {
+                        0% { transform: translateX(-50%); }
+                        100% { transform: translateX(0); }
+                    }
+                    .marquee-left {
+                        animation: marquee-left 60s linear infinite;
+                    }
+                    .marquee-right {
+                        animation: marquee-right 65s linear infinite;
+                    }
+                    .marquee-paused {
+                        animation-play-state: paused !important;
+                    }
+                `}</style>
+
                 {/* Carousel Rows */}
                 <div className="flex flex-col gap-[30px]">
 
-                    {/* Row 1 - scrolls left */}
+                    {/* Row 1 — scrolls left */}
                     <div
                         className="relative w-full overflow-hidden"
                         onMouseEnter={() => setHoveredRow(1)}
@@ -43,24 +59,25 @@ export function TestimonialCarousel() {
                         <div className="absolute left-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-r from-porcelain to-transparent z-10 pointer-events-none" />
                         <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
 
-                        <motion.div
-                            className="flex gap-[24px] w-max"
-                            animate={{ x: "-33.333%" }}
-                            transition={{
-                                duration: 40,
-                                repeat: Infinity,
-                                ease: "linear",
-                                repeatType: "loop"
-                            }}
-                            style={{ animationPlayState: hoveredRow === 1 ? "paused" : "running" }}
+                        <div
+                            className={`flex w-max marquee-left ${hoveredRow === 1 ? "marquee-paused" : ""}`}
                         >
-                            {ROW_1.map((testimonial, idx) => (
-                                <TestimonialCard key={`r1-${idx}`} testimonial={testimonial} paused={hoveredRow === 1} />
+                            {/* Two identical sets — when the first scrolls out, the second takes its place seamlessly */}
+                            {[0, 1].map((setIndex) => (
+                                <div key={setIndex} className="flex gap-[24px] pr-[24px]">
+                                    {TESTIMONIALS.map((testimonial, idx) => (
+                                        <TestimonialCard
+                                            key={`r1-s${setIndex}-${idx}`}
+                                            testimonial={testimonial}
+                                            paused={hoveredRow === 1}
+                                        />
+                                    ))}
+                                </div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
 
-                    {/* Row 2 - scrolls right (reversed) */}
+                    {/* Row 2 — scrolls right (reversed order) */}
                     <div
                         className="relative w-full overflow-hidden"
                         onMouseEnter={() => setHoveredRow(2)}
@@ -70,21 +87,21 @@ export function TestimonialCarousel() {
                         <div className="absolute left-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-r from-porcelain to-transparent z-10 pointer-events-none" />
                         <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
 
-                        <motion.div
-                            className="flex gap-[24px] w-max"
-                            animate={{ x: ["0%", "33.333%"] }}
-                            transition={{
-                                duration: 45,
-                                repeat: Infinity,
-                                ease: "linear",
-                                repeatType: "loop"
-                            }}
-                            style={{ animationPlayState: hoveredRow === 2 ? "paused" : "running" }}
+                        <div
+                            className={`flex w-max marquee-right ${hoveredRow === 2 ? "marquee-paused" : ""}`}
                         >
-                            {ROW_2.map((testimonial, idx) => (
-                                <TestimonialCard key={`r2-${idx}`} testimonial={testimonial} paused={hoveredRow === 2} />
+                            {[0, 1].map((setIndex) => (
+                                <div key={setIndex} className="flex gap-[24px] pr-[24px]">
+                                    {[...TESTIMONIALS].reverse().map((testimonial, idx) => (
+                                        <TestimonialCard
+                                            key={`r2-s${setIndex}-${idx}`}
+                                            testimonial={testimonial}
+                                            paused={hoveredRow === 2}
+                                        />
+                                    ))}
+                                </div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
 
                 </div>

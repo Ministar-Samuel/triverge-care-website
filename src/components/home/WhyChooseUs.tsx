@@ -49,8 +49,7 @@ export function WhyChooseUs() {
                             Comfort,{" "}
                             <span className="font-extrabold text-deep-teal">
                                 Dimensions of Dignity
-                            </span>,
-                            <br />
+                            </span>,{" "}
                             and expertise.
                         </h2>
                         <p className="text-xl font-body text-charcoal italic">
