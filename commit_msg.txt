@@ -1,0 +1,8 @@
+feat: Connect Admin Dashboard and Booking Wizard to Supabase
+
+Implementation Details:
+- Connected Admin Dashboard stats and recent activity to live database counts
+- Connected Admin Calendar to live appointments API for real-time availability
+- Implemented real booking submission in BookingWizard component
+- Fixed missing imports in updated components
+- All mock logic replaced with Supabase integration

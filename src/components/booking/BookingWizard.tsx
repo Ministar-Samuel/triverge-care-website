@@ -6,6 +6,7 @@ import { DayPicker } from "react-day-picker";
 import { format } from "date-fns";
 import { Icon } from "@iconify/react";
 import "react-day-picker/dist/style.css";
+import { createClient } from "@/utils/supabase/client";
 
 const SERVICES = [
     { id: "home-care", title: "Home Care", icon: "solar:home-smile-bold", desc: "Assisted daily living at home." },
@@ -18,6 +19,7 @@ const TIME_SLOTS = ["09:00 AM", "10:00 AM", "11:00 AM", "01:00 PM", "02:00 PM", 
 
 export function BookingWizard() {
     const [step, setStep] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [bookingData, setBookingData] = useState({
         service: "",
         date: undefined as Date | undefined,
@@ -27,11 +29,51 @@ export function BookingWizard() {
         notes: ""
     });
 
+    const supabase = createClient();
+
     const nextStep = () => setStep(s => s + 1);
     const prevStep = () => setStep(s => s - 1);
 
     const updateData = (key: string, value: any) => {
         setBookingData(prev => ({ ...prev, [key]: value }));
+    };
+
+    const handleConfirmBooking = async () => {
+        if (!bookingData.date || !bookingData.time || !bookingData.name || !bookingData.phone) return;
+
+        setLoading(true);
+        try {
+            // Combine date and time
+            const dateStr = format(bookingData.date, "yyyy-MM-dd");
+            // Convert "09:00 AM" to "09:00:00"
+            const [time, period] = bookingData.time.split(" ");
+            let [hours, minutes] = time.split(":");
+            if (period === "PM" && hours !== "12") hours = (parseInt(hours) + 12).toString();
+            if (period === "AM" && hours === "12") hours = "00";
+            const timeStr = `${hours.padStart(2, "0")}:${minutes}:00`;
+
+            const scheduledTime = `${dateStr}T${timeStr}.000Z`;
+
+            const { error } = await supabase
+                .from("appointments")
+                .insert([
+                    {
+                        client_name: bookingData.name,
+                        service_type: SERVICES.find(s => s.id === bookingData.service)?.title || bookingData.service,
+                        scheduled_time: scheduledTime,
+                        status: "pending",
+                        notes: bookingData.phone + (bookingData.notes ? `\n\nNotes: ${bookingData.notes}` : "")
+                    }
+                ]);
+
+            if (error) throw error;
+            nextStep();
+        } catch (error) {
+            console.error("Booking error:", error);
+            alert("There was an error processing your booking. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -169,11 +211,11 @@ export function BookingWizard() {
                         <div className="mt-6 flex justify-between items-center">
                             <button onClick={prevStep} className="px-6 py-2 text-charcoal/60 hover:text-charcoal transition-colors">Back</button>
                             <button
-                                onClick={nextStep}
-                                disabled={!bookingData.name || !bookingData.phone}
-                                className="px-8 py-3 bg-triverge-blue text-white rounded-xl font-bold shadow-lg shadow-triverge-blue/20 hover:scale-105 transition-transform disabled:opacity-50 disabled:scale-100"
+                                onClick={handleConfirmBooking}
+                                disabled={!bookingData.name || !bookingData.phone || loading}
+                                className="px-8 py-3 bg-triverge-blue text-white rounded-xl font-bold shadow-lg shadow-triverge-blue/20 hover:scale-105 transition-transform disabled:opacity-50 disabled:scale-100 flex items-center gap-2"
                             >
-                                Confirm Booking
+                                {loading ? "Processing..." : "Confirm Booking"}
                             </button>
                         </div>
                     </motion.div>
@@ -191,7 +233,7 @@ export function BookingWizard() {
                         </div>
                         <h3 className="text-2xl font-bold font-heading text-triverge-blue mb-4">You're All Set!</h3>
                         <p className="text-charcoal/70 max-w-[400px] mx-auto mb-8">
-                            We have received your booking request for <strong>{bookingData.time}</strong> on <strong>{bookingData.date ? format(bookingData.date, "MMMM do") : ""}</strong>. A confirmation SMS will be sent to shortly.
+                            We have received your booking request for <strong>{bookingData.time}</strong> on <strong>{bookingData.date ? format(bookingData.date, "MMMM do") : ""}</strong>. A confirmation SMS will be sent shortly.
                         </p>
                         <button
                             onClick={() => window.location.href = "/"}
