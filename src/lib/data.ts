@@ -110,6 +110,34 @@ export const TESTIMONIALS = [
     rating: 5,
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
   },
+  {
+    name: "Mrs. Amara Obi",
+    role: "Wife of Patient",
+    content: "When my husband needed palliative care, Triverge gave him comfort and dignity in his final months. I will forever be grateful for their compassion.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+  },
+  {
+    name: "Prof. Emeka Nwosu",
+    role: "Retired Academic",
+    content: "The daily living assistance program lets me maintain my independence while having expert help when I need it. I still feel like myself.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+  },
+  {
+    name: "Aisha Mohammed",
+    role: "HCAP Graduate",
+    content: "The training I received at Triverge transformed my career. I went from an untrained helper to a certified healthcare assistant in just weeks.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1976&auto=format&fit=crop"
+  },
+  {
+    name: "Chief Adewale Balogun",
+    role: "Community Elder",
+    content: "Triverge has brought world-class elderly care to our community. The respect they show to every single resident is remarkable.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
+  },
 ];
 
 export const HCAP_CURRICULUM = [

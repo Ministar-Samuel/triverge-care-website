@@ -1,19 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const DISPLAY_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+// Triple the list for seamless infinite scroll
+const ROW_1 = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+const ROW_2 = [...TESTIMONIALS.slice().reverse(), ...TESTIMONIALS.slice().reverse(), ...TESTIMONIALS.slice().reverse()];
 
 export function TestimonialCarousel() {
+    const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+
     return (
         <section className="py-[100px] px-[20px] md:px-[40px] bg-porcelain transition-colors duration-300 overflow-hidden">
             <div className="max-w-[1440px] mx-auto">
 
                 {/* Headline */}
-                <div className="text-center max-w-[800px] mx-auto mb-[60px]">
+                <div className="text-center max-w-[800px] mx-auto mb-[70px]">
                     <div className="flex items-center justify-center gap-2 mb-3">
                         <Icon icon="solar:chat-square-like-bold-duotone" className="text-3xl text-healing-teal" />
                         <span className="text-healing-teal font-heading font-bold text-sm uppercase tracking-widest">
@@ -25,73 +30,132 @@ export function TestimonialCarousel() {
                     </h2>
                 </div>
 
-                {/* Carousel Container */}
-                {/* Hide scrollbar but allow scrolling */}
-                {/* Carousel Container (Infinite Marquee) */}
-                <div className="relative w-full overflow-hidden mask-linear-fade">
-                    {/* Gradient Masks (optional visual polish) */}
-                    <div className="absolute left-0 top-0 bottom-0 w-[50px] md:w-[100px] bg-gradient-to-r from-porcelain to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-[50px] md:w-[100px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
+                {/* Carousel Rows */}
+                <div className="flex flex-col gap-[30px]">
 
-                    <motion.div
-                        className="flex gap-[30px] w-max"
-                        animate={{ x: "-50%" }}
-                        transition={{
-                            duration: 30,
-                            repeat: Infinity,
-                            ease: "linear",
-                            repeatType: "loop"
-                        }}
+                    {/* Row 1 - scrolls left */}
+                    <div
+                        className="relative w-full overflow-hidden"
+                        onMouseEnter={() => setHoveredRow(1)}
+                        onMouseLeave={() => setHoveredRow(null)}
                     >
-                        {/* Duplicate list for seamless loop */}
-                        {DISPLAY_TESTIMONIALS.map((testimonial, idx) => (
-                            <div
-                                key={idx}
-                                className="min-w-[280px] md:min-w-[340px] bg-white/70 backdrop-blur-md p-[30px] rounded-[24px] shadow-triverge border border-triverge-blue/10 flex flex-col justify-between hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
-                            >
-                                <div>
-                                    {/* Stars */}
-                                    <div className="flex gap-1 mb-6 text-yellow-400">
-                                        {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Icon key={i} icon="solar:star-bold" className="text-xl" />
-                                        ))}
-                                    </div>
+                        {/* Gradient Masks */}
+                        <div className="absolute left-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-r from-porcelain to-transparent z-10 pointer-events-none" />
+                        <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
 
-                                    {/* Quote Content */}
-                                    <div className="relative">
-                                        <Icon icon="solar:quote-up-bold" className="absolute -top-4 -left-2 text-4xl text-triverge-blue/10" />
-                                        <p className="text-lg md:text-xl font-body italic text-charcoal leading-relaxed relative z-10">
-                                            "{testimonial.content}"
-                                        </p>
-                                    </div>
-                                </div>
+                        <motion.div
+                            className="flex gap-[24px] w-max"
+                            animate={{ x: "-33.333%" }}
+                            transition={{
+                                duration: 40,
+                                repeat: Infinity,
+                                ease: "linear",
+                                repeatType: "loop"
+                            }}
+                            style={{ animationPlayState: hoveredRow === 1 ? "paused" : "running" }}
+                        >
+                            {ROW_1.map((testimonial, idx) => (
+                                <TestimonialCard key={`r1-${idx}`} testimonial={testimonial} paused={hoveredRow === 1} />
+                            ))}
+                        </motion.div>
+                    </div>
 
-                                {/* Author */}
-                                <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-100">
-                                    <div className="w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-white shadow-md">
-                                        <Image
-                                            src={testimonial.image}
-                                            alt={testimonial.name}
-                                            width={60}
-                                            height={60}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold font-heading text-[#2d4375] text-lg">
-                                            {testimonial.name}
-                                        </h4>
-                                        <p className="text-sm font-body text-charcoal/80">
-                                            {testimonial.role}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
+                    {/* Row 2 - scrolls right (reversed) */}
+                    <div
+                        className="relative w-full overflow-hidden"
+                        onMouseEnter={() => setHoveredRow(2)}
+                        onMouseLeave={() => setHoveredRow(null)}
+                    >
+                        {/* Gradient Masks */}
+                        <div className="absolute left-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-r from-porcelain to-transparent z-10 pointer-events-none" />
+                        <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
+
+                        <motion.div
+                            className="flex gap-[24px] w-max"
+                            animate={{ x: ["0%", "33.333%"] }}
+                            transition={{
+                                duration: 45,
+                                repeat: Infinity,
+                                ease: "linear",
+                                repeatType: "loop"
+                            }}
+                            style={{ animationPlayState: hoveredRow === 2 ? "paused" : "running" }}
+                        >
+                            {ROW_2.map((testimonial, idx) => (
+                                <TestimonialCard key={`r2-${idx}`} testimonial={testimonial} paused={hoveredRow === 2} />
+                            ))}
+                        </motion.div>
+                    </div>
+
                 </div>
 
             </div>
         </section>
+    );
+}
+
+function TestimonialCard({ testimonial, paused }: { testimonial: typeof TESTIMONIALS[0]; paused: boolean }) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={`
+                w-[220px] md:w-[260px] flex-shrink-0
+                bg-white/80 backdrop-blur-md
+                py-[36px] px-[24px]
+                rounded-[24px]
+                shadow-sm border border-triverge-blue/8
+                flex flex-col justify-between
+                transition-all duration-300 ease-out
+                cursor-default
+                ${isHovered
+                    ? "scale-[1.08] shadow-2xl shadow-healing-teal/15 border-healing-teal/30 -translate-y-2 z-20 bg-white"
+                    : paused
+                        ? "opacity-60 scale-[0.97]"
+                        : "hover:shadow-md"
+                }
+            `}
+            style={{ minHeight: "380px" }}
+        >
+            {/* Stars */}
+            <div>
+                <div className="flex gap-1 mb-5 text-yellow-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                        <Icon key={i} icon="solar:star-bold" className="text-lg" />
+                    ))}
+                </div>
+
+                {/* Quote */}
+                <div className="relative flex-1">
+                    <Icon icon="solar:quote-up-bold" className="absolute -top-3 -left-1 text-3xl text-triverge-blue/10" />
+                    <p className="text-base font-body italic text-charcoal leading-relaxed relative z-10 line-clamp-6">
+                        &ldquo;{testimonial.content}&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            {/* Author */}
+            <div className="flex items-center gap-3 mt-8 pt-6 border-t border-gray-100">
+                <div className="w-[44px] h-[44px] rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0">
+                    <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={44}
+                        height={44}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <div className="min-w-0">
+                    <h4 className="font-bold font-heading text-[#2d4375] text-sm truncate">
+                        {testimonial.name}
+                    </h4>
+                    <p className="text-xs font-body text-charcoal/60 truncate">
+                        {testimonial.role}
+                    </p>
+                </div>
+            </div>
+        </div>
     );
 }

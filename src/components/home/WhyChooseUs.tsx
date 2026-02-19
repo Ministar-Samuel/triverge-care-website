@@ -47,13 +47,9 @@ export function WhyChooseUs() {
                     >
                         <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold font-heading text-[#2d4375] leading-tight mb-4">
                             Comfort,{" "}
-                            <span className="relative inline-block px-1">
-                                Dimensions of
-                                <span className="relative z-10"> Dignity</span>,
-                                <svg className="absolute inset-0 w-full h-full text-healing-teal -z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                    <ellipse cx="50" cy="50" rx="48" ry="40" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="10 5" className="opacity-60" />
-                                </svg>
-                            </span>
+                            <span className="font-extrabold text-deep-teal">
+                                Dimensions of Dignity
+                            </span>,
                             <br />
                             and expertise.
                         </h2>
