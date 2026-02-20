@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export function TestimonialCarousel() {
     const [hoveredRow, setHoveredRow] = useState<number | null>(null);
@@ -25,27 +26,6 @@ export function TestimonialCarousel() {
                     </h2>
                 </div>
 
-                {/* Keyframes for seamless infinite scroll */}
-                <style>{`
-                    @keyframes marquee-left {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
-                    }
-                    @keyframes marquee-right {
-                        0% { transform: translateX(-50%); }
-                        100% { transform: translateX(0); }
-                    }
-                    .marquee-left {
-                        animation: marquee-left 60s linear infinite;
-                    }
-                    .marquee-right {
-                        animation: marquee-right 65s linear infinite;
-                    }
-                    .marquee-paused {
-                        animation-play-state: paused !important;
-                    }
-                `}</style>
-
                 {/* Carousel Rows */}
                 <div className="flex flex-col gap-[30px]">
 
@@ -60,7 +40,10 @@ export function TestimonialCarousel() {
                         <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
 
                         <div
-                            className={`flex w-max marquee-left ${hoveredRow === 1 ? "marquee-paused" : ""}`}
+                            className={cn(
+                                "flex w-max animate-marquee-left",
+                                hoveredRow === 1 && "marquee-paused"
+                            )}
                         >
                             {/* Two identical sets — when the first scrolls out, the second takes its place seamlessly */}
                             {[0, 1].map((setIndex) => (
@@ -88,7 +71,10 @@ export function TestimonialCarousel() {
                         <div className="absolute right-0 top-0 bottom-0 w-[60px] md:w-[120px] bg-gradient-to-l from-porcelain to-transparent z-10 pointer-events-none" />
 
                         <div
-                            className={`flex w-max marquee-right ${hoveredRow === 2 ? "marquee-paused" : ""}`}
+                            className={cn(
+                                "flex w-max animate-marquee-right",
+                                hoveredRow === 2 && "marquee-paused"
+                            )}
                         >
                             {[0, 1].map((setIndex) => (
                                 <div key={setIndex} className="flex gap-[24px] pr-[24px]">
