@@ -59,19 +59,7 @@ export function HeroSection() {
                     <div className="relative">
                         <motion.h1 variants={fadeInUp} className="text-[48px] md:text-[64px] lg:text-[72px] font-bold font-heading text-triverge-blue leading-[1.1] tracking-tight">
                             A Safe, Warm <br />
-                            <span className="relative inline-block text-healing-teal">
-                                Space
-                                {/* Sparkle Doodle SVG */}
-                                <svg className="absolute -top-6 -right-8 w-[60px] h-[60px] text-yellow-400 pointer-events-none" viewBox="0 0 100 100" fill="none">
-                                    <motion.path
-                                        d="M50 0L55 40L95 45L55 50L50 90L45 50L5 45L45 40L50 0Z"
-                                        fill="currentColor"
-                                        initial={{ scale: 0, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        transition={{ delay: 1, duration: 0.5, type: "spring" }}
-                                    />
-                                </svg>
-                            </span>
+                            <span className="text-healing-teal">Space</span>{" "}
                             for Seniors
                         </motion.h1>
                     </div>
