@@ -43,15 +43,16 @@ export function HCAPHero() {
                             className="text-5xl md:text-7xl font-bold font-heading text-[#f9fffe] leading-tight"
                         >
                             Become a <br />
-                            <span className="relative inline-block">
+                            <span className="inline-flex items-center gap-3">
                                 Certified
-                                <motion.div
+                                <motion.span
                                     animate={{ rotate: 360 }}
                                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -top-6 -right-8 text-healing-teal"
+                                    className="relative inline-flex items-center justify-center"
                                 >
-                                    <Icon icon="solar:star-bold" className="text-4xl" />
-                                </motion.div>
+                                    <span className="absolute inset-0 bg-healing-teal/30 rounded-full blur-[12px] scale-150" />
+                                    <Icon icon="solar:star-bold" className="text-5xl text-healing-teal relative z-10 drop-shadow-[0_0_10px_rgba(47,201,161,0.6)]" />
+                                </motion.span>
                             </span> <br />
                             Elderly Caregiver
                         </motion.h1>
