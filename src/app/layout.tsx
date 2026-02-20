@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavigationShell } from "@/components/layout/NavigationShell";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
           <NavigationShell>
             {children}
           </NavigationShell>
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>
