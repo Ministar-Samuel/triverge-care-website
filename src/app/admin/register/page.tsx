@@ -9,6 +9,14 @@ export default function RegisterPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const passwordRequirements = [
+        { label: "At least 8 characters", test: (pw: string) => pw.length >= 8 },
+        { label: "At least one uppercase letter", test: (pw: string) => /[A-Z]/.test(pw) },
+        { label: "At least one lowercase letter", test: (pw: string) => /[a-z]/.test(pw) },
+        { label: "At least one number", test: (pw: string) => /[0-9]/.test(pw) },
+        { label: "At least one special character", test: (pw: string) => /[^A-Za-z0-9]/.test(pw) },
+    ];
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
@@ -18,6 +26,15 @@ export default function RegisterPage() {
         e.preventDefault();
         setLoading(true);
         setError(null);
+
+        // Password validation logic
+        const allRequirementsMet = passwordRequirements.every(req => req.test(password));
+
+        if (!allRequirementsMet) {
+            setError("Password does not meet the strength requirements.");
+            setLoading(false);
+            return;
+        }
 
         if (password !== confirmPassword) {
             setError("Passwords do not match");
@@ -97,6 +114,25 @@ export default function RegisterPage() {
                             className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-triverge-blue outline-none transition-all text-charcoal"
                             placeholder="••••••••"
                         />
+                        <div className="mt-2 space-y-1">
+                            {passwordRequirements.map((req, index) => {
+                                const isMet = req.test(password);
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`flex items-center gap-2 text-xs transition-colors ${
+                                            isMet ? "text-green-600" : "text-charcoal/40"
+                                        }`}
+                                    >
+                                        <Icon
+                                            icon={isMet ? "solar:check-circle-bold" : "solar:round-transfer-vertical-broken"}
+                                            className={isMet ? "text-green-500" : "text-gray-300"}
+                                        />
+                                        <span>{req.label}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                     <div>
                         <label className="block text-sm font-bold text-charcoal/70 mb-2">Confirm Password</label>
