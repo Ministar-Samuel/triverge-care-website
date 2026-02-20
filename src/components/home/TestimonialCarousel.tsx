@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Icon } from "@iconify/react";
 import { TESTIMONIALS } from "@/lib/data";
 import Image from "next/image";
@@ -111,7 +111,7 @@ export function TestimonialCarousel() {
     );
 }
 
-function TestimonialCard({ testimonial, paused }: { testimonial: typeof TESTIMONIALS[0]; paused: boolean }) {
+const TestimonialCard = memo(function TestimonialCard({ testimonial, paused }: { testimonial: typeof TESTIMONIALS[0]; paused: boolean }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -175,4 +175,4 @@ function TestimonialCard({ testimonial, paused }: { testimonial: typeof TESTIMON
             </div>
         </div>
     );
-}
+});
