@@ -6,17 +6,17 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const SERVICES_LIST = [
-    { title: "Skilled Nursing", icon: "mdi:stethoscope", desc: "Clinical support at home or in our centre, including medication management and wound care.", isMedical: true },
-    { title: "Dementia Care", icon: "mdi:head-cog-outline", desc: "Support for memory loss, confusion, wandering, and behavioural changes." },
-    { title: "Post-Hospital Rehab", icon: "mdi:hospital-building", desc: "Recovery support after surgery, stroke, fractures, or acute illness." },
-    { title: "Physiotherapy", icon: "mdi:human-handsup", desc: "Movement, pain relief, balance training, and strength building." },
-    { title: "Occupational Therapy", icon: "mdi:hand-heart-outline", desc: "Support with daily activities, adaptive equipment, and home safety." },
-    { title: "Daily Living Assistance", icon: "mdi:human-wheelchair", desc: "Help with bathing, dressing, feeding, hygiene, and mobility." },
-    { title: "Companionship", icon: "mdi:account-heart-outline", desc: "Emotional support, conversation, reading, games, and social outings." },
-    { title: "Respite Care", icon: "mdi:clock-outline", desc: "Short-term support that gives families space to rest and recharge." },
-    { title: "Palliative Care", icon: "mdi:heart-pulse", desc: "Comfort-focused support for seniors with life-limiting illnesses." },
-    { title: "Residential Care", icon: "mdi:home-heart", desc: "Long-term living in the Triverge Geriatric Centre with 24/7 support." },
-    { title: "Caregiver Education", icon: "mdi:school-outline", desc: "Structured training through the HCAP programme for family and professional caregivers.", isFullWidth: true },
+    { title: "Skilled Nursing", icon: "solar:stethoscope-bold-duotone", desc: "Clinical support at home or in our centre, including medication management and wound care.", isMedical: true },
+    { title: "Dementia Care", icon: "solar:brain-bold-duotone", desc: "Support for memory loss, confusion, wandering, and behavioural changes." },
+    { title: "Post-Hospital Rehab", icon: "solar:wheelchair-bold-duotone", desc: "Recovery support after surgery, stroke, fractures, or acute illness." },
+    { title: "Physiotherapy", icon: "solar:running-bold-duotone", desc: "Movement, pain relief, balance training, and strength building." },
+    { title: "Occupational Therapy", icon: "solar:armchair-2-bold-duotone", desc: "Support with daily activities, adaptive equipment, and home safety." },
+    { title: "Daily Living Assistance", icon: "solar:bath-bold-duotone", desc: "Help with bathing, dressing, feeding, hygiene, and mobility." },
+    { title: "Companionship", icon: "solar:cup-hot-bold-duotone", desc: "Emotional support, conversation, reading, games, and social outings." },
+    { title: "Respite Care", icon: "solar:clock-circle-bold-duotone", desc: "Short-term support that gives families space to rest and recharge." },
+    { title: "Palliative Care", icon: "solar:heart-pulse-bold-duotone", desc: "Comfort-focused support for seniors with life-limiting illnesses." },
+    { title: "Residential Care", icon: "solar:home-add-bold-duotone", desc: "Long-term living in the Triverge Geriatric Centre with 24/7 support." },
+    { title: "Caregiver Education", icon: "solar:diploma-bold-duotone", desc: "Structured training through the HCAP programme for family and professional caregivers.", isFullWidth: true },
 ];
 
 const staggerContainer = {
@@ -74,10 +74,12 @@ export function ServiceDirectory() {
                             <Link href={`/services/${service.title.toLowerCase().replace(/ /g, "-")}`} className="block h-full relative z-10">
                                 <div className="flex flex-col gap-4 transition-transform duration-300 h-full">
                                     <div className={cn(
-                                        "w-[60px] h-[60px] rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
-                                        service.isFullWidth ? "bg-white/15 text-white" : "bg-healing-teal/10 text-healing-teal"
+                                        "w-[56px] h-[56px] rounded-[16px] flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
+                                        service.isFullWidth
+                                            ? "bg-white/15 text-white"
+                                            : "bg-healing-teal/10 text-healing-teal group-hover:bg-healing-teal group-hover:text-white"
                                     )}>
-                                        <Icon icon={service.icon} className="text-3xl" />
+                                        <Icon icon={service.icon} className="text-[28px]" />
                                     </div>
 
                                     <h3 className={cn(
