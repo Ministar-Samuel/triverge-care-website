@@ -130,11 +130,10 @@ export function BookingWizard() {
                         exit={{ opacity: 0, x: -20 }}
                         className="flex flex-col md:flex-row gap-8"
                     >
-                        <div className="flex-1 bg-gray-50 rounded-2xl p-4 flex justify-center">
-                            <style>{`
-                                .rdp { --rdp-cell-size: 40px; --rdp-accent-color: #2ea69a; }
-                                .rdp-day_selected:not([disabled]) { background-color: var(--rdp-accent-color); color: white; font-weight: bold; border-radius: 50%; }
-                            `}</style>
+                        <div
+                            className="flex-1 bg-gray-50 rounded-2xl p-4 flex justify-center"
+                            style={{ "--rdp-cell-size": "40px" } as React.CSSProperties}
+                        >
                             <DayPicker
                                 mode="single"
                                 selected={bookingData.date}

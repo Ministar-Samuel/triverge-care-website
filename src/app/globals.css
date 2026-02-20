@@ -31,8 +31,30 @@
   --animate-spin-fast: spin 1s linear infinite;
   --animate-spin-slow: spin 3s linear infinite;
   --animate-beam: beam 2s linear infinite;
+  --animate-marquee-left: marquee-left 60s linear infinite;
+  --animate-marquee-right: marquee-right 65s linear infinite;
 
   --shadow-triverge: var(--shadow-triverge);
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes beam {
@@ -61,6 +83,27 @@
 
 .animate-glow-pulse {
   animation: glow-pulse 2s infinite ease-in-out;
+}
+
+.marquee-paused {
+  animation-play-state: paused !important;
+}
+
+/* React Day Picker Global Styles */
+.rdp {
+  --rdp-accent-color: var(--healing-teal);
+}
+
+.rdp-day_selected:not([disabled]) {
+  background-color: var(--rdp-accent-color) !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.rdp-day_selected:hover:not([disabled]) {
+  background-color: var(--rdp-accent-color) !important;
+  opacity: 0.8;
 }
 
 /* Void Grid Effect */

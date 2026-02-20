@@ -50,12 +50,10 @@ export function AdminCalendar({ className }: AdminCalendarProps) {
     return (
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${className}`}>
             {/* Calendar Widget */}
-            <div className="lg:col-span-4 bg-white p-6 rounded-[24px] shadow-sm border border-gray-100">
-                <style>{`
-                    .rdp { --rdp-cell-size: 45px; --rdp-accent-color: #2ea69a; --rdp-background-color: #e0f2f1; }
-                    .rdp-day_selected:not([disabled]) { background-color: var(--rdp-accent-color); color: white; font-weight: bold; border-radius: 50%; }
-                    .rdp-day_selected:hover:not([disabled]) { background-color: var(--rdp-accent-color); opacity: 0.8; }
-                `}</style>
+            <div
+                className="lg:col-span-4 bg-white p-6 rounded-[24px] shadow-sm border border-gray-100"
+                style={{ "--rdp-cell-size": "45px", "--rdp-background-color": "#e0f2f1" } as React.CSSProperties}
+            >
                 <div className="flex items-center justify-between mb-4">
                     <h3 className="font-heading font-bold text-lg text-triverge-blue">Calendar</h3>
                     <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
