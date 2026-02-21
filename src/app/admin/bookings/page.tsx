@@ -210,53 +210,14 @@ export default function AdminBookingsPage() {
                                                     {statusInfo.label}
                                                 </span>
                                             </td>
-                                            <td className="px-6 py-4 text-right relative">
+                                            <td className="px-6 py-4 text-right">
                                                 <button
+                                                    id={`action-btn-${appt.id}`}
                                                     onClick={() => setActionMenuId(actionMenuId === appt.id ? null : appt.id)}
                                                     className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                                                 >
                                                     <Icon icon="solar:menu-dots-bold" className="text-charcoal/50" />
                                                 </button>
-                                                {actionMenuId === appt.id && (
-                                                    <div className="absolute right-6 bottom-0 mb-10 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 min-w-[200px]">
-                                                        <Link
-                                                            href={`/admin/bookings/${appt.id}`}
-                                                            className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal transition-colors"
-                                                        >
-                                                            <Icon icon="solar:eye-bold" className="text-blue-500" />
-                                                            View Details
-                                                        </Link>
-                                                        {appt.status !== "confirmed" && (
-                                                            <button onClick={() => updateStatus(appt.id, "confirmed")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
-                                                                <Icon icon="solar:check-circle-bold" className="text-blue-500" />
-                                                                Mark Confirmed
-                                                            </button>
-                                                        )}
-                                                        {appt.status !== "completed" && (
-                                                            <button onClick={() => updateStatus(appt.id, "completed")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
-                                                                <Icon icon="solar:verified-check-bold" className="text-green-500" />
-                                                                Mark Completed
-                                                            </button>
-                                                        )}
-                                                        {appt.status !== "rescheduled" && (
-                                                            <button onClick={() => updateStatus(appt.id, "rescheduled")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
-                                                                <Icon icon="solar:calendar-bold" className="text-purple-500" />
-                                                                Mark Rescheduled
-                                                            </button>
-                                                        )}
-                                                        {appt.status !== "cancelled" && (
-                                                            <button onClick={() => updateStatus(appt.id, "cancelled")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
-                                                                <Icon icon="solar:close-circle-bold" className="text-orange-500" />
-                                                                Cancel Booking
-                                                            </button>
-                                                        )}
-                                                        <div className="border-t border-gray-100 my-1" />
-                                                        <button onClick={() => deleteBooking(appt.id)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 text-sm text-red-600 w-full text-left transition-colors">
-                                                            <Icon icon="solar:trash-bin-trash-bold" className="text-red-500" />
-                                                            Delete Booking
-                                                        </button>
-                                                    </div>
-                                                )}
                                             </td>
                                         </tr>
                                     );
@@ -266,6 +227,62 @@ export default function AdminBookingsPage() {
                     </table>
                 </div>
             </div>
+
+            {/* Fixed-position Action Menu (renders outside table to avoid clipping) */}
+            {actionMenuId && (() => {
+                const appt = filtered.find(a => a.id === actionMenuId);
+                if (!appt) return null;
+                const btn = document.getElementById(`action-btn-${appt.id}`);
+                const rect = btn?.getBoundingClientRect();
+                if (!rect) return null;
+                return (
+                    <>
+                        {/* Invisible backdrop to close menu on outside click */}
+                        <div className="fixed inset-0 z-40" onClick={() => setActionMenuId(null)} />
+                        <div
+                            className="fixed bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-50 min-w-[210px]"
+                            style={{ top: rect.bottom + 8, left: rect.left - 170 }}
+                        >
+                            <Link
+                                href={`/admin/bookings/${appt.id}`}
+                                className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal transition-colors"
+                            >
+                                <Icon icon="solar:eye-bold" className="text-blue-500" />
+                                View Details
+                            </Link>
+                            {appt.status !== "confirmed" && (
+                                <button onClick={() => updateStatus(appt.id, "confirmed")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
+                                    <Icon icon="solar:check-circle-bold" className="text-blue-500" />
+                                    Mark Confirmed
+                                </button>
+                            )}
+                            {appt.status !== "completed" && (
+                                <button onClick={() => updateStatus(appt.id, "completed")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
+                                    <Icon icon="solar:verified-check-bold" className="text-green-500" />
+                                    Mark Completed
+                                </button>
+                            )}
+                            {appt.status !== "rescheduled" && (
+                                <button onClick={() => updateStatus(appt.id, "rescheduled")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
+                                    <Icon icon="solar:calendar-bold" className="text-purple-500" />
+                                    Mark Rescheduled
+                                </button>
+                            )}
+                            {appt.status !== "cancelled" && (
+                                <button onClick={() => updateStatus(appt.id, "cancelled")} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal w-full text-left transition-colors">
+                                    <Icon icon="solar:close-circle-bold" className="text-orange-500" />
+                                    Cancel Booking
+                                </button>
+                            )}
+                            <div className="border-t border-gray-100 my-1" />
+                            <button onClick={() => deleteBooking(appt.id)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 text-sm text-red-600 w-full text-left transition-colors">
+                                <Icon icon="solar:trash-bin-trash-bold" className="text-red-500" />
+                                Delete Booking
+                            </button>
+                        </div>
+                    </>
+                );
+            })()}
 
             {/* Add Booking Modal */}
             {showAddModal && (
