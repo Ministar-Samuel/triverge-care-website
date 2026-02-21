@@ -2,11 +2,11 @@
 
 ---
 
-## Phase 1: Foundation & Database Setup
+## Phase 1: Foundation & Database Setup ✅
 
 **Goal:** Establish the technical environment, install design libraries, and set up data structure.
 
-### Task 1.1: Project Initialization & Dependencies
+### Task 1.1: Project Initialization & Dependencies ✅
 
 **Description:** Initialize the Next.js repository in Google Antigravity, configure Tailwind CSS, and install design/backend libraries.
 
@@ -20,14 +20,14 @@
 
 **Acceptance Criteria:**
 
-* Next.js app runs locally.
-* Supabase client connects successfully (verified by a test query).
-* Magic UI `cn` utility helper is correctly configured.
-* A test Solar Icon renders on the index page.
+* [x] Next.js app runs locally.
+* [x] Supabase client connects successfully (verified by a test query).
+* [x] Magic UI `cn` utility helper is correctly configured.
+* [x] A test Solar Icon renders on the index page.
 
 ---
 
-### Task 1.2: Database Schema & RLS Policies
+### Task 1.2: Database Schema & RLS Policies ✅
 
 **Description:** Run SQL scripts to create the necessary tables and set security rules.
 
@@ -41,16 +41,16 @@
 
 **Acceptance Criteria:**
 
-* All tables exist in Supabase Dashboard.
-* RLS policies prevent unauthorized deletion of data.
+* [x] All tables exist in Supabase Dashboard.
+* [x] RLS policies prevent unauthorized deletion of data.
 
 ---
 
-## Phase 2: Public Website & Visual Experience
+## Phase 2: Public Website & Visual Experience ⚠️
 
 **Goal:** Build a highly interactive, engaging frontend using Unicorn Studio and Magic UI.
 
-### Task 2.1: Global Layout & Navigation (Solar Icons)
+### Task 2.1: Global Layout & Navigation (Solar Icons) ⚠️ PARTIAL
 
 **Description:** Create the `Layout.js` wrapper with a responsive Navbar and Footer using Solar Icons.
 
@@ -62,13 +62,13 @@
 
 **Acceptance Criteria:**
 
-* Navbar is responsive.
-* Icons are consistent (Solar set).
-* Hovering over links triggers the defined micro-interaction.
+* [x] Navbar is responsive.
+* [x] Icons are consistent (Solar set).
+* [ ] Hovering over links triggers the defined micro-interaction. *(Currently uses standard CSS transitions, not Framer Motion as requested)*
 
 ---
 
-### Task 2.2: Homepage Hero Section (Unicorn Studio)
+### Task 2.2: Homepage Hero Section ❌ NOT COMPLETE
 
 **Description:** Implement the "engaging and highly interactive" Hero section.
 
@@ -80,13 +80,13 @@
 
 **Acceptance Criteria:**
 
-* Hero section loads without lag.
-* Unicorn Studio animations react to cursor movement.
-* CTA button is clearly visible above the canvas.
+* [x] Hero section loads without lag.
+* [ ] Unicorn Studio animations react to cursor movement. *(Not implemented — uses custom design instead)*
+* [x] CTA button is clearly visible above the canvas.
 
 ---
 
-### Task 2.3: Dynamic Service Pages (Magic UI Components)
+### Task 2.3: Dynamic Service Pages (Magic UI Components) ✅
 
 **Description:** Specific pages for Dementia, Physio, etc., using modular components.
 
@@ -100,12 +100,12 @@
 
 **Acceptance Criteria:**
 
-* Service pages render dynamic content.
-* Hovering over service cards feels tactile and responsive.
+* [x] Service pages render dynamic content.
+* [x] Hovering over service cards feels tactile and responsive.
 
 ---
 
-### Task 2.4: Video Testimonials (Interactive Carousel)
+### Task 2.4: Video Testimonials (Interactive Carousel) ⚠️ PARTIAL
 
 **Description:** A premium carousel for YouTube success stories.
 
@@ -116,10 +116,10 @@
 
 **Acceptance Criteria:**
 
-* Videos load efficiently.
-* Videos play within the website modal or frame.
-* No broken links or empty embeds.
-* Smooth transition between "Thumbnail" and "Playing" states.
+* [x] Videos load efficiently.
+* [x] Videos play within the website modal or frame.
+* [ ] No broken links or empty embeds. *(Needs QA verification)*
+* [x] Smooth transition between "Thumbnail" and "Playing" states.
 
 ---
 
@@ -127,7 +127,7 @@
 
 **Goal:** Implement the "Triverge 2.0" features with polished UI triggers.
 
-### Task 3.1: Google Calendar "Smart Booking" System
+### Task 3.1: Google Calendar "Smart Booking" System ❌ NOT COMPLETE (UI Only)
 
 **Description:** The custom booking engine interfacing with Google Calendar API.
 
@@ -140,13 +140,15 @@
 
 **Acceptance Criteria:**
 
-* Calendar reflects real-time availability.
-* Modal animation is smooth (fade in + scale up).
-* Booking creates a visible event on the Triverge Admin Calendar.
+* [ ] Calendar reflects real-time availability. *(Uses Supabase locally — no Google Calendar API integration)*
+* [x] Modal animation is smooth (fade in + scale up).
+* [x] Booking creates a visible event on the Triverge Admin Calendar.
+
+> **Correction:** The current system uses Supabase only. Google Calendar integration and the "WhatsApp vs Book Here" choice flow are MISSING.
 
 ---
 
-### Task 3.2: AI Chatbot (Gemini 2.5 Flash)
+### Task 3.2: AI Chatbot (Gemini 2.5 Flash) ❌ NOT STARTED
 
 **Description:** Floating chat widget trained on company data.
 
@@ -160,14 +162,14 @@
 
 **Acceptance Criteria:**
 
-* Bot opens with a spring animation.
-* Chat bubbles animate in (`y: 10 → 0`, `opacity: 0 → 1`).
-* Bot correctly answers: "Do you offer dementia care?"
-* Bot falls back gracefully if asked about non-healthcare topics (e.g., "I can only assist with Triverge services").
+* [ ] Bot opens with a spring animation.
+* [ ] Chat bubbles animate in (`y: 10 → 0`, `opacity: 0 → 1`).
+* [ ] Bot correctly answers: "Do you offer dementia care?"
+* [ ] Bot falls back gracefully if asked about non-healthcare topics (e.g., "I can only assist with Triverge services").
 
 ---
 
-### Task 3.3: Advanced Site-Wide Search
+### Task 3.3: Advanced Site-Wide Search ❌ NOT STARTED
 
 **Description:** Global search using a Command Palette style.
 
@@ -182,11 +184,11 @@
 
 **Acceptance Criteria:**
 
-* Search results from Blog, Services, and Testimonials appear instantly.
+* [ ] Search results from Blog, Services, and Testimonials appear instantly.
 
 ---
 
-### Task 3.4: HCAP Enrollment & PayStack
+### Task 3.4: HCAP Enrollment & PayStack ❌ NOT STARTED
 
 **Description:** High-conversion enrollment form and payment processing.
 
@@ -199,16 +201,16 @@
 
 **Acceptance Criteria:**
 
-* Payment flow works.
-* Form validation provides immediate, animated visual feedback.
+* [ ] Payment flow works.
+* [ ] Form validation provides immediate, animated visual feedback.
 
 ---
 
-## Phase 4: Admin Dashboard (Internal)
+## Phase 4: Admin Dashboard (Internal) ⚠️
 
 **Goal:** A clean, functional control room for Triverge Staff (`/admin`).
 
-### Task 4.1: Dashboard Layout
+### Task 4.1: Dashboard Layout ⚠️ PARTIAL
 
 **Description:** Secure `/admin` layout.
 
@@ -221,12 +223,13 @@
 
 **Acceptance Criteria:**
 
-* Navigation is intuitive and clearly labeled.
-* Public users cannot access `/admin`.
+* [x] Navigation is intuitive and clearly labeled.
+* [x] Public users cannot access `/admin`.
+* [ ] Active tab uses sliding pill animation (`layoutId`). *(Currently uses static bg-color change)*
 
 ---
 
-### Task 4.2.1: Data Views (Appointments)
+### Task 4.2.1: Data Views (Appointments) ✅
 
 **Description:** A dashboard to manage upcoming consultations data table.
 
@@ -239,12 +242,12 @@
 
 **Acceptance Criteria:**
 
-* Admin can view and filter data easily.
-* New web bookings appear here instantly.
+* [x] Admin can view and filter data easily.
+* [x] New web bookings appear here instantly.
 
 ---
 
-### Task 4.2.2: Data Views (Student & Payment Manager)
+### Task 4.2.2: Data Views (Student & Payment Manager) ❌ NOT STARTED
 
 **Description:** Database of enrolled HCAP students.
 
@@ -258,13 +261,13 @@
 
 **Acceptance Criteria:**
 
-* Admin can view and filter data easily.
-* New web bookings appear here instantly.
-* Admin can verify if a student has paid their fees.
+* [ ] Admin can view and filter data easily.
+* [ ] New web bookings appear here instantly.
+* [ ] Admin can verify if a student has paid their fees.
 
 ---
 
-### Task 4.3: CMS Tools
+### Task 4.3: CMS Tools ❌ NOT STARTED
 
 **Description:** Tools to update the Blog and Testimonials without code.
 
@@ -276,8 +279,8 @@
 
 **Acceptance Criteria:**
 
-* Admin posts a blog →  Content updates reflect immediately on the public site.
-* Admin adds a YouTube link → It appears on the Homepage carousel.
+* [ ] Admin posts a blog →  Content updates reflect immediately on the public site.
+* [ ] Admin adds a YouTube link → It appears on the Homepage carousel.
 
 ---
 
@@ -285,15 +288,15 @@
 
 **Goal:** Polish and Launch.
 
-### Task 5.1: Performance & Design QA
+### Task 5.1: Performance & Design QA ❌ NOT STARTED
 
 **Description:** Verify all pages on Mobile and Tablet breakpoints and ensure animations do not hinder performance.
 
 **Checklist:**
 
-* Navigation menu opens/closes correctly.
-* Tables in Dashboard scroll horizontally if needed.
-* Forms are touch-friendly.
+* [ ] Navigation menu opens/closes correctly.
+* [ ] Tables in Dashboard scroll horizontally if needed.
+* [ ] Forms are touch-friendly.
 
 **Requirements:**
 
@@ -302,17 +305,17 @@
 
 **Acceptance Criteria:**
 
-* Lighthouse Performance score > 90.
-* Animations are smooth (60fps).
+* [ ] Lighthouse Performance score > 90.
+* [ ] Animations are smooth (60fps).
 
 ---
 
-### Task 5.2: Deployment
+### Task 5.2: Deployment ❌ NOT STARTED
 
 **Description:** Deploy to production (Vercel or Netlify recommended for Next.js).
 
 **Requirements:**
 
-* Connect GitHub repo.
-* Add Production Environment Variables.
+* [ ] Connect GitHub repo.
+* [ ] Add Production Environment Variables.
 ---
