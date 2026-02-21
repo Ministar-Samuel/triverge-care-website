@@ -162,7 +162,7 @@ export default function AdminBookingsPage() {
             </div>
 
             {/* Table */}
-            <div className="bg-white rounded-[20px] border border-gray-100 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-[20px] border border-gray-100 shadow-sm min-h-[500px]">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
                         <thead>
@@ -218,7 +218,7 @@ export default function AdminBookingsPage() {
                                                     <Icon icon="solar:menu-dots-bold" className="text-charcoal/50" />
                                                 </button>
                                                 {actionMenuId === appt.id && (
-                                                    <div className="absolute right-6 top-14 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 min-w-[200px]">
+                                                    <div className="absolute right-6 bottom-0 mb-10 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 min-w-[200px]">
                                                         <Link
                                                             href={`/admin/bookings/${appt.id}`}
                                                             className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-sm text-charcoal transition-colors"
