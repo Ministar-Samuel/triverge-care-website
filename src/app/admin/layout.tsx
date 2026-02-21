@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const ADMIN_LINKS = [
     { name: "Dashboard", href: "/admin", icon: "solar:widget-bold-duotone" },
+    { name: "Bookings", href: "/admin/bookings", icon: "solar:clipboard-list-bold-duotone" },
     { name: "Calendar", href: "/admin/calendar", icon: "solar:calendar-bold-duotone" },
     { name: "Users", href: "/admin/users", icon: "solar:users-group-rounded-bold-duotone" },
 ];
