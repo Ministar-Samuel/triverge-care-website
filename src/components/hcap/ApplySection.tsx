@@ -29,10 +29,10 @@ export function ApplySection() {
                     </p>
 
                     <Link
-                        href="/contact?type=hcap"
+                        href="/hcap/enroll"
                         className="relative inline-flex items-center gap-4 px-[60px] py-[20px] bg-triverge-blue rounded-full text-white text-lg font-bold font-heading overflow-hidden group hover:scale-105 hover:bg-[#1e2f52] transition-all duration-300 shadow-xl"
                     >
-                        Apply now
+                        Enroll Now
                         <Icon icon="solar:arrow-right-bold" className="text-2xl group-hover:translate-x-2 transition-transform" />
 
                         {/* Shimmer */}
