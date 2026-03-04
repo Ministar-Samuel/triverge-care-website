@@ -11,6 +11,8 @@ const ADMIN_LINKS = [
     { name: "Dashboard", href: "/admin", icon: "solar:widget-bold-duotone" },
     { name: "Bookings", href: "/admin/bookings", icon: "solar:clipboard-list-bold-duotone" },
     { name: "Students", href: "/admin/students", icon: "solar:square-academic-cap-bold-duotone" },
+    { name: "Blog", href: "/admin/blog", icon: "solar:document-text-bold-duotone" },
+    { name: "Newsletter", href: "/admin/newsletter", icon: "solar:letter-bold-duotone" },
     { name: "Calendar", href: "/admin/calendar", icon: "solar:calendar-bold-duotone" },
     { name: "Users", href: "/admin/users", icon: "solar:users-group-rounded-bold-duotone" },
     { name: "Settings", href: "/admin/settings", icon: "solar:settings-bold-duotone" },
@@ -37,8 +39,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         if (pathname === "/admin") return "Dashboard";
         if (pathname.startsWith("/admin/bookings")) return "Bookings";
         if (pathname.startsWith("/admin/students")) return "Students";
+        if (pathname.startsWith("/admin/blog")) return "Blog";
+        if (pathname.startsWith("/admin/newsletter")) return "Newsletter";
         if (pathname === "/admin/calendar") return "Calendar";
-        if (pathname === "/admin/users") return "Users";
+        if (pathname.startsWith("/admin/users")) return "Users";
         if (pathname === "/admin/settings") return "Settings";
         return "Dashboard";
     };

@@ -1,10 +1,42 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 
 export function Footer() {
+    const [email, setEmail] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email.trim()) return;
+        setSubmitting(true);
+        setError("");
+
+        try {
+            const res = await fetch("/api/newsletter", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email.trim() }),
+            });
+            if (res.ok) {
+                setSuccess(true);
+                setEmail("");
+            } else {
+                const data = await res.json();
+                setError(data.error || "Something went wrong.");
+            }
+        } catch {
+            setError("Failed to subscribe. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <footer className="relative w-full bg-[#212121] text-porcelain py-[80px] px-[20px] md:px-[40px]">
             <div className="max-w-[1440px] mx-auto w-full">
@@ -80,16 +112,32 @@ export function Footer() {
                     {/* Column 4: Newsletter */}
                     <div className="flex flex-col gap-6">
                         <h4 className="text-sm font-bold uppercase tracking-widest text-white/50">Stay Updated</h4>
-                        <form className="relative">
+                        <form onSubmit={handleSubmit} className="relative">
                             <input
                                 type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email address"
-                                className="w-full bg-transparent border-b border-white/30 py-4 text-white focus:outline-none focus:border-healing-teal transition-colors pr-[100px]"
+                                required
+                                disabled={success}
+                                className="w-full bg-transparent border-b border-white/30 py-4 text-white focus:outline-none focus:border-healing-teal transition-colors pr-[100px] disabled:opacity-50"
                             />
-                            <button className="absolute right-0 top-1/2 -translate-y-1/2 text-healing-teal font-bold text-sm uppercase tracking-wide hover:text-white transition-colors">
-                                Subscribe
+                            <button
+                                type="submit"
+                                disabled={submitting || success}
+                                className="absolute right-0 top-1/2 -translate-y-1/2 text-healing-teal font-bold text-sm uppercase tracking-wide hover:text-white transition-colors disabled:opacity-50"
+                            >
+                                {submitting ? "..." : "Subscribe"}
                             </button>
                         </form>
+                        {success ? (
+                            <p className="text-sm text-healing-teal font-bold flex items-center gap-1.5">
+                                <Icon icon="solar:check-circle-bold" className="text-base" />
+                                Thank you for subscribing!
+                            </p>
+                        ) : error ? (
+                            <p className="text-sm text-red-400 font-bold">{error}</p>
+                        ) : null}
                     </div>
 
                 </div>

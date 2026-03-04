@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
@@ -14,6 +15,37 @@ const fadeInRight = {
 };
 
 export function NewsletterSection() {
+    const [email, setEmail] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email.trim()) return;
+        setSubmitting(true);
+        setError("");
+
+        try {
+            const res = await fetch("/api/newsletter", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email.trim() }),
+            });
+            if (res.ok) {
+                setSuccess(true);
+                setEmail("");
+            } else {
+                const data = await res.json();
+                setError(data.error || "Something went wrong.");
+            }
+        } catch {
+            setError("Failed to subscribe. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <section className="py-[80px] px-[20px] md:px-[40px] bg-triverge-blue text-porcelain relative overflow-hidden">
 
@@ -47,25 +79,44 @@ export function NewsletterSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeInRight}
                 >
-                    <form className="relative flex items-center bg-white/10 rounded-full p-2 border border-white/20 focus-within:bg-white/15 focus-within:border-healing-teal/50 transition-all duration-300">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="relative flex items-center bg-white/10 rounded-full p-2 border border-white/20 focus-within:bg-white/15 focus-within:border-healing-teal/50 transition-all duration-300"
+                    >
                         <div className="pl-6 text-white/50">
                             <Icon icon="solar:letter-bold" className="text-2xl" />
                         </div>
                         <input
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email address"
-                            className="flex-1 bg-transparent border-none text-white placeholder:text-white/50 px-4 py-3 focus:outline-none text-lg"
+                            required
+                            disabled={success}
+                            className="flex-1 bg-transparent border-none text-white placeholder:text-white/50 px-4 py-3 focus:outline-none text-lg disabled:opacity-50"
                         />
                         <button
-                            className="bg-healing-teal hover:bg-healing-teal/90 text-white font-bold font-heading rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-shrink-0 w-[44px] h-[44px] md:w-auto md:h-auto md:px-8 md:py-3"
+                            type="submit"
+                            disabled={submitting || success}
+                            className="bg-healing-teal hover:bg-healing-teal/90 text-white font-bold font-heading rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-shrink-0 w-[44px] h-[44px] md:w-auto md:h-auto md:px-8 md:py-3 disabled:opacity-50"
                         >
-                            <span className="hidden md:inline">Subscribe</span>
+                            <span className="hidden md:inline">{submitting ? "..." : "Subscribe"}</span>
                             <Icon icon="solar:plain-3-bold" className="text-xl" />
                         </button>
                     </form>
-                    <p className="text-sm text-white/40 mt-3 ml-6 font-medium">
-                        We respect your privacy. Unsubscribe at any time.
-                    </p>
+
+                    {success ? (
+                        <p className="text-sm text-healing-teal mt-3 ml-6 font-bold flex items-center gap-2">
+                            <Icon icon="solar:check-circle-bold" className="text-base" />
+                            Thank you for subscribing! We&apos;ll be in touch.
+                        </p>
+                    ) : error ? (
+                        <p className="text-sm text-red-400 mt-3 ml-6 font-bold">{error}</p>
+                    ) : (
+                        <p className="text-sm text-white/40 mt-3 ml-6 font-medium">
+                            We respect your privacy. Unsubscribe at any time.
+                        </p>
+                    )}
                 </motion.div>
 
             </div>
