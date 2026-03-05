@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { SearchPalette } from "./SearchPalette";
 
 const navLinks = [
     { name: "Home", href: "/", icon: "solar:home-smile-bold-duotone" },
@@ -19,7 +20,23 @@ const navLinks = [
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const pathname = usePathname();
+
+    const openSearch = useCallback(() => setIsSearchOpen(true), []);
+    const closeSearch = useCallback(() => setIsSearchOpen(false), []);
+
+    // Global Ctrl+K / ⌘K shortcut
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+                e.preventDefault();
+                setIsSearchOpen((prev) => !prev);
+            }
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] bg-white/70 backdrop-blur-md border-b border-triverge-blue/10 shadow-sm transition-colors duration-300">
@@ -73,7 +90,11 @@ export function Navbar() {
                 <div className="flex items-center gap-[15px]">
 
                     {/* Search Icon */}
-                    <button className="p-2 text-charcoal hover:text-triverge-blue transition-colors rounded-full hover:bg-black/5">
+                    <button
+                        onClick={openSearch}
+                        className="p-2 text-charcoal hover:text-triverge-blue transition-colors rounded-full hover:bg-black/5 group"
+                        title="Search (Ctrl+K)"
+                    >
                         <Icon icon="solar:magnifer-linear" className="text-xl" />
                     </button>
 
@@ -143,6 +164,9 @@ export function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Search Palette */}
+            <SearchPalette isOpen={isSearchOpen} onClose={closeSearch} />
         </nav>
     );
 }
