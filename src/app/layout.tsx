@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavigationShell } from "@/components/layout/NavigationShell";
 import { BackToTop } from "@/components/ui/BackToTop";
+import { AIChatAssistant } from "@/components/ui/AIChatAssistant";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
             {children}
           </NavigationShell>
           <BackToTop />
+          <AIChatAssistant />
         </ThemeProvider>
       </body>
     </html>

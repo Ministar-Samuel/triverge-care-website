@@ -29,7 +29,7 @@ export function BackToTop() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     onClick={scrollToTop}
                     aria-label="Back to top"
-                    className="fixed bottom-8 right-8 z-50 w-[48px] h-[48px] rounded-full bg-triverge-blue text-white shadow-lg flex items-center justify-center hover:bg-healing-teal hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+                    className="fixed bottom-[104px] right-8 z-50 w-[48px] h-[48px] rounded-full bg-triverge-blue text-white shadow-lg flex items-center justify-center hover:bg-healing-teal hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
                 >
                     <Icon icon="solar:arrow-up-bold" className="text-xl" />
                 </motion.button>

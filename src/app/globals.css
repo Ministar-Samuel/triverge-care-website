@@ -249,3 +249,54 @@ h6 {
   pointer-events: none;
   font-style: italic;
 }
+
+/* Alma AI Chat Message Styles */
+.alma-message p {
+  margin-bottom: 0.75em;
+}
+
+.alma-message p:last-child {
+  margin-bottom: 0;
+}
+
+.alma-message ul,
+.alma-message ol {
+  padding-left: 1.25em;
+  margin-bottom: 0.75em;
+}
+
+.alma-message ul {
+  list-style-type: disc;
+}
+
+.alma-message ol {
+  list-style-type: decimal;
+}
+
+.alma-message li {
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.alma-message li:last-child {
+  margin-bottom: 0;
+}
+
+.alma-message strong {
+  font-weight: 700;
+  color: #212121;
+}
+
+.alma-message a {
+  color: #2ea69a;
+  text-decoration: underline;
+}
+
+.alma-message h1,
+.alma-message h2,
+.alma-message h3,
+.alma-message h4 {
+  font-weight: 700;
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+}
