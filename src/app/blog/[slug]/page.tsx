@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 
 type BlogPost = {
     id: string;

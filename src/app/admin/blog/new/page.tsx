@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { cn } from "@/lib/utils";
 import { BLOG_CATEGORIES } from "@/lib/data";
 
