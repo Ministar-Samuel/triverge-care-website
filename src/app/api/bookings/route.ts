@@ -17,7 +17,6 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-    const supabase = await createClient();
     const body = await request.json();
 
     const { client_name, service_type, scheduled_time, status, notes } = body;
@@ -25,6 +24,8 @@ export async function POST(request: Request) {
     if (!client_name || !service_type || !scheduled_time) {
         return NextResponse.json({ error: 'client_name, service_type, and scheduled_time are required' }, { status: 400 });
     }
+
+    const supabase = await createClient();
 
     const { data, error } = await supabase
         .from('appointments')
