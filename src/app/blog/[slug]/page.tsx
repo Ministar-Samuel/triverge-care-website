@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import DOMPurify from "dompurify";
 
 type BlogPost = {
     id: string;
@@ -156,7 +157,7 @@ export default function BlogDetailPage() {
                         fontSize: "18px",
                         color: "#2d4375",
                     }}
-                    dangerouslySetInnerHTML={{ __html: post.content || "<p>No content available.</p>" }}
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content || "<p>No content available.</p>") }}
                 />
             </div>
 
