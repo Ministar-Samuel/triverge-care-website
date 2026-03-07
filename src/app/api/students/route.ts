@@ -30,6 +30,31 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'full_name and email are required' }, { status: 400 });
     }
 
+    if (payment_ref) {
+        try {
+            const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+            if (!paystackSecret) {
+                console.error('PAYSTACK_SECRET_KEY is not defined in environment variables');
+            } else {
+                const verifyRes = await fetch(`https://api.paystack.co/transaction/verify/${payment_ref}`, {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${paystackSecret}`,
+                    },
+                });
+
+                const verifyData = await verifyRes.json();
+
+                if (!verifyData.status || verifyData.data.status !== 'success') {
+                    return NextResponse.json({ error: 'Invalid or incomplete payment verification' }, { status: 400 });
+                }
+            }
+        } catch (err: unknown) {
+            console.error('Paystack verification error:', err);
+            return NextResponse.json({ error: 'Payment verification failed' }, { status: 500 });
+        }
+    }
+
     const { data, error } = await supabase
         .from('students')
         .insert({
