@@ -34,7 +34,7 @@ export function BookingWizard() {
     const nextStep = () => setStep(s => s + 1);
     const prevStep = () => setStep(s => s - 1);
 
-    const updateData = (key: string, value: any) => {
+    const updateData = <K extends keyof typeof bookingData>(key: K, value: (typeof bookingData)[K]) => {
         setBookingData(prev => ({ ...prev, [key]: value }));
     };
 
@@ -47,7 +47,8 @@ export function BookingWizard() {
             const dateStr = format(bookingData.date, "yyyy-MM-dd");
             // Convert "09:00 AM" to "09:00:00"
             const [time, period] = bookingData.time.split(" ");
-            let [hours, minutes] = time.split(":");
+            let [hours] = time.split(":");
+            const [, minutes] = time.split(":");
             if (period === "PM" && hours !== "12") hours = (parseInt(hours) + 12).toString();
             if (period === "AM" && hours === "12") hours = "00";
             const timeStr = `${hours.padStart(2, "0")}:${minutes}:00`;
@@ -230,7 +231,7 @@ export function BookingWizard() {
                         <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                             <Icon icon="solar:check-circle-bold" className="text-4xl" />
                         </div>
-                        <h3 className="text-2xl font-bold font-heading text-triverge-blue mb-4">You're All Set!</h3>
+                        <h3 className="text-2xl font-bold font-heading text-triverge-blue mb-4">You&apos;re All Set!</h3>
                         <p className="text-charcoal/70 max-w-[400px] mx-auto mb-8">
                             We have received your booking request for <strong>{bookingData.time}</strong> on <strong>{bookingData.date ? format(bookingData.date, "MMMM do") : ""}</strong>. A confirmation SMS will be sent shortly.
                         </p>
