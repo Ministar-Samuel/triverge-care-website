@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 import { BLOG_CATEGORIES } from "@/lib/data";
+import DOMPurify from "isomorphic-dompurify";
 
 const TOOLBAR_ACTIONS = [
     { cmd: "bold", icon: "solar:text-bold-bold", label: "Bold" },
@@ -354,7 +355,7 @@ export default function EditBlogPostPage({ params }: { params: Promise<{ id: str
                     </div>
                 )}
                 {preview ? (
-                    <div className="p-8 prose prose-lg max-w-none blog-content" dangerouslySetInnerHTML={{ __html: editorRef.current?.innerHTML || "" }} />
+                    <div className="p-8 prose prose-lg max-w-none blog-content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(editorRef.current?.innerHTML || "") }} />
                 ) : (
                     <div ref={editorRef} contentEditable className="p-8 min-h-[400px] focus:outline-none prose prose-lg max-w-none blog-content" style={{ lineHeight: 1.8 }} suppressContentEditableWarning />
                 )}
