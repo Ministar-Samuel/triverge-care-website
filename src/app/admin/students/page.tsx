@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { format } from "date-fns";
@@ -52,11 +52,27 @@ export default function AdminStudentsPage() {
     }, [fetchStudents]);
 
     // Computed stats
-    const totalStudents = students.length;
-    const enrolledCount = students.filter(s => s.status === "enrolled").length;
-    const graduatedCount = students.filter(s => s.status === "graduated").length;
-    const cancelledCount = students.filter(s => s.status === "cancelled").length;
-    const totalRevenue = students.reduce((sum, s) => sum + (s.amount_paid || 0), 0);
+    const { totalStudents, enrolledCount, graduatedCount, cancelledCount, totalRevenue } = useMemo(() => {
+        let enrolled = 0;
+        let graduated = 0;
+        let cancelled = 0;
+        let revenue = 0;
+
+        for (const s of students) {
+            if (s.status === "enrolled") enrolled++;
+            else if (s.status === "graduated") graduated++;
+            else if (s.status === "cancelled") cancelled++;
+            revenue += (s.amount_paid || 0);
+        }
+
+        return {
+            totalStudents: students.length,
+            enrolledCount: enrolled,
+            graduatedCount: graduated,
+            cancelledCount: cancelled,
+            totalRevenue: revenue
+        };
+    }, [students]);
 
     // Filtered students
     const filtered = students.filter(s => {
