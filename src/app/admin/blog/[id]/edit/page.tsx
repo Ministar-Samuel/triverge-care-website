@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react";
 import DOMPurify from "isomorphic-dompurify";
 import { cn } from "@/lib/utils";
 import { BLOG_CATEGORIES } from "@/lib/data";
-import DOMPurify from "isomorphic-dompurify";
 
 const TOOLBAR_ACTIONS = [
     { cmd: "bold", icon: "solar:text-bold-bold", label: "Bold" },
