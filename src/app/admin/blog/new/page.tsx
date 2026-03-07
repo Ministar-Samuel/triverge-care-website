@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
+import DOMPurify from "dompurify";
 import { cn } from "@/lib/utils";
 import { BLOG_CATEGORIES } from "@/lib/data";
 
@@ -392,7 +393,7 @@ export default function NewBlogPostPage() {
                 {preview ? (
                     <div
                         className="p-8 prose prose-lg max-w-none blog-content"
-                        dangerouslySetInnerHTML={{ __html: editorRef.current?.innerHTML || "<p class='text-charcoal/40'>Nothing to preview yet...</p>" }}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(editorRef.current?.innerHTML || "<p class='text-charcoal/40'>Nothing to preview yet...</p>") }}
                     />
                 ) : (
                     <div
