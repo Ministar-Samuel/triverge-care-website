@@ -1,5 +1,28 @@
 import { createAdminClient } from '@/utils/supabase/admin';
+import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
+
+// Security: Enforce admin authorization before using createAdminClient
+async function verifyAdmin() {
+    const supabaseClient = await createClient();
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+
+    if (authError || !user) {
+        return { error: 'Unauthorized', status: 401 };
+    }
+
+    const { data: profile, error: profileError } = await supabaseClient
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+    if (profileError || (profile?.role !== 'admin' && profile?.role !== 'super_admin')) {
+        return { error: 'Forbidden', status: 403 };
+    }
+
+    return null;
+}
 
 export async function GET(request: Request) {
     const supabase = createAdminClient();
@@ -25,6 +48,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+    // 🛡️ Sentinel: Enforce admin check before insert to prevent unauthorized blog creation
+    const authCheck = await verifyAdmin();
+    if (authCheck) return NextResponse.json({ error: authCheck.error }, { status: authCheck.status });
+
     const supabase = createAdminClient();
     const body = await request.json();
 
