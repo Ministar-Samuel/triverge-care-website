@@ -1,8 +1,8 @@
-import { createClient } from '@/utils/supabase/server';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
 
     const { data, error } = await supabase
         .from('appointments')
@@ -17,10 +17,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const body = await request.json();
 
-    const { client_name, service_type, scheduled_time, status, notes } = body;
+    const { client_name, service_type, scheduled_time, status, notes, email } = body;
 
     if (!client_name || !service_type || !scheduled_time) {
         return NextResponse.json({ error: 'client_name, service_type, and scheduled_time are required' }, { status: 400 });
@@ -33,7 +33,8 @@ export async function POST(request: Request) {
             service_type,
             scheduled_time,
             status: status || 'pending',
-            notes: notes || null
+            notes: notes || null,
+            email: email || null
         })
         .select()
         .single();

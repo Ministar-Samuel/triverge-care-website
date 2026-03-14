@@ -8,9 +8,11 @@ create table if not exists appointments (
   service_type text not null,
   scheduled_time timestamp with time zone not null,
   status text not null default 'pending', -- pending, confirmed, completed, cancelled
+  email text,
   notes text,
   created_at timestamp with time zone default now()
 );
+
 
 -- 2. Students Table
 create table if not exists students (

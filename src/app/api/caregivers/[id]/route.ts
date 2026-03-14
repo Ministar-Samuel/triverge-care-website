@@ -8,7 +8,7 @@ export async function GET(_request: Request, context: RouteContext) {
     const supabase = createAdminClient();
 
     const { data, error } = await supabase
-        .from('appointments')
+        .from('caregivers')
         .select('*')
         .eq('id', id)
         .single();
@@ -17,7 +17,7 @@ export async function GET(_request: Request, context: RouteContext) {
         return NextResponse.json({ error: error.message }, { status: 404 });
     }
 
-    return NextResponse.json({ appointment: data });
+    return NextResponse.json({ caregiver: data });
 }
 
 export async function PATCH(request: Request, context: RouteContext) {
@@ -28,18 +28,13 @@ export async function PATCH(request: Request, context: RouteContext) {
     const updates: Record<string, unknown> = {};
     if (body.status) updates.status = body.status;
     if (body.notes !== undefined) updates.notes = body.notes;
-    if (body.scheduled_time) updates.scheduled_time = body.scheduled_time;
-    if (body.client_name) updates.client_name = body.client_name;
-    if (body.service_type) updates.service_type = body.service_type;
-    if (body.email !== undefined) updates.email = body.email;
-    if (body.zoom_link !== undefined) updates.zoom_link = body.zoom_link;
 
     if (Object.keys(updates).length === 0) {
         return NextResponse.json({ error: 'No valid fields to update' }, { status: 400 });
     }
 
     const { data, error } = await supabase
-        .from('appointments')
+        .from('caregivers')
         .update(updates)
         .eq('id', id)
         .select()
@@ -49,7 +44,7 @@ export async function PATCH(request: Request, context: RouteContext) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ appointment: data });
+    return NextResponse.json({ caregiver: data });
 }
 
 export async function DELETE(_request: Request, context: RouteContext) {
@@ -57,7 +52,7 @@ export async function DELETE(_request: Request, context: RouteContext) {
     const supabase = createAdminClient();
 
     const { error } = await supabase
-        .from('appointments')
+        .from('caregivers')
         .delete()
         .eq('id', id);
 

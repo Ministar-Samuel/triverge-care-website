@@ -13,6 +13,7 @@ type Appointment = {
     scheduled_time: string;
     status: string;
     notes: string | null;
+    email: string | null;
     created_at: string;
 };
 
@@ -70,11 +71,16 @@ export default function AdminBookingsPage() {
     const deleteBooking = async (id: string) => {
         if (!confirm("Are you sure you want to delete this booking?")) return;
         try {
-            await fetch(`/api/bookings/${id}`, { method: "DELETE" });
+            const res = await fetch(`/api/bookings/${id}`, { method: "DELETE" });
+            if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.error || "Failed to delete booking");
+            }
             setActionMenuId(null);
             fetchBookings();
         } catch (err) {
             console.error("Failed to delete:", err);
+            alert(err instanceof Error ? err.message : "Failed to delete booking. Please try again.");
         }
     };
 
@@ -304,6 +310,7 @@ function AddBookingModal({ onClose, onSaved }: { onClose: () => void; onSaved: (
         date: "",
         time: "09:00",
         status: "confirmed",
+        email: "",
         notes: ""
     });
     const [saving, setSaving] = useState(false);
@@ -327,6 +334,7 @@ function AddBookingModal({ onClose, onSaved }: { onClose: () => void; onSaved: (
                     service_type: form.service_type,
                     scheduled_time,
                     status: form.status,
+                    email: form.email || null,
                     notes: form.notes || null
                 })
             });
@@ -430,6 +438,17 @@ function AddBookingModal({ onClose, onSaved }: { onClose: () => void; onSaved: (
                             <option value="pending">Pending</option>
                             <option value="confirmed">Confirmed</option>
                         </select>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-bold text-charcoal mb-1.5">Email Address</label>
+                        <input
+                            type="email"
+                            value={form.email}
+                            onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-healing-teal/30 focus:border-healing-teal text-sm"
+                            placeholder="e.g. client@example.com"
+                        />
                     </div>
 
                     <div>

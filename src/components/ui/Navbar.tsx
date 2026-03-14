@@ -151,7 +151,14 @@ export function Navbar() {
                                     </Link>
                                 );
                             })}
-                            <div className="mt-2 pt-2 border-t border-gray-100">
+                            <div className="mt-2 pt-2 border-t border-gray-100 flex flex-col gap-2">
+                                <Link
+                                    href="/join"
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-center justify-center w-full p-3 font-bold text-triverge-blue bg-healing-teal/10 rounded-xl"
+                                >
+                                    Join Our Team
+                                </Link>
                                 <Link
                                     href="/book"
                                     onClick={() => setIsOpen(false)}

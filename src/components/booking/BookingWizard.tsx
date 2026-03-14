@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { Icon } from "@iconify/react";
 import "react-day-picker/dist/style.css";
 import { createClient } from "@/utils/supabase/client";
+import { sendAdminBookingNotification } from "@/app/actions/sendEmail";
 
 const SERVICES = [
     { id: "home-care", title: "Home Care", icon: "solar:home-smile-bold", desc: "Assisted daily living at home." },
@@ -26,6 +27,7 @@ export function BookingWizard() {
         time: "",
         name: "",
         phone: "",
+        email: "",
         notes: ""
     });
 
@@ -54,19 +56,37 @@ export function BookingWizard() {
 
             const scheduledTime = `${dateStr}T${timeStr}.000Z`;
 
+            const serviceTitle = SERVICES.find(s => s.id === bookingData.service)?.title || bookingData.service;
+
             const { error } = await supabase
                 .from("appointments")
                 .insert([
                     {
                         client_name: bookingData.name,
-                        service_type: SERVICES.find(s => s.id === bookingData.service)?.title || bookingData.service,
+                        service_type: serviceTitle,
                         scheduled_time: scheduledTime,
                         status: "pending",
+                        email: bookingData.email || null,
                         notes: bookingData.phone + (bookingData.notes ? `\n\nNotes: ${bookingData.notes}` : "")
                     }
                 ]);
 
             if (error) throw error;
+
+            // Send admin email notification via Resend
+            try {
+                await sendAdminBookingNotification({
+                    clientName: bookingData.name,
+                    serviceInterest: serviceTitle,
+                    scheduledTime: `${format(bookingData.date, "MMMM do, yyyy")} at ${bookingData.time}`,
+                    phone: bookingData.phone,
+                    email: bookingData.email || undefined,
+                    notes: bookingData.notes,
+                });
+            } catch (emailErr) {
+                console.error("Email notification failed (non-blocking):", emailErr);
+            }
+
             nextStep();
         } catch (error) {
             console.error("Booking error:", error);
@@ -185,6 +205,16 @@ export function BookingWizard() {
                                 placeholder="Your Name"
                                 value={bookingData.name}
                                 onChange={(e) => updateData("name", e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-bold text-charcoal/70 mb-2">Email Address (Optional)</label>
+                            <input
+                                type="email"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-healing-teal outline-none transition-all text-charcoal placeholder:text-gray-400"
+                                placeholder="you@example.com"
+                                value={bookingData.email}
+                                onChange={(e) => updateData("email", e.target.value)}
                             />
                         </div>
                         <div>

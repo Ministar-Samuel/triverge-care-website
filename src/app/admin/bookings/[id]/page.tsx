@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { sendZoomConfirmationEmail } from "@/app/actions/sendEmail";
 
 type Appointment = {
     id: string;
@@ -13,6 +14,8 @@ type Appointment = {
     scheduled_time: string;
     status: string;
     notes: string | null;
+    email: string | null;
+    zoom_link: string | null;
     created_at: string;
 };
 
@@ -32,6 +35,12 @@ export default function BookingDetailsPage({ params }: { params: Promise<{ id: s
     const [savingNotes, setSavingNotes] = useState(false);
     const [notesSaved, setNotesSaved] = useState(false);
     const [updatingStatus, setUpdatingStatus] = useState(false);
+    const [zoomLink, setZoomLink] = useState("");
+    const [savingZoom, setSavingZoom] = useState(false);
+    const [zoomSaved, setZoomSaved] = useState(false);
+    const [sendingZoom, setSendingZoom] = useState(false);
+    const [zoomSent, setZoomSent] = useState(false);
+    const [zoomError, setZoomError] = useState("");
 
     useEffect(() => {
         const fetchBooking = async () => {
@@ -42,6 +51,7 @@ export default function BookingDetailsPage({ params }: { params: Promise<{ id: s
                     const data = await res.json();
                     setAppointment(data.appointment);
                     setNotes(data.appointment.notes || "");
+                    setZoomLink(data.appointment.zoom_link || "");
                 }
             } catch (err) {
                 console.error("Failed to fetch booking:", err);
@@ -181,6 +191,16 @@ export default function BookingDetailsPage({ params }: { params: Promise<{ id: s
                                 </span>
                             </div>
                             <div className="flex flex-col gap-1">
+                                <span className="text-xs font-bold uppercase tracking-wider text-charcoal/40">Email Address</span>
+                                <span className="text-base font-bold text-charcoal">
+                                    {appointment.email ? (
+                                        <a href={`mailto:${appointment.email}`} className="text-healing-teal hover:underline">{appointment.email}</a>
+                                    ) : (
+                                        <span className="text-charcoal/40 italic">Not provided</span>
+                                    )}
+                                </span>
+                            </div>
+                            <div className="flex flex-col gap-1">
                                 <span className="text-xs font-bold uppercase tracking-wider text-charcoal/40">Booking ID</span>
                                 <span className="text-base font-mono text-charcoal/70">{appointment.id}</span>
                             </div>
@@ -219,6 +239,124 @@ export default function BookingDetailsPage({ params }: { params: Promise<{ id: s
                             >
                                 <Icon icon="solar:diskette-bold" />
                                 {savingNotes ? "Saving..." : "Save Notes"}
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Zoom Meeting Link */}
+                    <div className="bg-white rounded-[24px] border border-gray-100 shadow-sm p-8">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-lg font-bold font-heading text-triverge-blue flex items-center gap-2">
+                                <Icon icon="solar:videocamera-record-bold-duotone" className="text-xl" />
+                                Zoom Meeting Link
+                            </h3>
+                            {zoomSaved && (
+                                <span className="text-sm font-bold text-green-600 flex items-center gap-1">
+                                    <Icon icon="solar:check-circle-bold" />
+                                    Saved
+                                </span>
+                            )}
+                            {zoomSent && (
+                                <span className="text-sm font-bold text-green-600 flex items-center gap-1">
+                                    <Icon icon="solar:check-circle-bold" />
+                                    Sent & Confirmed!
+                                </span>
+                            )}
+                        </div>
+                        <p className="text-sm text-charcoal/50 mb-4">
+                            Add a Zoom meeting link and send it to the client. Sending the link will automatically confirm the booking.
+                        </p>
+                        <input
+                            type="url"
+                            value={zoomLink}
+                            onChange={e => { setZoomLink(e.target.value); setZoomError(""); }}
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-healing-teal/30 focus:border-healing-teal text-sm"
+                            placeholder="https://zoom.us/j/1234567890"
+                        />
+                        {zoomError && (
+                            <p className="text-sm text-red-600 mt-2 font-medium">{zoomError}</p>
+                        )}
+                        <div className="flex gap-3 mt-4 flex-wrap">
+                            <button
+                                onClick={async () => {
+                                    setSavingZoom(true);
+                                    setZoomSaved(false);
+                                    try {
+                                        const res = await fetch(`/api/bookings/${id}`, {
+                                            method: "PATCH",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ zoom_link: zoomLink })
+                                        });
+                                        if (res.ok) {
+                                            const data = await res.json();
+                                            setAppointment(data.appointment);
+                                            setZoomSaved(true);
+                                            setTimeout(() => setZoomSaved(false), 3000);
+                                        }
+                                    } catch (err) {
+                                        console.error("Failed to save zoom link:", err);
+                                    } finally {
+                                        setSavingZoom(false);
+                                    }
+                                }}
+                                disabled={savingZoom}
+                                className="px-5 py-2.5 bg-triverge-blue text-white rounded-xl font-bold hover:bg-healing-teal transition-colors flex items-center gap-2 disabled:opacity-50"
+                            >
+                                <Icon icon="solar:diskette-bold" />
+                                {savingZoom ? "Saving..." : "Save Link"}
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    if (!zoomLink.trim()) {
+                                        setZoomError("Please enter a Zoom meeting link first.");
+                                        return;
+                                    }
+                                    if (!appointment?.email) {
+                                        setZoomError("No client email found. Cannot send meeting link.");
+                                        return;
+                                    }
+                                    setSendingZoom(true);
+                                    setZoomSent(false);
+                                    setZoomError("");
+                                    try {
+                                        // 1. Save the zoom link
+                                        await fetch(`/api/bookings/${id}`, {
+                                            method: "PATCH",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ zoom_link: zoomLink, status: "confirmed" })
+                                        });
+                                        // 2. Send the email
+                                        const result = await sendZoomConfirmationEmail({
+                                            clientName: appointment.client_name,
+                                            clientEmail: appointment.email,
+                                            serviceType: appointment.service_type,
+                                            scheduledTime: format(new Date(appointment.scheduled_time), "EEEE, MMMM dd, yyyy 'at' hh:mm a"),
+                                            zoomLink: zoomLink,
+                                        });
+                                        if (result.success) {
+                                            setZoomSent(true);
+                                            // Refresh the appointment to reflect confirmed status
+                                            const res = await fetch(`/api/bookings/${id}`);
+                                            if (res.ok) {
+                                                const data = await res.json();
+                                                setAppointment(data.appointment);
+                                            }
+                                            setTimeout(() => setZoomSent(false), 5000);
+                                        } else {
+                                            setZoomError("Failed to send email. Check server logs for details.");
+                                        }
+                                    } catch (err) {
+                                        console.error("Failed to send zoom link:", err);
+                                        setZoomError("An error occurred while sending the meeting link.");
+                                    } finally {
+                                        setSendingZoom(false);
+                                    }
+                                }}
+                                disabled={sendingZoom || !zoomLink.trim()}
+                                className="px-5 py-2.5 bg-healing-teal text-white rounded-xl font-bold hover:bg-triverge-blue transition-colors flex items-center gap-2 disabled:opacity-50"
+                            >
+                                <Icon icon="solar:plain-bold" />
+                                {sendingZoom ? "Sending..." : "Send Meeting Link"}
                             </button>
                         </div>
                     </div>
